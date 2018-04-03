@@ -1,0 +1,11 @@
+{
+    "name": "shadow13/user-dependency-tool",
+    "description": "Aplikasi tugas akhir untuk mengambil data dari MS SQL Server, memasukkannya ke dalam Neo4j, dan menampilkannya dalam bentuk graph.",
+    "authors": [
+        {
+            "name": "fairyhunter13",
+            "email": "fairyhunter13@gmail.com"
+        }
+    ],
+    "require": {}
+}

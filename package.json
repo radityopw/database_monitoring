@@ -1,0 +1,11 @@
+{
+  "name": "user-dependency-tool",
+  "version": "1.0.0",
+  "description": "Aplikasi tugas akhir untuk mengekstrak data dari MS SQL Server, memasukkannya ke Neo4j, dan menampilkannya dalam bentuk graph.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
