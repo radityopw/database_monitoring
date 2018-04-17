@@ -14,6 +14,21 @@ services:
         volumes: 
             - "mssqlserver-data:/var/opt/mssql"
 
+    neo4jserver:
+        image: neo4j
+        # environment:
+        #     -   ACCEPT_EULA=Y    
+        #     -   SA_PASSWORD=fairy@test13 
+        ports:
+            - "7474:7474"
+            - "7473:7473"
+            - "7687:7687"
+        networks:
+            - hello
+        volumes: 
+            - "neo4jserver-data:/data"
+            - "neo4jserver-logs:/logs"
+
     # webserver:
     #     image: nginx:alpine
     #     volumes:
@@ -68,6 +83,8 @@ networks:
     hello:
 volumes:
     mssqlserver-data:
+    neo4jserver-data:
+    neo4jserver-logs:
         # driver_opts:
         #     type: none
         #     device: /d/Git/Gitlab/user-dependency-tool/etc/mssqlserver
