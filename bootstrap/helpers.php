@@ -37,13 +37,35 @@ if (! function_exists('env')) {
 
 if (! function_exists('config')) {
     /**
-     * Get config value from array
+     * Get / set the specified configuration value.
      *
-     * @param  string  $key
+     * If an array is passed as the key, we will assume you want to set an array of values.
+     *
+     * @param  array|string  $key
+     * @param  mixed  $default
      * @return mixed
      */
-    function config(string $key)
+    function config($key = null, $default = null)
     {
-        return 'test';
+        if (is_null($key)) {
+            return $configLoader;
+        }
+        if (is_array($key)) {
+            return $configLoader->set($key);
+        }
+        return $configLoader->get($key, $default);
+    }
+}
+
+if (! function_exists('value')) {
+    /**
+     * Return the default value of the given value.
+     *
+     * @param  mixed  $value
+     * @return mixed
+     */
+    function value($value)
+    {
+        return $value instanceof Closure ? $value() : $value;
     }
 }
