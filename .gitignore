@@ -1,4 +1,5 @@
+vendor/
+composer.lock
 package-lock.json
 *.lock
-node_modules
-vendor/
+node_modules/
