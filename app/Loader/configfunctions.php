@@ -1,7 +1,10 @@
 <?php
 
+namespace UserDep\Loader;
+
 use Illuminate\Config\Repository;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\Finder\SplFileInfo;
 
 /**
  * Load the configuration items from all of the files.

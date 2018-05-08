@@ -5,11 +5,11 @@ return [
         'sqlsrv' => [
             'host' => env('SQLSRV_DB_HOST',''),
             'port' => env('SQLSRV_DB_PORT',''),
-            'database' =>   env('SQLSRV_DB_DATABASE','test'),
+            'database' =>   env('SQLSRV_DB_DATABASE',''),
             'username' => env('SQLSRV_DB_USERNAME',''),
             'password' => env('SQLSRV_DB_PASSWORD', ''),
             'charset' => env('SQLSRV_DB_CHARSET','utf8'),
-            'prefix' => '', 
+            'prefix' => 'sqlsrv', 
         ],
         'neo4j' => [
             'host' => env('NEO4J_DB_HOST',''),

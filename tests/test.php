@@ -10,7 +10,7 @@ $connectionOptions = [
 $conn = sqlsrv_connect($serverName, $connectionOptions);
 
 if ($conn) {
-     echo "Connection established.<br />";
+    echo "Connection established.<br />";
     $version = sqlsrv_query($conn, 'SELECT @@VERSION'); 
     $row = sqlsrv_fetch_array($version);
 

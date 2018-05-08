@@ -12,7 +12,7 @@ services:
         networks:
             - hello
         volumes: 
-            - "mssqlserver-data:/var/opt/mssql"
+            - "mssqlserver_data:/var/opt/mssql"
 
     neo4jserver:
         image: neo4j
@@ -26,8 +26,8 @@ services:
         networks:
             - hello
         volumes: 
-            - "neo4jserver-data:/data"
-            - "neo4jserver-logs:/logs"
+            - "neo4jserver_data:/data"
+            # - "neo4jserver_logs:/logs"
 
     # webserver:
     #     image: nginx:alpine
@@ -82,9 +82,9 @@ services:
 networks:
     hello:
 volumes:
-    mssqlserver-data:
-    neo4jserver-data:
-    neo4jserver-logs:
+    mssqlserver_data:
+    neo4jserver_data:
+    # neo4jserver_logs:
         # driver_opts:
         #     type: none
         #     device: /d/Git/Gitlab/user-dependency-tool/etc/mssqlserver
