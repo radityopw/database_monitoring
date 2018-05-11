@@ -12,7 +12,7 @@ services:
         networks:
             - hello
         volumes: 
-            - "mssqlserver_data:/var/opt/mssql"
+            - "mssql_data:/var/opt/mssql"
 
     neo4jserver:
         image: neo4j
@@ -26,7 +26,7 @@ services:
         networks:
             - hello
         volumes: 
-            - "neo4jserver_data:/data"
+            - "neo4j_data:/data"
             # - "neo4jserver_logs:/logs"
 
     # webserver:
@@ -82,8 +82,10 @@ services:
 networks:
     hello:
 volumes:
-    mssqlserver_data:
-    neo4jserver_data:
+    mssql_data:
+        external: true
+    neo4j_data:
+        external: true
     # neo4jserver_logs:
         # driver_opts:
         #     type: none
