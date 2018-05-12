@@ -14,7 +14,6 @@ return [
         'neo4j' => [
             'host' => env('NEO4J_DB_HOST',''),
             'port' => env('NEO4J_DB_PORT',''),
-            'database' =>   env('NEO4J_DB_DATABASE',''),
             'username' => env('NEO4J_DB_USERNAME',''),
             'password' => env('NEO4J_DB_PASSWORD', ''),
         ]

@@ -16,8 +16,8 @@ services:
 
     neo4jserver:
         image: neo4j
-        # environment:
-        #     -   ACCEPT_EULA=Y    
+        environment:
+            -   NEO4J_AUTH=neo4j/neo4j123    
         #     -   SA_PASSWORD=fairy@test13 
         ports:
             - "7474:7474"

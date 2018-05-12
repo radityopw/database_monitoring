@@ -301,20 +301,8 @@ RUN set -ex \
     echo 'listen = 9000'; \
     } | tee php-fpm.d/zz-docker.conf
 
-# Install the PHP Driver for SQL Server
-RUN apt-get update -y \
-    && apt-get install -y apt-transport-https gnupg \
-    && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
-    && curl https://packages.microsoft.com/config/ubuntu/17.10/prod.list > /etc/apt/sources.list.d/mssql-release.list \
-    && apt-get update -y \
-    && ACCEPT_EULA=Y apt-get install -y unixodbc unixodbc-dev libgss3 odbcinst msodbcsql17 locales \
-    && echo "en_US.UTF-8 zh_CN.UTF-8 UTF-8" > /etc/locale.gen \
-    && locale-gen
-
-RUN pecl install -f pdo_sqlsrv sqlsrv \
-    && docker-php-ext-enable pdo_sqlsrv sqlsrv
-
-RUN apt-get install -y --no-install-recommends \
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
     libmemcached-dev \
     libkrb5-dev \
     libc-client-dev \
@@ -334,9 +322,9 @@ RUN apt-get install -y --no-install-recommends \
     libpng-dev \
     libjpeg-dev \
     zlib1g-dev \
-    iputils-ping 
-
-RUN docker-php-ext-install \
+    \
+    && docker-php-ext-install \
+    bcmath \
     bz2 \
     iconv \
     mbstring \
@@ -346,9 +334,9 @@ RUN docker-php-ext-install \
     pdo_mysql \
     pdo_pgsql \
     soap \
-    zip 
-
-RUN docker-php-ext-configure gd \
+    zip \
+    \
+    && docker-php-ext-configure gd \
     --with-freetype-dir=/usr/include/ \
     --with-jpeg-dir=/usr/include/ \
     --with-png-dir=/usr/include/ \
