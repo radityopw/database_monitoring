@@ -18,6 +18,7 @@
         "vlucas/phpdotenv": "^2.4",
         "illuminate/config": "^5.6",
         "symfony/finder": "^4.0",
-        "illuminate/support": "^5.6"
+        "illuminate/support": "^5.6",
+        "symfony/var-dumper": "^4.0"
     }
 }
