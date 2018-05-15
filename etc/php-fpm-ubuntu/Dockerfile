@@ -363,12 +363,13 @@ RUN set -xe; \
     rsync \
     '; \
     apt-get update; \
-    apt-get install -y --no-install-recommends $fetchDeps ; \
-    cd /tmp ; \
-    wget -O wkhtmltox.tar.xz https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz ; \
-    tar xvf wkhtmltox.tar.xz 
+    apt-get install -y --no-install-recommends $fetchDeps
 
-RUN  cd /tmp ; \
+COPY wkhtmltox.tar.xz /tmp/wkhtmltox.tar.xz
+
+RUN cd /tmp ; \
+    # wget -O wkhtmltox.tar.xz https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz ; \
+    tar xvf wkhtmltox.tar.xz ; \ 
     # mv -vf wkhtmltox/* /usr/ ; \
     rsync -ar wkhtmltox/ /usr/ ; \
     rm -rf wkhtmltox wkhtmtox.tar.xz ; \
