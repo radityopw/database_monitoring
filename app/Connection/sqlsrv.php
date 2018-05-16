@@ -5,7 +5,8 @@ namespace UserDep\Connection;
 use PDO;
 
 $prefixConfig = 'database.connections.sqlsrv.';
-$serverName = 'tcp:'.config($prefixConfig.'host').','.config($prefixConfig.'port');
+$port = config($prefixConfig.'port') ?? '1433';
+$serverName = 'tcp:'.config($prefixConfig.'host').','.$port;
 $database = config($prefixConfig.'database');
 $username = config($prefixConfig.'username');
 $password = config($prefixConfig.'password');
