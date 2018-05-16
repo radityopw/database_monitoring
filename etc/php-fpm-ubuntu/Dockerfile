@@ -322,6 +322,7 @@ RUN apt-get update \
     libpng-dev \
     libjpeg-dev \
     zlib1g-dev \
+    unixodbc-dev \
     \
     && docker-php-ext-install \
     bcmath \
