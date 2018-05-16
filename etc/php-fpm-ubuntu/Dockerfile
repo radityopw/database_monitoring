@@ -354,7 +354,11 @@ RUN apt-get update \
     && pecl install redis \
     && docker-php-ext-enable redis \
     && pecl install xdebug \
-    && docker-php-ext-enable xdebug 
+    && docker-php-ext-enable xdebug \
+    && pecl install sqlsrv \
+    && docker-php-ext-enable sqlsrv \
+    && pecl install pdo_sqlsrv \
+    && docker-php-ext-enable pdo_sqlsrv 
 
 RUN set -xe; \
     fetchDeps=' \
