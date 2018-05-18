@@ -47,4 +47,14 @@ class SqlConnectionMapper
         $result = tap($this->connection->prepare($this->query))->execute();
         $this->result = $result->fetchAll(PDO::FETCH_OBJ);
     }
+
+    /**
+     * Returning result from protected property
+     *
+     * @return array
+     */
+    public function getResult()
+    {
+        return $this->result;
+    }
 }
