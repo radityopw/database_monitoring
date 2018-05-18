@@ -4,12 +4,25 @@ namespace UserDep\Components;
 
 require_once __DIR__.'/../index.php';
 use PDO;
-$sqlsrv = require_once __DIR__.'/../Connection/sqlsrv.php';
+use UserDep\Database\SqlConnectionMapper;
 
-$query = <<<'MULTI'
-SELECT name 
-FROM sys.sysdatabases WHERE name NOT IN ('master', 'tempdb','model','msdb')
-MULTI;
+$sqlsrv = createSQLServerConnection();
 
-$result = tap($sqlsrv->prepare($query))->execute();
-dd($result->fetchAll(PDO::FETCH_OBJ));
+// $query = "
+// SELECT name 
+// FROM sys.sysdatabases WHERE name NOT IN ('master', 'tempdb','model','msdb')
+// ";
+
+// dd($query);
+
+// $result = tap($sqlsrv->prepare($query))->execute()->fetchAll(PDO::FETCH_OBJ);
+// dd($result);
+// $resultColl = collect($result)->pluck('name')->mapInto(SqlConnectionMapper::class);
+$resultColl = collect("resits")->mapInto(SqlConnectionMapper::class);
+// tap($resultColl)->map(function ($item, $key) {
+//     dd($item);
+//     // return $item." Hafiz";
+// });
+dd($resultColl);
+
+// dd($result->fetchAll(PDO::FETCH_OBJ));
