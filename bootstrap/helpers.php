@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Debug\Dumper;
 use Illuminate\Support\HigherOrderTapProxy;
+use Illuminate\Support\Collection;
 
 if (! function_exists('dd')) {
     /**
@@ -86,5 +87,18 @@ if (! function_exists('value')) {
     function value($value)
     {
         return $value instanceof Closure ? $value() : $value;
+    }
+}
+
+if (! function_exists('collect')) {
+    /**
+     * Create a collection from the given value.
+     *
+     * @param  mixed  $value
+     * @return \Illuminate\Support\Collection
+     */
+    function collect($value = null)
+    {
+        return new Collection($value);
     }
 }
