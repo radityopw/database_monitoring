@@ -27,6 +27,13 @@ class SqlConnectionMapper
      */
     protected $query;
 
+    /*
+     * The attribute refer to database name
+     *
+     * @var string
+     */
+    protected $database;
+
     /**
      * Initialize class and assign variable
      *
@@ -35,8 +42,9 @@ class SqlConnectionMapper
     public function __construct(string $db)
     {
         $this->connection = createSQLServerConnection($db);
-        $this->query = config('query.sqlserver.extract');
+        $this->query = config('query.sqlserver.extract_user');
         $this->queryResult();
+        $this->database = $db;
     }
 
     /**
@@ -44,8 +52,7 @@ class SqlConnectionMapper
      */
     private function queryResult()
     {
-        $result = tap($this->connection->prepare($this->query))->execute();
-        $this->result = $result->fetchAll(PDO::FETCH_OBJ);
+        $this->result = tap($this->connection->prepare($this->query))->execute()->fetchAll(PDO::FETCH_OBJ);
     }
 
     /**
@@ -56,5 +63,15 @@ class SqlConnectionMapper
     public function getResult()
     {
         return $this->result;
+    }
+
+    /**
+     * Returning database name for this class
+     * 
+     * @return string
+     */
+    public function getDatabase()
+    {
+        return $this->database;
     }
 }

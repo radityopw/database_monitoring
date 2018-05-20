@@ -29,6 +29,21 @@ services:
             - "neo4j_data:/data"
             # - "neo4jserver_logs:/logs"
 
+    phpfpmserver:
+        image: shadow/php-fpm-ubuntu:tugas-akhir
+        deploy:
+            restart_policy:
+                condition: on-failure
+                delay: 5s
+        networks:
+            - hello
+        extra_hosts:
+            # - "host.machine:192.168.100.13"
+            - "host.machine:192.168.2.70"
+        volumes:
+            - "./etc/xdebug/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini" #/usr/local/etc/php/docker-php-ext-xdebug.ini alpine image
+            - "./:/var/www/html"
+
     webserver:
         image: nginx:alpine
         volumes:
@@ -48,21 +63,6 @@ services:
             restart_policy:
                 condition: on-failure
                 delay: 5s
-
-    phpfpmserver:
-        image: shadow/php-fpm-ubuntu:tugas-akhir
-        deploy:
-            restart_policy:
-                condition: on-failure
-                delay: 5s
-        networks:
-            - hello
-        extra_hosts:
-            # - "host.machine:192.168.100.13"
-            - "host.machine:192.168.2.70"
-        volumes:
-            - "./etc/xdebug/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini" #/usr/local/etc/php/docker-php-ext-xdebug.ini alpine image
-            - "./:/var/www/html"
 
     # supervisorserver:
     #     image: shadow/supervisord

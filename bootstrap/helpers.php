@@ -1,8 +1,10 @@
 <?php
 
+use Illuminate\Support\Str;
 use Illuminate\Support\Debug\Dumper;
 use Illuminate\Support\HigherOrderTapProxy;
 use Illuminate\Support\Collection;
+use GraphAware\Neo4j\Client\ClientBuilder;
 
 if (! function_exists('dd')) {
     /**
@@ -105,7 +107,7 @@ if (! function_exists('collect')) {
 
 if (! function_exists('createSQLServerConnection')) {
     /**
-     * Create connection to SQL Server withPDO
+     * Create connection to SQL Server with PDO
      *
      * @param  string  $dbName
      * @return PDO
@@ -124,5 +126,41 @@ if (! function_exists('createSQLServerConnection')) {
         $conn->setAttribute(PDO::SQLSRV_ATTR_ENCODING, PDO::SQLSRV_ENCODING_UTF8);
 
         return $conn;
+    }
+}
+
+
+if (! function_exists('createNeo4jConnection')) {
+    /**
+     * Create connection to Neo4j
+     *
+     * @return GraphAware\Neo4j\Client\Client
+     */
+
+    function createNeo4jConnection() {
+        $connPrefix = 'database.connections.neo4j.';
+        $username = config($connPrefix.'username');
+        $password = config($connPrefix.'password');
+        $host = config($connPrefix.'host');
+        $port = config($connPrefix.'port');
+
+        return ClientBuilder::create()
+                ->addConnection('bolt', "bolt://$username:$password@$host:$port")
+                ->build();
+    }
+}
+
+if (! function_exists('str_replace_array')) {
+    /**
+     * Replace a given value in the string sequentially with an array.
+     *
+     * @param  string  $search
+     * @param  array   $replace
+     * @param  string  $subject
+     * @return string
+     */
+    function str_replace_array($search, array $replace, $subject)
+    {
+        return Str::replaceArray($search, $replace, $subject);
     }
 }

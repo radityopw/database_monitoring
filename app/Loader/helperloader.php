@@ -1,6 +1,7 @@
 <?php
 
 $configLoader = require_once __DIR__.'/configloader.php';
+
 if (! function_exists('config')) {
     /**
      * Get / set the specified configuration value.
