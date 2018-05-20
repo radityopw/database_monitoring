@@ -10,7 +10,7 @@ return [
                                 WHEN ''S'' THEN ''SQL User''
                                 WHEN ''U'' THEN ''Windows User''
                                 WHEN ''G'' THEN ''Windows Group''
-                    WHEN ''A'' THEN ''Application User''
+                                WHEN ''A'' THEN ''Application User''
                             END,
                 [databaseUserName] = princ.[name],
                 [loginName]        = ulogin.[name],
@@ -47,7 +47,7 @@ return [
                                 WHEN ''S'' THEN ''SQL User''
                                 WHEN ''U'' THEN ''Windows User''
                                 WHEN ''G'' THEN ''Windows Group''
-                    WHEN ''A'' THEN ''Application User''
+                                WHEN ''A'' THEN ''Application User''
                             END,
                 [databaseUserName] = membprinc.[name],
                 [loginName]        = ulogin.[name],
