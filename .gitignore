@@ -3,3 +3,4 @@ composer.lock
 package-lock.json
 *.lock
 node_modules/
+storage/

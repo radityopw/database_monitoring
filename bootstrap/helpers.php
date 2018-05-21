@@ -164,3 +164,29 @@ if (! function_exists('str_replace_array')) {
         return Str::replaceArray($search, $replace, $subject);
     }
 }
+
+if (! function_exists('resource_path')) {
+    /**
+     * Get the path to the resources folder.
+     *
+     * @param  string  $path
+     * @return string
+     */
+    function resource_path($path = '')
+    {
+        return realpath(__DIR__.'/..'.DIRECTORY_SEPARATOR.'resources'.($path ? DIRECTORY_SEPARATOR.$path : $path));
+    }
+}
+
+if (! function_exists('storage_path')) {
+    /**
+     * Get the path to the storage folder.
+     *
+     * @param  string  $path
+     * @return string
+     */
+    function storage_path($path = '')
+    {
+        return realpath(__DIR__.'/..'.DIRECTORY_SEPARATOR.'storage'.($path ? DIRECTORY_SEPARATOR.$path : $path));
+    }
+}

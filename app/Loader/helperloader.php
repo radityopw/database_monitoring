@@ -2,7 +2,7 @@
 
 $configLoader = require_once __DIR__.'/configloader.php';
 
-if (! function_exists('config')) {
+if (!function_exists('config')) {
     /**
      * Get / set the specified configuration value.
      *
@@ -22,5 +22,26 @@ if (! function_exists('config')) {
             return $configLoader->set($key);
         }
         return $configLoader->get($key, $default);
+    }
+}
+
+$viewLoader = require_once __DIR__.'/viewloader.php';
+
+if(!function_exists('view')) {
+    /**
+    * Get the evaluated view contents for the given view.
+    *
+    * @param  string  $view
+    * @param  array   $data
+    * @param  array   $mergeData
+    * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
+    */
+    function view($view = null, $data = [], $mergeData = [])
+    {
+        global $viewLoader;
+        if (func_num_args() === 0) {
+            return $viewLoader;
+        }
+        return $viewLoader->make($view, $data, $mergeData);
     }
 }
