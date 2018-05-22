@@ -1,7 +1,6 @@
 <?php
 
 use GraphAware\Neo4j\Client\ClientBuilder;
-use PDO;
 
 if (! function_exists('createSQLServerConnection')) {
     /**
