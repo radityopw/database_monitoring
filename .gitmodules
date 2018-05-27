@@ -1,0 +1,3 @@
+[submodule "neo4j-browser"]
+	path = neo4j-browser
+	url = https://gitlab.com/hafizludyanto13/neo4j-browser.git
