@@ -16,7 +16,8 @@ $serverName = tap(createSqlServerConnection()->prepare($query))
 $serverArray  = [
     'serverName' => $serverName
 ];
-$stack = tap($neo4j->stack())->push("MERGE (s:Server {name: {serverName}})", $serverArray);
+$stack = tap($neo4j->stack())->push("MATCH (n) DETACH DELETE n");
+$stack->push("MERGE (s:Server {name: {serverName}})", $serverArray);
 // $neo4j->run("MERGE (s:Server {name: {serverName}})", $serverArray);
 
 foreach ($extractResult as $result) {
@@ -25,8 +26,10 @@ foreach ($extractResult as $result) {
         'databaseName' => $databaseName,
     ];
     $serverToDbArray =  array_merge($serverArray, $databaseArray);
-    // $neo4j->run("MERGE (s:Server {name: {serverName}}) MERGE (d:Database {name: {databaseName}}) MERGE (s)-[y:HANDLES]->(d)", $serverToDbArray);
-    $stack->push("MERGE (s:Server {name: {serverName}}) MERGE (d:Database {name: {databaseName}}) MERGE (s)-[y:HANDLES]->(d)", $serverToDbArray);
+    $stack->push("MERGE (s:Server {name: {serverName}}) 
+        MERGE (d:Database {name: {databaseName}}) 
+        MERGE (s)-[y:HAS_RELATIONSHIPS]->(d) 
+        SET y.DATABASE = true", $serverToDbArray);
     $resultMapping = $result->getResult();
     foreach ($resultMapping as $eachMapping) {
         $userType = $eachMapping->userType;
@@ -46,16 +49,19 @@ foreach ($extractResult as $result) {
         ];
         $dbToUserArray = array_merge($dbUserArray, $databaseArray);
         // $stack = tap($neo4j->stack())->push("MERGE (d1:Database {name: {databaseName}}) MERGE (u:User {name: {databaseUserName}, type: {userType}}) MERGE (u)-[y:USES]->(d1)", $dbToUserArray);
-        $stack->push("MERGE (d:Database {name: {databaseName}}) MERGE (u:User {name: {databaseUserName}, type: {userType}}) MERGE (u)-[y:USES]->(d)", $dbToUserArray);
-        if ($loginName !== null) {
-            $loginArray = [
-                'loginName' => $loginName
-            ];
-            $loginToServerArray = array_merge($serverArray, $loginArray);
-            $stack->push("MERGE (s:Server {name: {serverName}}) MERGE (l:Login {name: {loginName}}) MERGE (l)-[y:USES]->(s)", $loginToServerArray);
-            $loginToUserArray = array_merge($loginArray, $dbUserArray);
-            $stack->push("MERGE (l:Login {name: {loginName}}) MERGE (u:User {name: {databaseUserName}, type: {userType}}) MERGE (l)-[y:MAPPED_TO]->(u)", $loginToUserArray);
-        }
+        $stack->push("MERGE (d:Database {name: {databaseName}}) 
+            MERGE (u:User {name: {databaseUserName}, type: {userType}}) 
+            MERGE (d)-[y:HAS_RELATIONSHIPS]->(u)
+            SET y.USER = true", $dbToUserArray);
+        // if ($loginName !== null) {
+        //     $loginArray = [
+        //         'loginName' => $loginName
+        //     ];
+        //     $loginToServerArray = array_merge($serverArray, $loginArray);
+        //     $stack->push("MERGE (s:Server {name: {serverName}}) MERGE (l:Login {name: {loginName}}) MERGE (l)-[y:USES]->(s)", $loginToServerArray);
+        //     $loginToUserArray = array_merge($loginArray, $dbUserArray);
+        //     $stack->push("MERGE (l:Login {name: {loginName}}) MERGE (u:User {name: {databaseUserName}, type: {userType}}) MERGE (l)-[y:MAPPED_TO]->(u)", $loginToUserArray);
+        // }
         if ($role !== null) {
             $roleArray = [
                 'role' => $role,
