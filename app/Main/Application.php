@@ -1,6 +1,6 @@
 <?php
 
-namespace UserDep\Main;
+namespace Dependency\Main;
 
 use Illuminate\Foundation\Application as BaseApplication;
 use Illuminate\Events\EventServiceProvider;
@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Foundation\ProviderRepository;
 use Illuminate\Routing\RoutingServiceProvider;
 use Illuminate\Filesystem\Filesystem;
-use UserDep\Providers\RequestServiceProvider;
+use Dependency\Providers\RequestServiceProvider;
 
 class Application extends BaseApplication
 {

@@ -34,8 +34,12 @@ if (! function_exists('createNeo4jConnection')) {
      * @return GraphAware\Neo4j\Client\Client
      */
 
-    function createNeo4jConnection() {
-        $connPrefix = 'database.connections.neo4j.';
+    function createNeo4jConnection($appendix = null) {
+        if (!$appendix) {
+            return null;
+        }
+        $appendixConn = ctype_lower($appendix) ? $appendix : strtolower($appendix);
+        $connPrefix = "database.connections.neo4j.{$appendixConn}.";
         $username = config($connPrefix.'username');
         $password = config($connPrefix.'password');
         $host = config($connPrefix.'host');

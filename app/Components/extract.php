@@ -1,10 +1,10 @@
 <?php
 
-namespace UserDep\Components;
+namespace Dependency\Components;
 
-use UserDep\Database\SqlConnectionMapper;
+use Dependency\Database\SqlConnectionMapper;
 
-$sqlsrv = createSQLServerConnection();
+// $sqlsrv = createSQLServerConnection();
 
 // $query = config('query.sqlserver.extract_database');
 // dd($query);

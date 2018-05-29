@@ -1,6 +1,6 @@
 <?php
 
-namespace UserDep\Providers;
+namespace Dependency\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Request;

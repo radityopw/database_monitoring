@@ -1,5 +1,7 @@
 <?php 
 
+namespace Dependency\Components;
+
 class SP_parser {
 	
 	public function strafter($string, $substring) {

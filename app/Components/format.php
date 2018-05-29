@@ -1,8 +1,8 @@
 <?php
 
-namespace UserDep\Components;
+namespace Dependency\Components;
 
-require_once __DIR__.'/../index.php';
+require_once __DIR__.'/../hihi.php';
 
 $array = [
     'hello' => "Hello World",
