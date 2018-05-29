@@ -1,9 +1,12 @@
 <?php 
 	
-	include('config.php');
+	// include('config.php');
+	require_once __DIR__.'/../hihi.php';
+    use Dependency\Components\Sp_parser;
 	require 'SP_parser.php';
 	require 'SP_splitter.php';
 	// require_once dirname(__FILE__) . '\vendor\parser\src\PHPSQLParser.php';
+	$sp_pars = new SP_parser();
 
 	function strafter($string, $substring) {
   		$pos = strpos($string, $substring);

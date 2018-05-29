@@ -1,6 +1,8 @@
 <?php
 ini_set('max_execution_time', 1000);
 		include 'config.php';
+        $db = 'resits';
+        $sqlsrv = createSQLServerConnection($db);
 		$neo->run('MATCH (n) DETACH DELETE n');
 			//get System Catalog Server & Database
 			$sql2=$con->prepare('SELECT name as srv from sys.servers');
