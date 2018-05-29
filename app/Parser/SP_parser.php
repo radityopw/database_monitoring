@@ -1,24 +1,8 @@
 <?php 
 
-namespace Dependency\Components;
+namespace Dependency\Parser;
 
 class SP_parser {
-	
-	public function strafter($string, $substring) {
-  		$pos = strpos($string, $substring);
-  		if ($pos === false)
-   			return $string;
-  		else  
-   			return(substr($string, $pos+strlen($substring)));
-	}
-
-	public function strbefore($string, $substring) {
-  		$pos = strpos($string, $substring);
-  		if ($pos === false)
-   			return $string;
-  		else  
-   			return(substr($string, 0, $pos));
-	}
 
 	public function from($lexer){
 		$key_from = array_keys($lexer, "from");
@@ -126,9 +110,5 @@ class SP_parser {
 				return array_unique($exec);
 			}
 	}
-
 }
-
-$sp_pars = new SP_parser();
-
 ?>

@@ -1,12 +1,16 @@
 <?php 
 	
-	// include('config.php');
 	require_once __DIR__.'/../hihi.php';
-    use Dependency\Components\Sp_parser;
-	require 'SP_parser.php';
-	require 'SP_splitter.php';
-	// require_once dirname(__FILE__) . '\vendor\parser\src\PHPSQLParser.php';
+
+	use Dependency\Parser\SP_parser;
+	use Dependency\Parser\SP_splitter;
+
 	$sp_pars = new SP_parser();
+	$sp_split = new SP_splitter();
+
+	$db = 'resits';
+	$sqlsrv = createSQLServerConnection($db);
+    $neo = createNeo4jConnection('sp');
 
 	function strafter($string, $substring) {
   		$pos = strpos($string, $substring);
@@ -24,7 +28,7 @@
    			return(substr($string, 0, $pos));
 	}
 
-	$sql_sp = $con->prepare("
+	$sql_sp = $sqlsrv->prepare("
 				SELECT @@SERVERNAME as srv, SPECIFIC_CATALOG as db, SPECIFIC_SCHEMA as sch, SPECIFIC_NAME as sp_name, ROUTINE_TYPE, ROUTINE_BODY, ROUTINE_DEFINITION as sql, SQL_DATA_ACCESS, CREATED, LAST_ALTERED
 					FROM information_schema.routines
 					WHERE routine_type = 'PROCEDURE'
@@ -50,20 +54,18 @@
 				foreach ($from as $value) {
 				if (substr_count($value, "." ) == 0) {
 					$value = $row['srv'].".".$row['db'].".".$row['sch'].".".$value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Using]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
 				elseif (substr_count($value, "." ) == 1) {
 					$value = $row['srv'].".".$row['db'].".".$value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Using]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
 				elseif (substr_count($value, ".") == 2) {
 					$value = $row['srv'].".".$value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Using]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
 				elseif (substr_count($value, ".") == 3) {
 					$value = $value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Using]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
+
+				$stack->push('MATCH (a:SP {surname: {name1} }), (b:Table {surname: {name2} }) MERGE (a)-[r:Use]->(b) SET r.From="Yes"',['name1'=>$spname,'name2'=>$value]);
 				echo $value."<br> \n" ;
 				
 				}
@@ -76,20 +78,18 @@
 				foreach ($join as $value) {
 				if (substr_count($value, "." ) == 0) {
 					$value = $row['srv'].".".$row['db'].".".$row['sch'].".".$value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Join]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
 				elseif (substr_count($value, "." ) == 1) {
 					$value = $row['srv'].".".$row['db'].".".$value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Join]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
 				elseif (substr_count($value, ".") == 2) {
 					$value = $row['srv'].".".$value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Join]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
 				elseif (substr_count($value, ".") == 3) {
 					$value = $value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Join]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
+				
+				$stack->push('MATCH (a:SP {surname: {name1} }), (b:Table {surname: {name2} }) MERGE (a)-[r:Use]->(b) SET r.Join="Yes"',['name1'=>$spname,'name2'=>$value]);
 				echo $value."<br> \n" ;
 				}
 			}
@@ -99,20 +99,18 @@
 				foreach ($merge as $value) {
 				if (substr_count($value, "." ) == 0) {
 					$value = $row['srv'].".".$row['db'].".".$row['sch'].".".$value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Merge]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
 				elseif (substr_count($value, "." ) == 1) {
 					$value = $row['srv'].".".$row['db'].".".$value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Merge]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
 				elseif (substr_count($value, ".") == 2) {
 					$value = $row['srv'].".".$value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Merge]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
 				elseif (substr_count($value, ".") == 3) {
 					$value = $value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Merge]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
+
+				$stack->push('MATCH (a:SP {surname: {name1} }), (b:Table {surname: {name2} }) MERGE (a)-[r:Use]->(b) SET r.Merge="Yes"',['name1'=>$spname,'name2'=>$value]);
 				echo $value."<br> \n" ;
 				}
 			}
@@ -122,20 +120,18 @@
 				foreach ($truncate as $value) {
 				if (substr_count($value, "." ) == 0) {
 					$value = $row['srv'].".".$row['db'].".".$row['sch'].".".$value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Truncate]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
 				elseif (substr_count($value, "." ) == 1) {
 					$value = $row['srv'].".".$row['db'].".".$value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Truncate]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
 				elseif (substr_count($value, ".") == 2) {
 					$value = $row['srv'].".".$value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Truncate]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
 				elseif (substr_count($value, ".") == 3) {
-					$value = $value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Truncate]->(b)',['name1'=>$spname,'name2'=>$value]);
+					$value = $value;	
 				}
+
+				$stack->push('MATCH (a:SP {surname: {name1} }), (b:Table {surname: {name2} }) MERGE (a)-[r:Use]->(b) SET r.Truncate="Yes"',['name1'=>$spname,'name2'=>$value]);
 				echo $value."<br> \n" ;
 				}
 			}
@@ -145,20 +141,18 @@
 				foreach ($insert as $value) {
 				if (substr_count($value, "." ) == 0) {
 					$value = $row['srv'].".".$row['db'].".".$row['sch'].".".$value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Insert]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
 				elseif (substr_count($value, "." ) == 1) {
 					$value = $row['srv'].".".$row['db'].".".$value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Insert]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
 				elseif (substr_count($value, ".") == 2) {
 					$value = $row['srv'].".".$value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Insert]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
 				elseif (substr_count($value, ".") == 3) {
-					$value = $value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Insert]->(b)',['name1'=>$spname,'name2'=>$value]);
+					$value = $value;	
 				}
+
+				$stack->push('MATCH (a:SP {surname: {name1} }), (b:Table {surname: {name2} }) MERGE (a)-[r:Use]->(b) SET r.Insert="Yes"',['name1'=>$spname,'name2'=>$value]);
 				echo $value."<br> \n" ;
 				}
 			}
@@ -168,20 +162,18 @@
 				foreach ($update as $value) {
 				if (substr_count($value, "." ) == 0) {
 					$value = $row['srv'].".".$row['db'].".".$row['sch'].".".$value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Update]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
 				elseif (substr_count($value, "." ) == 1) {
 					$value = $row['srv'].".".$row['db'].".".$value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Update]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
 				elseif (substr_count($value, ".") == 2) {
 					$value = $row['srv'].".".$value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Update]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
 				elseif (substr_count($value, ".") == 3) {
 					$value = $value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:Update]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
+
+				$stack->push('MATCH (a:SP {surname: {name1} }), (b:Table {surname: {name2} }) MERGE (a)-[r:Use]->(b) SET r.Update="Yes"',['name1'=>$spname,'name2'=>$value]);
 				echo $value."<br> \n" ;
 				}
 			}
@@ -190,22 +182,18 @@
 			if (isset($exec)) {
 				foreach ($exec as $value) {
 				if (substr_count($value, "." ) == 0) {
-					$value = $row['srv'].".".$row['db'].".".$row['sch'].".".$value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:SP {surname: {name2} }) MERGE (a)-[:Execute]->(b)',['name1'=>$spname,'name2'=>$value]);
+					$value = $row['srv'].".".$row['db'].".".$row['sch'].".".$value;					
 				}
 				elseif (substr_count($value, "." ) == 1) {
 					$value = $row['srv'].".".$row['db'].".".$value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:SP {surname: {name2} }) MERGE (a)-[:Execute]->(b)',['name1'=>$spname,'name2'=>$value]);
-
 				}
 				elseif (substr_count($value, ".") == 2) {
 					$value = $row['srv'].".".$value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:SP {surname: {name2} }) MERGE (a)-[:Execute]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
 				elseif (substr_count($value, ".") == 3) {
 					$value = $value;
-					$stack->push('MATCH (a:SP {surname: {name1} }),(b:SP {surname: {name2} }) MERGE (a)-[:Execute]->(b)',['name1'=>$spname,'name2'=>$value]);
 				}
+				$stack->push('MATCH (a:SP {surname: {name1} }),(b:SP {surname: {name2} }) MERGE (a)-[:Execute]->(b)',['name1'=>$spname,'name2'=>$value]);
 				echo $value."<br> \n" ;
 				}
 			}

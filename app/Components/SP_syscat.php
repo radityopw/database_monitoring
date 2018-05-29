@@ -1,13 +1,17 @@
 <?php
 ini_set('max_execution_time', 1000);
-		include 'config.php';
+
+		require_once __DIR__.'/../hihi.php';
+
         $db = 'resits';
         $sqlsrv = createSQLServerConnection($db);
+        $neo = createNeo4jConnection('sp');
+
 		$neo->run('MATCH (n) DETACH DELETE n');
 			//get System Catalog Server & Database
-			$sql2=$con->prepare('SELECT name as srv from sys.servers');
+			$sql2=$sqlsrv->prepare('SELECT name as srv from sys.servers');
 			$sql2->execute();
-			$sql3=$con->prepare("SELECT name as db from sys.databases where NAME NOT LIKE '%master%' AND name NOT LIKE '%tempdb%' AND name NOT LIKE '%reportserver%' AND name NOT LIKE '%model%' AND name NOT LIKE '%msdb%'");
+			$sql3=$sqlsrv->prepare("SELECT name as db from sys.databases where NAME NOT LIKE '%master%' AND name NOT LIKE '%tempdb%' AND name NOT LIKE '%reportserver%' AND name NOT LIKE '%model%' AND name NOT LIKE '%msdb%'");
 			$sql3->execute();
 
 			// fetch result System Catalog
@@ -15,9 +19,9 @@ ini_set('max_execution_time', 1000);
 				//create node Server if doesn't exist
 				$neo->run('MERGE(x:Server{name:{name}})',['name'=>$row['srv']]);
 			}
-/* -------------------------- GET DB OBJECT(DB, SCHEMA, TABLE) FROM SQL SERVER AND DUMP TO NEO4J -----------------------------*/
+
 			//Get System Catalog (db,schema,table)
-			$sql1 = $con->prepare('
+			$sql1 = $sqlsrv->prepare('
 				SELECT @@SERVERNAME as srv,DB_NAME(DB_ID()) as db,SCHEMA_NAME(schema_id) as sch, sys.tables.name as tbl FROM sys.tables');
 			$sql1->execute();
 
@@ -57,8 +61,7 @@ ini_set('max_execution_time', 1000);
 			}
 
 			//add property col to node table
-
-			$sql_col = $con->prepare("
+			$sql_col = $sqlsrv->prepare("
 				SELECT @@SERVERNAME as srv,DB_NAME(DB_ID()) as db,SCHEMA_NAME(schema_id) as sch, sys.tables.name as tbl,sys.columns.name as col FROM sys.tables inner join sys.columns on sys.tables.object_id = sys.columns.object_id 
 				");
 			$sql_col->execute();
@@ -95,7 +98,7 @@ ini_set('max_execution_time', 1000);
 
 
 			//add propery primary key to node table
-			$sql_pk = $con->prepare("
+			$sql_pk = $sqlsrv->prepare("
 				SELECT OBJECT_NAME(OBJECT_ID) AS pk,
 				SCHEMA_NAME(schema_id) AS sch,
 				OBJECT_NAME(parent_object_id) AS tbl
@@ -108,9 +111,9 @@ ini_set('max_execution_time', 1000);
 
 				$neo->run('MATCH (a:Table { name: {table} }) SET a += {prop}', ['table' => $tbl, 'prop' => ['PK' => $pk ]]);
 			}
-/* -----------------END OF GETTING DB OBJECT(DB, SCHEMA, TABLE) FROM SQL SERVER AND DUMP TO NEO4J ---------------------------*/
-/* ------------------------ add Stored procedure -----------------------------*/
-			$sql_sp = $con->prepare("
+			
+/* ------------------------ add SP and Function -----------------------------*/
+			$sql_sp = $sqlsrv->prepare("
 				SELECT @@SERVERNAME as srv, SPECIFIC_CATALOG as db, SPECIFIC_SCHEMA as sch, SPECIFIC_NAME as sp_name, ROUTINE_TYPE, ROUTINE_BODY, ROUTINE_DEFINITION as sql, SQL_DATA_ACCESS, CREATED, LAST_ALTERED
 					FROM information_schema.routines
 				");
@@ -149,10 +152,10 @@ ini_set('max_execution_time', 1000);
 
 			}
 
-/* ------------------------ add Stored procedure -----------------------------*/
+/* ------------------------ end of add SP and Function -----------------------------*/
 
 			//Get FK Relationship from System Catalog
-			$sqlx = $con->prepare('
+			$sqlx = $sqlsrv->prepare('
 				SELECT
 				@@SERVERNAME as srv,DB_NAME(DB_ID()) as db,  
 					obj.name AS fk_rel,
@@ -188,12 +191,5 @@ ini_set('max_execution_time', 1000);
 				//create relationship Server to Database
 				$neo->run('MATCH (a:Table {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:fk_rel {FK: {name3}, par_tbl: {name4}, ref_tbl: {name5} }]->(b)',['name1'=>$par_col,'name2'=>$ref_col, 'name3' => $fk, 'name4' => $par, 'name5' => $ref]);
 			}
-		
-
-
-		//get MySQL data yang berisi DMV queries 
-			$mysql = $cons->prepare('SELECT * from text');
-			$mysql->execute();
-
 		
 	?>

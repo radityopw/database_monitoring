@@ -1,7 +1,7 @@
 <?php
 
-namespace UserDep;
+namespace Dependency;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-$app = new \UserDep\Main\Application(realpath(__DIR__.'/../'));
+$app = new \Dependency\Main\Application(realpath(__DIR__.'/../'));
