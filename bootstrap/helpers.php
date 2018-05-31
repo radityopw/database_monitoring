@@ -1,6 +1,9 @@
 <?php
 
 use GraphAware\Neo4j\Client\ClientBuilder;
+use Illuminate\Support\HigherOrderTapProxy;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Debug\Dumper;
 
 if (! function_exists('createSQLServerConnection')) {
     /**
@@ -10,15 +13,8 @@ if (! function_exists('createSQLServerConnection')) {
      * @return PDO
      */
 
-    function createSQLServerConnection(string $dbName = null) {
-        $prefixConfig = 'database.connections.sqlsrv.';
-        $port = config($prefixConfig.'port') ?? '1433';
-        $serverName = 'tcp:'.config($prefixConfig.'host').','.$port;
-        $database = $dbName ?? config($prefixConfig.'database');
-        $username = config($prefixConfig.'username');
-        $password = config($prefixConfig.'password');
-        $prefix = config($prefixConfig.'prefix');
-
+    function createSQLServerConnection(string $server = null, int $port = null, string $username = null, string $password = null, string $database = null, string $prefix = 'sqlsrv') {
+        $serverName = 'tcp:'.$server.','.$port;
         $conn = new PDO("$prefix:server=$serverName ; Database=$database", $username, $password);
         $conn->setAttribute(PDO::SQLSRV_ATTR_ENCODING, PDO::SQLSRV_ENCODING_UTF8);
 
@@ -48,5 +44,56 @@ if (! function_exists('createNeo4jConnection')) {
         return ClientBuilder::create()
                 ->addConnection('bolt', "bolt://$username:$password@$host:$port")
                 ->build();
+    }
+}
+
+
+if (! function_exists('dd')) {
+    /**
+     * Dump the passed variables and end the script.
+     *
+     * @param  mixed  $args
+     * @return void
+     */
+    function dd(...$args)
+    {
+        foreach ($args as $x) {
+            (new Dumper)->dump($x);
+        }
+
+        die(1);
+    }
+}
+
+if (! function_exists('tap')) {
+    /**
+     * Call the given Closure with the given value then return the value.
+     *
+     * @param  mixed  $value
+     * @param  callable|null  $callback
+     * @return mixed
+     */
+    function tap($value, $callback = null)
+    {
+        if (is_null($callback)) {
+            return new HigherOrderTapProxy($value);
+        }
+
+        $callback($value);
+
+        return $value;
+    }
+}
+
+if (! function_exists('collect')) {
+    /**
+     * Create a collection from the given value.
+     *
+     * @param  mixed  $value
+     * @return \Illuminate\Support\Collection
+     */
+    function collect($value = null)
+    {
+        return new Collection($value);
     }
 }

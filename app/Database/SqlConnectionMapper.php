@@ -41,8 +41,12 @@ class SqlConnectionMapper
      */
     public function __construct(string $db)
     {
-        $this->connection = createSQLServerConnection($db);
-        $this->query = config('query.sqlserver.extract_user');
+        $this->configPath = __DIR__.'/../../config/';
+        $databaseConfig = require_once $this->configPath.'database.php';
+        $queryConfig = require_once $this->configPath.'query.php';
+        $dbConfig = $databaseConfig['connections']['sqlsrv'];
+        $this->connection = createSQLServerConnection($dbConfig['host'], $dbConfig['port'], $dbConfig['username'], $dbConfig['password'], $db);
+        $this->query = $queryConfig['sqlserver']['extract_user'];
         $this->queryResult();
         $this->database = $db;
     }

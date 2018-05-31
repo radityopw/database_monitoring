@@ -7,7 +7,8 @@
     }],
     "autoload": {
         "psr-4": {
-            "Dependency\\": "app/"
+            "Dependency\\": "app/",
+            "Illuminate\\": "Illuminate/"
         },
         "files": [
             "bootstrap/helpers.php"
@@ -15,10 +16,6 @@
     },
     "require": {
         "graphaware/neo4j-php-client": "^4.8",
-        "vlucas/phpdotenv": "^2.4",
-        "symfony/finder": "^4.0",
-        "symfony/var-dumper": "^4.0",
-        "ramsey/uuid": "^3.7",
-        "laravel/framework": "^5.6"
+        "symfony/var-dumper": "^4.0"
     }
 }

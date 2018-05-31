@@ -325,6 +325,7 @@ RUN apt-get update ; \
     libpng-dev \
     libjpeg-dev \
     zlib1g-dev \
+    # uuid-dev \
     # sql server
     msodbcsql17 \
     locales \ 
@@ -369,12 +370,12 @@ RUN apt-get update ; \
     && docker-php-ext-enable sqlsrv \
     && pecl install pdo_sqlsrv \
     && docker-php-ext-enable pdo_sqlsrv \
-    && pecl install libsodium \
-    && docker-php-ext-enable libsodium \
-    && pecl install uuid \
-    && docker-php-ext-enable uuid 
+    # && pecl install libsodium \
+    # && docker-php-ext-enable libsodium \
+    # && pecl install uuid \
+    # && docker-php-ext-enable uuid 
 
-RUN set -xe; \
+    RUN set -xe; \
     fetchDeps=' \
     wget \
     tar \
