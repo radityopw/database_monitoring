@@ -30,17 +30,7 @@ if (! function_exists('createNeo4jConnection')) {
      * @return GraphAware\Neo4j\Client\Client
      */
 
-    function createNeo4jConnection($appendix = null) {
-        if (!$appendix) {
-            return null;
-        }
-        $appendixConn = ctype_lower($appendix) ? $appendix : strtolower($appendix);
-        $connPrefix = "database.connections.neo4j.{$appendixConn}.";
-        $username = config($connPrefix.'username');
-        $password = config($connPrefix.'password');
-        $host = config($connPrefix.'host');
-        $port = config($connPrefix.'port');
-
+    function createNeo4jConnection(string $username = null, string $password = null, string $host = null, int $port = null) {
         return ClientBuilder::create()
                 ->addConnection('bolt', "bolt://$username:$password@$host:$port")
                 ->build();
@@ -95,5 +85,24 @@ if (! function_exists('collect')) {
     function collect($value = null)
     {
         return new Collection($value);
+    }
+}
+
+if(! function_exists('config_path')) {
+    /**
+     * Getting the current config path in application
+     *
+     * @param [type] $path
+     * @return void
+     */
+    function config_path($path = null){
+        $configPath = realpath(__DIR__.'/../config');
+        if( $path ){
+            return $configPath . DIRECTORY_SEPARATOR . $path;
+        }
+        return $configPath;
+        // if($path){
+            
+        // }
     }
 }

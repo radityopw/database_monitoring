@@ -369,13 +369,13 @@ RUN apt-get update ; \
     && pecl install sqlsrv \
     && docker-php-ext-enable sqlsrv \
     && pecl install pdo_sqlsrv \
-    && docker-php-ext-enable pdo_sqlsrv \
-    # && pecl install libsodium \
-    # && docker-php-ext-enable libsodium \
-    # && pecl install uuid \
-    # && docker-php-ext-enable uuid 
+    && docker-php-ext-enable pdo_sqlsrv 
+# && pecl install libsodium \
+# && docker-php-ext-enable libsodium \
+# && pecl install uuid \
+# && docker-php-ext-enable uuid 
 
-    RUN set -xe; \
+RUN set -xe; \
     fetchDeps=' \
     wget \
     tar \

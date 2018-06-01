@@ -3,29 +3,29 @@
 return [
     'connections' => [
         'sqlsrv' => [
-            'host' => env('SQLSRV_DB_HOST', ''),
-            'port' => env('SQLSRV_DB_PORT', ''),
-            'database' =>   env('SQLSRV_DB_DATABASE', ''),
-            'username' => env('SQLSRV_DB_USERNAME', ''),
-            'password' => env('SQLSRV_DB_PASSWORD', ''),
-            'charset' => env('SQLSRV_DB_CHARSET', 'utf8'),
+            'host' => '10.199.2.66',
+            'port' => 1433,
+            'database' =>   'resits',
+            'username' => 'monitoring',
+            'password' => 'monitor',
+            'charset' => 'utf8',
             'prefix' => 'sqlsrv', 
         ],
         'neo4j' => [
             'sp' => [
-                'host' => env('NEO4J_DB_HOST_SP', ''),
-                'port' => env('NEO4J_DB_PORT_SP', ''),
-                'username' => env('NEO4J_DB_USERNAME_SP', ''),
-                'password' => env('NEO4J_DB_PASSWORD_SP', ''),
+                'host' => '',
+                'port' => '',
+                'username' => '',
+                'password' => '',
             ],
             'user' => [
-                'host' => env('NEO4J_DB_HOST_USER', ''),
-                'port' => env('NEO4J_DB_PORT_USER', ''),
-                'username' => env('NEO4J_DB_USERNAME_USER', ''),
-                'password' => env('NEO4J_DB_PASSWORD_USER', ''),
+                'host' => '192.168.99.100',
+                'port' => 7687,
+                'username' => 'neo4j',
+                'password' => 'neo4j123',
             ],
-            'username_read' => env('NEO4J_DB_USERNAME_READ', ''),
-            'password_read' => env('NEO4J_DB_PASSWORD_READ', ''),
+            'username_read' => 'neo4j_read',
+            'password_read' => 'neo4jread123',
         ]
     ]
 ];
