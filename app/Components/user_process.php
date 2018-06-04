@@ -68,7 +68,7 @@ foreach ($extractResult as $result) {
     $stack->push("MERGE (s:Server {name: {serverName}}) 
         MERGE (d:Database {name: {databaseName}, surname: {databaseSurname}}) 
         MERGE (s)-[y:HAS_RELATIONSHIPS]->(d) 
-        SET y.DATABASE = true", $serverToDbArray);
+        SET y.DATABASE = 'Yes'", $serverToDbArray);
     $resultMapping = $result->getResult();
     foreach ($resultMapping as $eachMapping) {
         //Initialize all variable from mapping result
@@ -94,7 +94,7 @@ foreach ($extractResult as $result) {
         $stack->push("MERGE (d:Database {name: {databaseName}, surname: {databaseSurname}}) 
             MERGE (u:User {name: {databaseUserName}, type: {userType}, surname: {databaseUserSurname}}) 
             MERGE (d)-[y:HAS_RELATIONSHIPS]-(u)
-            SET y.USER = true", $dbToUserArray);
+            SET y.USER = 'Yes'", $dbToUserArray);
         // if ($loginName !== null) {
         //     $loginArray = [
         //         'loginName' => $loginName
@@ -114,7 +114,7 @@ foreach ($extractResult as $result) {
             $stack->push("MERGE (r:Role {name: {role}, surname: {roleSurname}}) 
                 MERGE (u:User {name: {databaseUserName}, type: {userType}, surname: {databaseUserSurname}}) 
                 MERGE (r)<-[y:HAS_RELATIONSHIPS]-(u)
-                SET y.MEMBER_OF = true", $roleToUserArray);
+                SET y.MEMBER_OF = 'Yes'", $roleToUserArray);
         }
         $schemaPrefix = "{$databasePrefix}{$schema}.";
         if ($schema !== null) {
@@ -126,18 +126,19 @@ foreach ($extractResult as $result) {
             $stack->push("MERGE (o:Database {name: {databaseName}, surname:{databaseSurname}}) 
                 MERGE (sc:Schema {name: {schema}, surname:{schemaSurname}}) 
                 MERGE (o)-[y:HAS_RELATIONSHIPS]->(sc)
-                SET y.SCHEMA = true", $schemaToDbArray);
+                SET y.SCHEMA = 'Yes'", $schemaToDbArray);
             // $stack->push("MERGE (o:Object {name: {objectName}, type: {objectType}}) 
             //     MERGE (sc:Schema {name: {schema}}) 
             //     MERGE (o)<-[y:HAS_RELATIONSHIPS]-(sc)
-            //     SET y.OWNS = true", $schemaToObjArray);
+            //     SET y.OWNS = 'Yes'", $schemaToObjArray);
         }
         if ($permissionType !== null) {
             //Create User to Object relationships
+            $permissionState = $permissionState === "GRANT" ? "Yes": "No";
             $query = "MERGE (u:User {name: {databaseUserName}, type: {userType}, surname: {databaseUserSurname}}) 
                 MERGE (o:Object {name: {objectName}, type: {objectType}, surname:{objectSurname}}) 
                 MERGE (u)-[p:HAS_RELATIONSHIPS]->(o)
-                SET p.$permissionType = true, p.$permissionState = true";
+                SET p.$permissionType = '$permissionState'";
             if ($objectName !== null) {
                 $objectPrefix = "{$schemaPrefix}{$objectName}.";
                 $objectArray = [
@@ -150,7 +151,7 @@ foreach ($extractResult as $result) {
                 $stack->push("MERGE (o:Object {name: {objectName}, type: {objectType}, surname:{objectSurname}}) 
                     MERGE (sc:Schema {name: {schema}, surname:{schemaSurname}}) 
                     MERGE (o)<-[y:HAS_RELATIONSHIPS]-(sc)
-                    SET y.OWNS = true", $schemaToObjArray);
+                    SET y.OWNS = 'Yes'", $schemaToObjArray);
                 if ($columnName !== null) {
                     $columnArray = [
                         'columnName' => $columnName,
@@ -161,7 +162,7 @@ foreach ($extractResult as $result) {
                     $stack->push("MERGE (o:Object {name: {objectName}, type: {objectType}, surname:{objectSurname}}) 
                         MERGE (c:Column {name: {columnName}, surname:{columnSurname}}) 
                         MERGE (o)-[y:HAS_RELATIONSHIPS]->(c)
-                        SET y.COLUMN = true", $objToColumnArray);
+                        SET y.COLUMN = 'Yes'", $objToColumnArray);
                 }
             } else {
                 switch ($objectType) {
@@ -175,7 +176,7 @@ foreach ($extractResult as $result) {
                         $query = "MERGE (u:User {name: {databaseUserName}, type: {userType}, surname: {databaseUserSurname}}) 
                             MERGE (o:Database {name: {objectName}, surname:{objectSurname}}) 
                             MERGE (u)-[p:HAS_RELATIONSHIPS]-(o)
-                            SET p.$permissionType = true, p.$permissionState = true";
+                            SET p.$permissionType = '$permissionState'";
                     break;
                     default:
                         $objectArray = [
