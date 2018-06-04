@@ -38,12 +38,20 @@ $stack = tap($neo4j->stack())->push("MATCH (n) DETACH DELETE n");
 $user = $neo4jAllConfig['username_read'];
 $password = $neo4jAllConfig['password_read'];
 //Create user with role Reader
-$neo4j->run("
-CALL dbms.security.deleteUser('$user')
-CALL dbms.security.createUser('$user','$password') 
-CALL dbms.security.addRoleToUser('reader', '$user')
-MATCH (n)
-RETURN n");
+try {
+    $neo4j->run("
+    CALL dbms.security.deleteUser('$user')
+    CALL dbms.security.createUser('$user','$password') 
+    CALL dbms.security.addRoleToUser('reader', '$user')
+    MATCH (n)
+    RETURN n");
+} catch (\Exception $e) {
+    $neo4j->run("
+    CALL dbms.security.createUser('$user','$password') 
+    CALL dbms.security.addRoleToUser('reader', '$user')
+    MATCH (n)
+    RETURN n");
+}
 //Create new node from server
 $stack->push("MERGE (s:Server {name: {serverName}})", $serverArray);
 $serverPrefix = "{$serverName}.";
