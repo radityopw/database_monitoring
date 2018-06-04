@@ -7,6 +7,7 @@ require_once __DIR__.'/../hihi.php';
 $databaseConfig = require config_path('database.php');
 $queryConfig = require config_path('query.php');
 $extractResult = require __DIR__.'/user_extract.php';
+// dd($extractResult);
 
 //Config
 $neo4jConfig = $databaseConfig['connections']['neo4j']['user'];
@@ -16,10 +17,10 @@ $sqlSrvConfig = $databaseConfig['connections']['sqlsrv'];
 
 //Connection
 $neo4j = createNeo4jConnection($neo4jConfig['username'], $neo4jConfig['password'], $neo4jConfig['host'], $neo4jConfig['port']);
-$sqlsrv = createSqlServerConnection($sqlSrvConfig['host'], $sqlsrvConfig['port'], $sqlsrvConfig['username'], $sqlsrvConfig['password']);
+$sqlsrv = createSqlServerConnection($sqlSrvConfig['host'], $sqlSrvConfig['port'], $sqlSrvConfig['username'], $sqlSrvConfig['password']);
 
 //Query
-$extractServer  = $queryConfig['extract_servername'];
+$extractServer  = $queryConfig['sqlserver']['extract_servername'];
 
 //Get servername from sql server
 $serverName = tap($sqlsrv->prepare($extractServer))
@@ -37,20 +38,27 @@ $stack = tap($neo4j->stack())->push("MATCH (n) DETACH DELETE n");
 $user = $neo4jAllConfig['username_read'];
 $password = $neo4jAllConfig['password_read'];
 //Create user with role Reader
-$stack->push("CALL dbms.security.createUser('$user','$password') 
-CALL dbms.security.addRoleToUser('reader', '$user')");
+$neo4j->run("
+CALL dbms.security.deleteUser('$user')
+CALL dbms.security.createUser('$user','$password') 
+CALL dbms.security.addRoleToUser('reader', '$user')
+MATCH (n)
+RETURN n");
 //Create new node from server
 $stack->push("MERGE (s:Server {name: {serverName}})", $serverArray);
+$serverPrefix = "{$serverName}.";
 
 foreach ($extractResult as $result) {
     $databaseName = $result->getDatabase();
+    $databasePrefix = "{$serverPrefix}{$databaseName}.";
     $databaseArray = [
         'databaseName' => $databaseName,
+        'databaseSurname' => rtrim($databasePrefix, "."),
     ];
     $serverToDbArray =  array_merge($serverArray, $databaseArray);
     //Create Server to Database Relationships
     $stack->push("MERGE (s:Server {name: {serverName}}) 
-        MERGE (d:Database {name: {databaseName}}) 
+        MERGE (d:Database {name: {databaseName}, surname: {databaseSurname}}) 
         MERGE (s)-[y:HAS_RELATIONSHIPS]->(d) 
         SET y.DATABASE = true", $serverToDbArray);
     $resultMapping = $result->getResult();
@@ -69,13 +77,14 @@ foreach ($extractResult as $result) {
 
         $dbUserArray = [
             'databaseUserName' => $databaseUserName,
+            'databaseUserSurname' => "{$databasePrefix}{$databaseUserName}",
             'userType' => $userType,
         ];
 
         $dbToUserArray = array_merge($dbUserArray, $databaseArray);
         //Create Database to User relationships
-        $stack->push("MERGE (d:Database {name: {databaseName}}) 
-            MERGE (u:User {name: {databaseUserName}, type: {userType}}) 
+        $stack->push("MERGE (d:Database {name: {databaseName}, surname: {databaseSurname}}) 
+            MERGE (u:User {name: {databaseUserName}, type: {userType}, surname: {databaseUserSurname}}) 
             MERGE (d)-[y:HAS_RELATIONSHIPS]-(u)
             SET y.USER = true", $dbToUserArray);
         // if ($loginName !== null) {
@@ -90,76 +99,86 @@ foreach ($extractResult as $result) {
         if ($role !== null) {
             $roleArray = [
                 'role' => $role,
+                'roleSurname' => "{$databasePrefix}{$role}"
             ];
             $roleToUserArray = array_merge($roleArray, $dbUserArray);
             //Create Role to User relationships
-            $stack->push("MERGE (r:Role {name: {role}}) 
-                MERGE (u:User {name: {databaseUserName}, type: {userType}}) 
+            $stack->push("MERGE (r:Role {name: {role}, surname: {roleSurname}}) 
+                MERGE (u:User {name: {databaseUserName}, type: {userType}, surname: {databaseUserSurname}}) 
                 MERGE (r)<-[y:HAS_RELATIONSHIPS]-(u)
                 SET y.MEMBER_OF = true", $roleToUserArray);
         }
-        if ($permissionType !== null) {
-            $permissionArray = [
-                'permissionState' => $permissionState,
+        $schemaPrefix = "{$databasePrefix}{$schema}.";
+        if ($schema !== null) {
+            $schemaArray = [
+                'schema' => $schema,
+                'schemaSurname' => rtrim($schemaPrefix, ".")
             ];
+            $schemaToDbArray = array_merge($schemaArray, $databaseArray);
+            $stack->push("MERGE (o:Database {name: {databaseName}, surname:{databaseSurname}}) 
+                MERGE (sc:Schema {name: {schema}, surname:{schemaSurname}}) 
+                MERGE (o)-[y:HAS_RELATIONSHIPS]->(sc)
+                SET y.SCHEMA = true", $schemaToDbArray);
+            // $stack->push("MERGE (o:Object {name: {objectName}, type: {objectType}}) 
+            //     MERGE (sc:Schema {name: {schema}}) 
+            //     MERGE (o)<-[y:HAS_RELATIONSHIPS]-(sc)
+            //     SET y.OWNS = true", $schemaToObjArray);
+        }
+        if ($permissionType !== null) {
+            //Create User to Object relationships
+            $query = "MERGE (u:User {name: {databaseUserName}, type: {userType}, surname: {databaseUserSurname}}) 
+                MERGE (o:Object {name: {objectName}, type: {objectType}, surname:{objectSurname}}) 
+                MERGE (u)-[p:HAS_RELATIONSHIPS]->(o)
+                SET p.$permissionType = true, p.$permissionState = true";
             if ($objectName !== null) {
+                $objectPrefix = "{$schemaPrefix}{$objectName}.";
                 $objectArray = [
                     'objectName' => $objectName,
                     'objectType' => $objectType,
+                    'objectSurname' => rtrim($objectPrefix, ".")
                 ];
+                //Create Object to Schema Relationships
+                $schemaToObjArray = array_merge($schemaArray, $objectArray);
+                $stack->push("MERGE (o:Object {name: {objectName}, type: {objectType}, surname:{objectSurname}}) 
+                    MERGE (sc:Schema {name: {schema}, surname:{schemaSurname}}) 
+                    MERGE (o)<-[y:HAS_RELATIONSHIPS]-(sc)
+                    SET y.OWNS = true", $schemaToObjArray);
+                if ($columnName !== null) {
+                    $columnArray = [
+                        'columnName' => $columnName,
+                        'columnSurname' => "{$objectPrefix}{$columnName}"
+                    ];
+                    $objToColumnArray = array_merge($objectArray, $columnArray);
+                    //Create Object to Column Relationships
+                    $stack->push("MERGE (o:Object {name: {objectName}, type: {objectType}, surname:{objectSurname}}) 
+                        MERGE (c:Column {name: {columnName}, surname:{columnSurname}}) 
+                        MERGE (o)-[y:HAS_RELATIONSHIPS]->(c)
+                        SET y.COLUMN = true", $objToColumnArray);
+                }
             } else {
                 switch ($objectType) {
                     case "DATABASE":
                         $objectArray = [
                             'objectName' => $databaseName,
                             'objectType' => $objectType,
+                            'objectSurname' => rtrim($databasePrefix, ".")
                         ];
                         //Create User to Database Relationships
-                        $query = "MERGE (u:User {name: {databaseUserName}, type: {userType}}) 
-                            MERGE (o:Database {name: {objectName}}) 
+                        $query = "MERGE (u:User {name: {databaseUserName}, type: {userType}, surname: {databaseUserSurname}}) 
+                            MERGE (o:Database {name: {objectName}, surname:{objectSurname}}) 
                             MERGE (u)-[p:HAS_RELATIONSHIPS]-(o)
-                            SET p.$permissionType = true, p.permissionState = true";
+                            SET p.$permissionType = true, p.$permissionState = true";
                     break;
                     default:
                         $objectArray = [
                             'objectName' => $objectType,
                             'objectType' => $objectType,
                         ];
-                        //Create User to Object relationships
-                        $query = "MERGE (u:User {name: {databaseUserName}, type: {userType}}) 
-                            MERGE (o:Object {name: {objectName}, type: {objectType}}) 
-                            MERGE (u)-[p:HAS_RELATIONSHIPS]->(o)
-                            SET p.$permissionType = true, p.permissionState = true";
                 }
             }
-            $userToPermToObjArray = array_merge($dbUserArray, $permissionArray, $objectArray);
+            //Create Object to User Relationship
+            $userToPermToObjArray = array_merge($dbUserArray, $objectArray);
             $stack->push($query, $userToPermToObjArray);
-            if ($columnName !== null) {
-                $columnArray = [
-                    'columnName' => $columnName
-                ];
-                $objToColumnArray = array_merge($objectArray, $columnArray);
-                //Create Object to Column Relationships
-                $stack->push("MERGE (o:Object {name: {objectName}, type: {objectType}}) 
-                    MERGE (c:Column {name: {columnName}}) 
-                    MERGE (o)-[y:HAS_RELATIONSHIPS]->(c)
-                    SET y.COLUMN = true", $objToColumnArray);
-            }
-            if ($schema !== null) {
-                $schemaArray = [
-                    'schema' => $schema,
-                ];
-                $schemaToObjArray = array_merge($schemaArray, $objectArray);
-                //Create Object to Schema Relationships
-                $stack->push("MERGE (o:Object {name: {objectName}, type: {objectType}}) 
-                    MERGE (sc:Schema {name: {schema}}) 
-                    MERGE (o)<-[y:HAS_RELATIONSHIPS]-(sc)
-                    SET y.OWNS = true", $schemaToObjArray);
-                // $stack->push("MERGE (o:Object {name: {objectName}, type: {objectType}}) 
-                //     MERGE (sc:Schema {name: {schema}}) 
-                //     MERGE (o)<-[y:HAS_RELATIONSHIPS]-(sc)
-                //     SET y.OWNS = true", $schemaToObjArray);
-            }
         }
     }
 }

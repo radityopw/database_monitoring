@@ -55,6 +55,21 @@ if (! function_exists('dd')) {
     }
 }
 
+if (! function_exists('dump')) {
+    /**
+     * Dump the passed variables without ending the script.
+     *
+     * @param  mixed  $args
+     * @return void
+     */
+    function dump(...$args)
+    {
+        foreach ($args as $x) {
+            (new Dumper)->dump($x);
+        }
+    }
+}
+
 if (! function_exists('tap')) {
     /**
      * Call the given Closure with the given value then return the value.
