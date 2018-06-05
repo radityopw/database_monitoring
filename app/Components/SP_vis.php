@@ -6,10 +6,12 @@ require_once __DIR__.'/../hihi.php';
 $databaseConfig = require config_path('database.php');
 
 $neo4jConfig = $databaseConfig['connections']['neo4j']['sp'];
-$SqlSrvConfig = $databaseConfig['connections']['sqlsrv'];
+$sqlSrvConfig = $databaseConfig['connections']['sqlsrv'];
+// dd($sqlSrvConfig);
+
 
 $neo4j = createNeo4jConnection($neo4jConfig['username'], $neo4jConfig['password'], $neo4jConfig['host'], $neo4jConfig['port']);
-$sqlsrv = createSqlServerConnection($SqlSrvConfig['host'], $SqlsrvConfig['port'], $SqlsrvConfig['username'], $SqlsrvConfig['password']);
+$sqlsrv = createSqlServerConnection($SqlSrvConfig['host'], $SqlsrvConfig['port'], $SqlsrvConfig['username'], $SqlsrvConfig['password'],$SqlSrvConfig['database']);
 	// include('config.php');
 
 $sql1 = $sqlsrv->prepare('

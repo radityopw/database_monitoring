@@ -93,9 +93,9 @@ return [
 
 
             SELECT
-                [userType]         = ''All Users'',
-                [databaseUserName] = ''All Users'',
-                [loginName]        = ''All Users'',
+                [userType]         = ''public'',
+                [databaseUserName] = ''public'',
+                [loginName]        = ''public'',
                 [role]             = roleprinc.[name],
                 [permissionType]   = perm.[permission_name],
                 [permissionState]  = perm.[state_desc],

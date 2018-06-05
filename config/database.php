@@ -3,11 +3,15 @@
 return [
     'connections' => [
         'sqlsrv' => [
-            'host' => '10.199.2.66',
+            'host' => '192.168.99.100',
+            // 'host' => '10.199.2.66',
             'port' => 1433,
-            'database' =>   'resits',
-            'username' => 'monitoring',
-            'password' => 'monitor',
+            'database' =>   '',
+            'username' => 'sa',
+            'password' => 'fairy@test13',
+            // 'database' =>   'resits',
+            // 'username' => 'monitoring',
+            // 'password' => 'monitor',
             'charset' => 'utf8',
             'prefix' => 'sqlsrv', 
         ],

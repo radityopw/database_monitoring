@@ -13,6 +13,7 @@ use Dependency\Database\SqlConnectionMapper;
 // dd($result);
 // $resultColl = collect($result)->pluck('name')->mapInto(SqlConnectionMapper::class);
 
-$resultColl = collect("resits")->mapInto(SqlConnectionMapper::class);
+// $resultColl = collect("resits")->mapInto(SqlConnectionMapper::class);
+$resultColl = collect("AdventureWorks2016_EXT")->mapInto(SqlConnectionMapper::class);
 
 return $resultColl;
