@@ -13,10 +13,10 @@ return [
         ],
         'neo4j' => [
             'sp' => [
-                'host' => '',
-                'port' => '',
-                'username' => '',
-                'password' => '',
+                'host' => 'localhost',
+                'port' => 7687,
+                'username' => 'neo4j',
+                'password' => 'secret',
             ],
             'user' => [
                 'host' => '192.168.99.100',
