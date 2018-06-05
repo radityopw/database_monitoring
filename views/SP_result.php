@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php 
-    require_once 'vis.php';
-    include ('config.php');
+    <?php
+    require_once __DIR__.'\hihi.php';
+    require_once __DIR__.'\SP_vis.php'; 
+
+    use Dependency\Components\SP_vis;
+    $databaseConfig = require config_path('database.php');
+    $neo4jConfig = $databaseConfig['connections']['neo4j']['sp'];
+    $neo = createNeo4jConnection($neo4jConfig['username'], $neo4jConfig['password'], $neo4jConfig['host'], $neo4jConfig['port']);
+    // require_once __DIR__.'/../hihi.php';
+    // include ('config.php');
     
     if (isset($_POST['btn-gen'])) {
         $show = $_POST['show'];
@@ -70,7 +77,7 @@
                         WITH endnode(LAST(r)) as y
                         RETURN DISTINCT y.name as name,y.surname as surname,y.server as server, y.database as database, y.schema as schema, y.PK as PK, y.column as column ,y.created as created, y.last_altered as last_altered, id(y) as id,labels(y) as label',['sp' => $sp_select]);
                     $resrel = $neo->run('MATCH path = (a:SP {surname: {sp} })-[r:Use*..2]-(b)
-                        WITH LAST(r) as lr, startnode(LAST(r)) as x, endnode(LAST(r)) as y
+                        WITH LAST(r)  as lr, startnode(LAST(r)) as x, endnode(LAST(r)) as y
                         RETURN id(lr) as id, id(x) as start,id(y) as end, type(lr) as type, lr.FK as FK, lr.From as from, lr.Insert as insert, lr.Join as join, lr.Merge as merge, lr.Truncate as truncate, lr.Update as update, x.name as node_from, y.name as node_to',['sp' => $sp_select]);
                     // $show = $_POST['show'];
                     break;
@@ -181,7 +188,7 @@
 	<title>Dependency Tool</title>
     <!-- <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css"> -->
 	<link rel="stylesheet" type="text/css" href="assets/css/neo4jd3.min.css">
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/material-kit.css?v=2.0.3">
     <!-- <script type="text/javascript" src='/assets/js/bootstrap.min.js'></script> -->
     <script type="text/javascript" src='assets/js/d3.min.js'></script>
@@ -245,7 +252,6 @@
             </select>
         </div><br>
       <div>
-        <!-- <?php dump($result); ?> -->
         <div>
           <button type='submit' class='btn btn-primary btn-round pull-right' name='btn-gen' id="btn-gen">GENERATE</button>
         </div>
