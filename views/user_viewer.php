@@ -178,7 +178,11 @@ if (isset($_POST['search_mode']) && $_POST['search_mode'] !== "") {
                                                 <?php 
                                                 }
                                             ?>
-
+                                                <div class="form-group">
+                                                    <label for="hop_count" class="bmd-label-floating">Hop Count</label>
+                                                    <input type="number" name="hop_count" min="1" max="3" step="1" value="1" />
+                                                    <span class="bmd-help">Please select a node type!</span>
+                                                </div>
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
                             </div>
