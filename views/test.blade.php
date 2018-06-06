@@ -1,4 +1,0 @@
-<html>
-    HELLO!!
-    {{$hello}}
-</html>

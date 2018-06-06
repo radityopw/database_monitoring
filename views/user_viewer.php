@@ -1,60 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+require_once __DIR__.'/../app/hihi.php';
 
-<head>
-    <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>
-        User Dependency Tool
-    </title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'
-    />
-    <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
-    />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <!-- CSS Files -->
-    <link href="./assets/css/material-kit.css?v=2.0.3" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="./assets/demo/demo.css" rel="stylesheet" />
-</head>
+require_once __DIR__.'/layout/user_header.php';
 
-<body class="profile-page sidebar-collapse">
+//Database Config
 
-    <footer class="footer footer-default">
-        <div class="container">
-            <nav class="float-left">
-                <ul>
-                    <li>
-                        <a href="#">
-                            User Dependency Tool
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="copyright float-right">
-                &copy;
-                <script>
-                    document.write(new Date().getFullYear())
-                </script>, made with
-                <i class="material-icons">favorite</i> by
-                <a href="#" target="_blank">Dependency Team.</a>
+$databaseConfig = require __DIR__.'/../config/database.php';
+$neo4jConfig = $databaseConfig['connections']['neo4j']['user'];
+$neo4jGeneralConf = $databaseConfig['connections']['neo4j'];
+$neo4jAllConfig = $databaseConfig['connections']['neo4j'];
+
+//Connection
+$neo4j = createNeo4jConnection($neo4jGeneralConf['username_read'], $neo4jGeneralConf['password_read'], $neo4jConfig['host'], $neo4jConfig['port']);
+
+//Change Password
+// $password = $neo4jAllConfig['password_read'];
+// $neo4j->run("CALL dbms.changePassword('$password')");
+
+//Running Stacks of Queries
+$stack = tap($neo4j->stack())->push('MATCH (n) RETURN labels(n) as labels, n');
+$stack->push('MATCH (x)-[y]-(z) RETURN y');
+$results = $neo4j->runStack($stack);
+
+$labelsCollection = collect();
+$nodesCollection = collect();
+$relsCollection = collect();
+foreach($results as $result){
+    foreach($result->getRecords() as $record) {
+        $labels = $record->get('labels');
+        $nodes = $record->get('n');
+        $rel = $record->get('y');
+        if ($labels) {
+            $labelsCollection->push($labels);
+        }
+        if ($nodes) {
+            $nodesCollection->push($nodes);
+        }
+        if ($rel) {
+            $relsCollection->push($rel);
+        }
+    }
+}
+// dd($results);
+// dd($nodesCollection);
+$relsCollection = $relsCollection->map(function($value, $key){
+    return $value->values();
+})->flatMap(function($value){
+    return array_keys($value);
+})->unique();
+$labelsCollection = $labelsCollection->flatten()->uniqueStrict();
+if (isset($_POST['search_mode']) && $_POST['search_mode'] !== "") {
+    if ($_POST['search_mode'] === 'filter') {
+        require __DIR__.'/layout/user_filter.php';
+    } elseif ($_POST['search_mode'] === 'cypher') {
+        require __DIR__.'/layout/user_cypher.php';
+    }
+}
+?>
+
+    <body>
+        <div class="row">
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 no-padding-right">
+                <div class="main">
+                    <div class="container">
+                        <div class="tab-content tab-space">
+                            <div class="form-group">
+                                <label for="from_node_type" class="bmd-label-floating">Search Mode</label>
+                                <select name="search_mode" id="search_mode" class="form-control">
+                                    <option value="">-- Nothing Selected --</option>
+                                    <option value="filter-form">Filter Mode</option>
+                                    <option value="cypher-form">Cypher Mode</option>
+                                </select>
+                                <span class="bmd-help">Please select a node type!</span>
+                            </div>
+                            <div id="filter-form" style="display:none" class="form-block">
+                                <div class="navbar bg-primary text-center display-block">
+                                    <h4 class="fw-500">Search By Filter</h4>
+                                </div>
+                                <form enctype="multipart/form-data" action="./user_viewer.php" method="post">
+                                    <input type="hidden" name="search_mode" value="filter" />
+                                    <div class="form-group">
+                                        <label for="from_node_type" class="bmd-label-floating">Node Source Type</label>
+                                        <select name="from_node_type" id="from_node_type" class="form-control select-node-type" data-point="from">
+                                            <option value="">-- Nothing Selected --</option>
+                                            <?php
+                                            foreach ($labelsCollection as $label) {
+                                        ?>
+                                                <option value="<?php echo $label; ?>">
+                                                    <?php echo $label; ?>
+                                                </option>
+                                                <?php
+                                            }
+                                        ?>
+                                        </select>
+                                        <span class="bmd-help">Please select a node type!</span>
+                                    </div>
+                                    <?php
+                                        foreach($labelsCollection as $label) {
+                                    ?>
+                                        <div class="form-group from-input" id="<?php echo 'from_'.$label; ?>" style="display:none">
+                                            <label for="from_node" class="bmd-label-floating">Nodes</label>
+                                            <select name="from_node[]" id="from_node[]" class="form-control">
+                                                <option value="">-- Nothing Selected --</option>
+                                                <?php
+                                                foreach($nodesCollection->filter(function($value, $key) use($label){
+                                                    return $value->hasLabel($label);
+                                                }) as $node){
+                                            ?>
+                                                    <option value="<?php echo $node->identity();?>">
+                                                        <?php echo $node->value('surname');?>
+                                                    </option>
+                                                    <?php
+                                            }
+                                            ?>
+                                            </select>
+                                            <span class="bmd-help">Please select a node!</span>
+                                        </div>
+                                        <?php
+                                        }
+                                    ?>
+                                            <div class="form-group">
+                                                <label for="relationships" class="bmd-label-floating">Relationship's Properties</label>
+                                                <select multiple name="relationships" id="relationships" class="form-control selectpicker show-tick">
+                                                    <option value="">-- Nothing Selected --</option>
+                                                    <?php 
+                                                    foreach ($relsCollection as $rel) {
+
+                                                ?>
+                                                    <option value="<?php echo $rel;?>">
+                                                        <?php echo $rel;?>
+                                                    </option>
+                                                    <?php
+                                                    }
+                                                ?>
+                                                </select>
+                                                <span class="bmd-help">Please select a relationship!</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="to_node_type" class="bmd-label-floating">Node Destination Type</label>
+                                                <select name="to_node_type" id="to_node_type" class="form-control select-node-type" data-point="to">
+                                                    <option value="">-- Nothing Selected --</option>
+                                                    <?php
+                                            foreach ($labelsCollection as $label) {
+                                        ?>
+                                                        <option value="<?php echo $label; ?>">
+                                                            <?php echo $label; ?>
+                                                        </option>
+                                                        <?php
+                                            }
+                                        ?>
+                                                </select>
+                                                <span class="bmd-help">Please select a node type!</span>
+                                            </div>
+                                            <?php
+                                            foreach($labelsCollection as $label) {
+                                        ?>
+                                                <div class="form-group to-input" id="<?php echo 'to_'.$label; ?>" style="display:none">
+                                                    <label for="to_node" class="bmd-label-floating">Nodes</label>
+                                                    <select name="to_node[]" id="to_node[]" class="form-control">
+                                                        <option value="">-- Nothing Selected --</option>
+                                                        <?php
+                                                        foreach($nodesCollection->filter(function($value, $key) use($label){
+                                                            return $value->hasLabel($label);
+                                                        }) as $node){
+                                                    ?>
+                                                            <option value="<?php echo $node->identity();?>">
+                                                                <?php echo $node->value('surname');?>
+                                                            </option>
+                                                            <?php
+                                                        }
+                                                    ?>
+                                                    </select>
+                                                    <span class="bmd-help">Please select a node!</span>
+                                                </div>
+                                                <?php 
+                                                }
+                                            ?>
+
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                            <div id="cypher-form" style="display:none" class="form-block">
+                                <div class="navbar bg-primary text-center display-block">
+                                    <h4 class="fw-500">Search By Query</h4>
+                                </div>
+                                <form enctype="multipart/form-data" action="./user_viewer.php" method="post">
+                                    <input type="hidden" name="search_mode" value="filter" />
+                                    <div class="form-group">
+                                        <label for="query" class="bmd-label-floating">Cypher Query</label>
+                                        <textarea class="form-control" id="query" name="query"></textarea>
+                                        <span class="bmd-help">Input your cypher query here. (Read Only Mode)</span>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-8 col-md-9 col-lg-9 no-padding">
+                <div class="main">
+                    <div class="container">
+                        <div class="tab-content tab-space">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </footer>
-    <!--   Core JS Files   -->
-    <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
-    <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
-    <script src="./assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
-    <script src="./assets/js/plugins/moment.min.js"></script>
-    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
-    <script src="./assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
-    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-    <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-    <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
-    <script src="./assets/js/material-kit.js?v=2.0.3" type="text/javascript"></script>
-</body>
+
+        <?php
+            require_once __DIR__.'/layout/user_footer.php';
+            require_once __DIR__.'/layout/user_script.php';
+        ?>
+    </body>
+
 
 </html>

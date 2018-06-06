@@ -41,19 +41,19 @@ $password = $neo4jAllConfig['password_read'];
 try {
     $neo4j->run("
     CALL dbms.security.deleteUser('$user')
-    CALL dbms.security.createUser('$user','$password') 
+    CALL dbms.security.createUser('$user', '$password', false) 
     CALL dbms.security.addRoleToUser('reader', '$user')
     MATCH (n)
     RETURN n");
 } catch (\Exception $e) {
     $neo4j->run("
-    CALL dbms.security.createUser('$user','$password') 
+    CALL dbms.security.createUser('$user', '$password', false) 
     CALL dbms.security.addRoleToUser('reader', '$user')
     MATCH (n)
     RETURN n");
 }
 //Create new node from server
-$stack->push("MERGE (s:Server {name: {serverName}})", $serverArray);
+$stack->push("MERGE (s:Server {name: {serverName}, surname: {serverName}})", $serverArray);
 $serverPrefix = "{$serverName}.";
 
 foreach ($extractResult as $result) {
@@ -65,7 +65,7 @@ foreach ($extractResult as $result) {
     ];
     $serverToDbArray =  array_merge($serverArray, $databaseArray);
     //Create Server to Database Relationships
-    $stack->push("MERGE (s:Server {name: {serverName}}) 
+    $stack->push("MERGE (s:Server {name: {serverName}, surname: {serverName}}) 
         MERGE (d:Database {name: {databaseName}, surname: {databaseSurname}}) 
         MERGE (s)-[y:HAS_RELATIONSHIPS]->(d) 
         SET y.DATABASE = 'Yes'", $serverToDbArray);

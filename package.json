@@ -4,12 +4,17 @@
   "description": "Aplikasi tugas akhir untuk mengekstrak data dari MS SQL Server, memasukkannya ke Neo4j, dan menampilkannya dalam bentuk graph.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "hmr": "browser-sync start --config bs-config.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "neo4jd3": "0.0.5",
     "npm": "^5.8.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.24.4",
+    "browsersync": "0.0.1-security"
   }
 }
