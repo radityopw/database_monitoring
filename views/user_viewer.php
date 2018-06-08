@@ -123,7 +123,7 @@ if (isset($_POST['search_mode']) && $_POST['search_mode'] !== "") {
                                     ?>
                                             <div class="form-group">
                                                 <label for="relationships" class="bmd-label-floating">Relationship's Properties</label>
-                                                <select multiple name="relationships" id="relationships" class="form-control selectpicker show-tick">
+                                                <select multiple="multiple" name="relationships[]" id="relationships" class="form-control selectpicker show-tick">
                                                     <option value="">-- Nothing Selected --</option>
                                                     <?php 
                                                     foreach ($relsCollection as $rel) {
