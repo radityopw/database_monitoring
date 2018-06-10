@@ -93,8 +93,8 @@ foreach ($extractResult as $result) {
         //Create Database to User relationships
         $stack->push("MERGE (d:Database {name: {databaseName}, surname: {databaseSurname}}) 
             MERGE (u:User {name: {databaseUserName}, type: {userType}, surname: {databaseUserSurname}}) 
-            MERGE (d)-[y:HAS_RELATIONSHIPS]-(u)
-            SET y.USER = 'Yes'", $dbToUserArray);
+            MERGE (d)<-[y:HAS_RELATIONSHIPS]-(u)
+            SET y.USER_OF = 'Yes'", $dbToUserArray);
         // if ($loginName !== null) {
         //     $loginArray = [
         //         'loginName' => $loginName
@@ -175,7 +175,7 @@ foreach ($extractResult as $result) {
                         //Create User to Database Relationships
                         $query = "MERGE (u:User {name: {databaseUserName}, type: {userType}, surname: {databaseUserSurname}}) 
                             MERGE (o:Database {name: {objectName}, surname:{objectSurname}}) 
-                            MERGE (u)-[p:HAS_RELATIONSHIPS]-(o)
+                            MERGE (u)-[p:HAS_RELATIONSHIPS]->(o)
                             SET p.$permissionType = '$permissionState'";
                     break;
                     default:

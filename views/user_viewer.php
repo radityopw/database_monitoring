@@ -51,12 +51,15 @@ $relsCollection = $relsCollection->map(function($value, $key){
     return array_keys($value);
 })->unique();
 $labelsCollection = $labelsCollection->flatten()->uniqueStrict();
-if (isset($_POST['search_mode']) && $_POST['search_mode'] !== "") {
-    if ($_POST['search_mode'] === 'filter') {
+// if (isset($_POST['from_node_type']) && $_POST['from_node_type'] !== "") {
+if (isset($_POST['from_node_type'])) {
         require __DIR__.'/layout/user_filter.php';
-    } elseif ($_POST['search_mode'] === 'cypher') {
-        require __DIR__.'/layout/user_cypher.php';
-    }
+    // if ($_POST['search_mode'] === 'filter') {
+    //     require __DIR__.'/layout/user_filter.php';
+    // } 
+    // elseif ($_POST['search_mode'] === 'cypher') {
+    //     require __DIR__.'/layout/user_cypher.php';
+    // }
 }
 ?>
 
@@ -66,7 +69,7 @@ if (isset($_POST['search_mode']) && $_POST['search_mode'] !== "") {
                 <div class="main">
                     <div class="container">
                         <div class="tab-content tab-space">
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="from_node_type" class="bmd-label-floating">Search Mode</label>
                                 <select name="search_mode" id="search_mode" class="form-control">
                                     <option value="">-- Nothing Selected --</option>
@@ -74,8 +77,9 @@ if (isset($_POST['search_mode']) && $_POST['search_mode'] !== "") {
                                     <option value="cypher-form">Cypher Mode</option>
                                 </select>
                                 <span class="bmd-help">Please select a node type!</span>
-                            </div>
-                            <div id="filter-form" style="display:none" class="form-block">
+                            </div> -->
+                            <!-- <div id="filter-form" style="display:none" class="form-block"> -->
+                            <div id="filter-form" class="form-block">
                                 <div class="navbar bg-primary text-center display-block">
                                     <h4 class="fw-500">Search By Filter</h4>
                                 </div>
@@ -102,7 +106,7 @@ if (isset($_POST['search_mode']) && $_POST['search_mode'] !== "") {
                                     ?>
                                         <div class="form-group from-input" id="<?php echo 'from_'.$label; ?>" style="display:none">
                                             <label for="from_node" class="bmd-label-floating">Nodes</label>
-                                            <select name="from_node[]" id="from_node[]" class="form-control">
+                                            <select name="from_node[]" class="form-control from_node">
                                                 <option value="">-- Nothing Selected --</option>
                                                 <?php
                                                 foreach($nodesCollection->filter(function($value, $key) use($label){
@@ -159,7 +163,7 @@ if (isset($_POST['search_mode']) && $_POST['search_mode'] !== "") {
                                         ?>
                                                 <div class="form-group to-input" id="<?php echo 'to_'.$label; ?>" style="display:none">
                                                     <label for="to_node" class="bmd-label-floating">Nodes</label>
-                                                    <select name="to_node[]" id="to_node[]" class="form-control">
+                                                    <select name="to_node[]" class="form-control to_node">
                                                         <option value="">-- Nothing Selected --</option>
                                                         <?php
                                                         foreach($nodesCollection->filter(function($value, $key) use($label){
@@ -180,13 +184,13 @@ if (isset($_POST['search_mode']) && $_POST['search_mode'] !== "") {
                                             ?>
                                                 <div class="form-group">
                                                     <label for="hop_count" class="bmd-label-floating">Hop Count</label>
-                                                    <input type="number" name="hop_count" min="1" max="3" step="1" value="1" />
+                                                    <input type="number" name="hop_count" min="1" max="2" step="1" value="1" />
                                                     <span class="bmd-help">Please select a node type!</span>
                                                 </div>
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
                             </div>
-                            <div id="cypher-form" style="display:none" class="form-block">
+                            <!-- <div id="cypher-form" style="display:none" class="form-block">
                                 <div class="navbar bg-primary text-center display-block">
                                     <h4 class="fw-500">Search By Query</h4>
                                 </div>
@@ -199,13 +203,13 @@ if (isset($_POST['search_mode']) && $_POST['search_mode'] !== "") {
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-8 col-md-9 col-lg-9 no-padding">
-                <div class="main">
+                <div class="main" style="height: 100%">
                     <div class="container">
                         <div class="tab-content tab-space">
                         </div>

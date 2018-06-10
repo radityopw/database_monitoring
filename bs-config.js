@@ -29,7 +29,7 @@ module.exports = {
     },
     "server": false,
     "proxy": '192.168.99.100',
-    "port": 3000,
+    "port": 8000,
     "middleware": false,
     "serveStatic": [],
     "ghostMode": {

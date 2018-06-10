@@ -19,7 +19,9 @@
             let point = $(this).data('point');
             let allInput = '.' + point + '-' + 'input';
             let selectorInput = '#' + point + '_' + valueSelect;
+            let pointElSelect = '.' + point + '_' + 'node';
             $(allInput).hide();
+            $(pointElSelect).val('');
             $(selectorInput).show();
         });
         $('#search_mode').on('change', function () {
