@@ -20,7 +20,6 @@ class SP_splitter {
         $rep10 = str_replace("PROC", "proc", $rep9);
 
 		$keywords = preg_split("/[,;(\s)]+/", $rep10);
-    	// $keywords = array_map('strtolower', $split);
 
     	return $keywords;
 	}
