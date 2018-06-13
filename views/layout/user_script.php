@@ -10,7 +10,7 @@
 <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
 <script src="./assets/js/material-kit.js?v=2.0.3" type="text/javascript"></script>
 <!-- Neo4j JS -->
-<!-- Bootstrap Select Js --!>
+<!-- Bootstrap Select Js -->
 <script src="./assets/js/bootstrap-select.min.js" type="text/javascript"></script>
 <!-- Sweetalert 2 All (CSS and Js) -->
 <script src="./assets/js/sweetalert2.all.min.js"></script>
