@@ -1,11 +1,12 @@
 <?php
 
 try {
+    // throw new Exception('Hello, friends!');
     /**
      * Make Post Var become Object
      */
     $postVar = (object) $_POST;
-    dump($postVar);
+    // dump($postVar);
 
     /**
      * Initialize All Variables
@@ -59,7 +60,13 @@ try {
         // $query .= "WITH * ";
         $query .= "AND id(y) = $to_node ";
     }
+    /**
+     * Iterate the relationship from list of relationship
+     */
     $query .= "UNWIND x AS rel ";
+    /**
+     * Check if Relationship attribute is chosen
+     */
     if (!$relColl->isEmpty()) {
         // dump($relColl);
         foreach($relColl as $relationship) {
@@ -71,14 +78,95 @@ try {
     }
     // $query .= "WITH * ";
     // $query .= "AND x:HAS_RELATIONSHIPS*1..$hop ";
+    /**
+     * Query to return the result
+     */
     $query .= "RETURN DISTINCT n, rel, y";
+
+    /**
+     * Run the query
+     */
     $results = $neo4j->run($query);
-    dump($results);
+    
+    /**
+     * Initiate nodes and relationships results
+     */
+    $nodeResColl = collect();
+    $relResColl = collect();
+    // dump($results);
     foreach($results->records() as $record) {
-        dump($record->get('n'));
+        $nodeSource = $record->get('n');
+        $nodeDest = $record->get('y');
+        $relationship = $record->get('rel');
+        $nodeResColl->push($nodeSource);
+        $nodeResColl->push($nodeDest);
+        $relResColl->push($relationship);
+        // dump("This is the node source: ", $nodeSource->values());
+        // dump("This is the node destination: ", $nodeDest);
+        // dump("This is the relationship: ", $relationship);
     }
-    dump($results->records());
+    /**
+     * Mapping result node to array of nodes
+     */
+    if(!$nodeResColl->isEmpty()) {
+        $nodeResColl = $nodeResColl->uniqueStrict(function($value) {
+            return $value->identity();
+        })->map(function ($value) {
+            return [
+                'id' => $value->identity(),
+                'labels' => $value->labels(),
+                'properties' => $value->values()
+            ];
+        });
+    }
+    
+    /**
+     * Mapping relationship collection to array of relationships
+     */
+    if(!$relResColl->isEmpty()){
+        $relResColl = $relResColl->uniqueStrict(function($value) {
+            return $value->identity();
+        })->map(function ($value) {
+            // dump('relationship: ', $value->startNodeIdentity());
+            return [
+                'id' => $value->identity(),
+                'type' => $value->type(),
+                'startNode' => $value->startNodeIdentity(),
+                'endNode' => $value->endNodeIdentity(),
+                'properties' => $value->values()
+            ];
+        });
+    }
+
+    /**
+     * The result collection for neo4jd3
+     */
+    // $test[] = $nodeResColl->first();
+    // dump('Nodes Array', json_encode($test));
+    // $test = array_values($nodeResColl->toArray());
+    // dump('Nodes Array', json_encode($test));
+    $resultNeo4jCollection = collect([
+        'results' => [
+            [
+                // 'columns' => [],
+                'data' => [
+                    [
+                        'graph' => [
+                            'nodes'=> array_values($nodeResColl->toArray()),
+                            'relationships' => array_values($relResColl->toArray()),
+                        ]
+                    ]
+                ]
+            ]
+        ],
+        // 'errors' => [
+
+        // ]
+    ]);
+
+    // dump('This is the result JSON: ', $resultNeo4jCollection->toJson());
 } catch (\Exception $e) {
     $error = true;
-    dd($e);
+    $errorMessage = $e->getMessage();
+    // dump($e->getMessage());
 }

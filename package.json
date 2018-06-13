@@ -11,7 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "neo4jd3": "0.0.5",
-    "npm": "^5.8.0"
+    "npm": "^5.8.0",
+    "sweetalert2": "^7.22.2"
   },
   "devDependencies": {
     "browser-sync": "^2.24.4",

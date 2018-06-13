@@ -52,8 +52,8 @@ $relsCollection = $relsCollection->map(function($value, $key){
 })->unique();
 $labelsCollection = $labelsCollection->flatten()->uniqueStrict();
 // if (isset($_POST['from_node_type']) && $_POST['from_node_type'] !== "") {
-if (isset($_POST['from_node_type'])) {
-        require __DIR__.'/layout/user_filter.php';
+if (!empty($_POST)) {
+    require __DIR__.'/layout/user_filter.php';
     // if ($_POST['search_mode'] === 'filter') {
     //     require __DIR__.'/layout/user_filter.php';
     // } 
@@ -65,7 +65,7 @@ if (isset($_POST['from_node_type'])) {
 
     <body>
         <div class="row">
-            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 no-padding-right">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 no-padding-right">
                 <div class="main">
                     <div class="container">
                         <div class="tab-content tab-space">
@@ -208,10 +208,12 @@ if (isset($_POST['from_node_type'])) {
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-8 col-md-9 col-lg-9 no-padding">
+            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 no-padding">
                 <div class="main" style="height: 100%">
-                    <div class="container">
-                        <div class="tab-content tab-space">
+                    <div class="container" style="height:100%">
+                        <div class="tab-content tab-space" style="height:100%">
+                            <div id='neo4jd3'>
+                            </div>
                         </div>
                     </div>
                 </div>
