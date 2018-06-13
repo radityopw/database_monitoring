@@ -1,7 +1,10 @@
 <?php 
 	// include ('config.php');
 	require_once __DIR__.'/../hihi.php';
-	$neo = createNeo4jConnection('sp');
+	$databaseConfig = require config_path('database.php');
+
+	$neo4jConfig = $databaseConfig['connections']['neo4j']['sp'];
+	$neo = createNeo4jConnection($neo4jConfig['username'], $neo4jConfig['password'], $neo4jConfig['host'], $neo4jConfig['port']);
 		//Generate JSON from all Nodes
 		$result = $neo->run('MATCH (n) RETURN n.name as name,n.surname as surname,n.server as server, n.database as database, n.schema as schema, n.PK as PK, n.column as column ,n.created as created, n.last_altered as last_altered, id(n) as id,labels(n) as label');
 		$records = $result->getRecords();

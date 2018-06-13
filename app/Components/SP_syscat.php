@@ -1,36 +1,45 @@
 <?php
 ini_set('max_execution_time', 1000);
+// $start = microtime(true);
 
 		require_once __DIR__.'/../hihi.php';
+		
+		//initiation
+        $databaseConfig = require config_path('database.php');
+		$neo4jConfig = $databaseConfig['connections']['neo4j']['sp'];
+		$sqlSrvConfig = $databaseConfig['connections']['sqlsrv'];
 
-        $db = 'resits';
-        $sqlsrv = createSQLServerConnection($db);
-        $neo = createNeo4jConnection('sp');
-
+		//connection to  neo4j
+		$neo = createNeo4jConnection($neo4jConfig['username'], $neo4jConfig['password'], $neo4jConfig['host'], $neo4jConfig['port']);
+		
+		//connection to sql server
+		$sqlsrv = createSqlServerConnection($sqlSrvConfig['host'], $sqlSrvConfig['port'], $sqlSrvConfig['username'], $sqlSrvConfig['password'], $sqlSrvConfig['database']);
+		
 		$neo->run('MATCH (n) DETACH DELETE n');
 			//get System Catalog Server & Database
-			$sql2=$sqlsrv->prepare('SELECT name as srv from sys.servers');
-			$sql2->execute();
-			$sql3=$sqlsrv->prepare("SELECT name as db from sys.databases where NAME NOT LIKE '%master%' AND name NOT LIKE '%tempdb%' AND name NOT LIKE '%reportserver%' AND name NOT LIKE '%model%' AND name NOT LIKE '%msdb%'");
-			$sql3->execute();
+			$sql_srv=$sqlsrv->prepare('SELECT name as srv from sys.servers');
+			$sql_srv->execute();
+
+			$sql_db=$sqlsrv->prepare("SELECT name as db from sys.databases where NAME NOT LIKE '%master%' AND name NOT LIKE '%tempdb%' AND name NOT LIKE '%reportserver%' AND name NOT LIKE '%model%' AND name NOT LIKE '%msdb%'");
+			$sql_db->execute();
 
 			// fetch result System Catalog
-			while($row = $sql2->fetch(PDO::FETCH_ASSOC)){
+			while($row = $sql_srv->fetch(PDO::FETCH_ASSOC)){
 				//create node Server if doesn't exist
 				$neo->run('MERGE(x:Server{name:{name}})',['name'=>$row['srv']]);
 			}
 
 			//Get System Catalog (db,schema,table)
-			$sql1 = $sqlsrv->prepare('
+			$sql_syscat = $sqlsrv->prepare('
 				SELECT @@SERVERNAME as srv,DB_NAME(DB_ID()) as db,SCHEMA_NAME(schema_id) as sch, sys.tables.name as tbl FROM sys.tables');
-			$sql1->execute();
+			$sql_syscat->execute();
 
+			//array for identify column table
 			$a = array();
 			$b = array();
 
 			//Fetch result System Catalog
-			
-			while($row=$sql1->fetch(PDO::FETCH_ASSOC)){
+			while($row=$sql_syscat->fetch(PDO::FETCH_ASSOC)){
 				$a[] = $row;
 				$dbname = $row['srv'].".".$row['db'];
 				$schname = $dbname.".".$row['sch'];
@@ -40,7 +49,7 @@ ini_set('max_execution_time', 1000);
 				$srv = $row['srv'];
 				$db = $row['db'];
 				$sch = $row['sch'];
-				//$colname = $row['col'];
+
 				$stack = $neo->stack();
 				//create node Database if doesn't exist and add property
 				$stack->push('MERGE(x:Database{name:{name2}, surname:{name}, server:{srv}})',['name'=>$dbname, 'name2' => $db, 'srv' => $srv]);
@@ -60,13 +69,11 @@ ini_set('max_execution_time', 1000);
 
 			}
 
-			//add property col to node table
+			//add property column to node table
 			$sql_col = $sqlsrv->prepare("
 				SELECT @@SERVERNAME as srv,DB_NAME(DB_ID()) as db,SCHEMA_NAME(schema_id) as sch, sys.tables.name as tbl,sys.columns.name as col FROM sys.tables inner join sys.columns on sys.tables.object_id = sys.columns.object_id 
 				");
 			$sql_col->execute();
-
-			
 
 			while ($row = $sql_col->fetch(PDO::FETCH_ASSOC)) {
 				$b[] = $row;
@@ -83,8 +90,6 @@ ini_set('max_execution_time', 1000);
 				$a[$i] = array( 'srv' => $a[$i]['srv'], 'db' =>$a[$i]['db'] , 'sch' =>$a[$i]['sch'] ,'tbl' => $a[$i]['tbl'], 'col' => $col  );			
 			}
 
-			// print_r($a);
-
 			foreach ($a as $col) {
 				
 				$db = $col['srv'].".".$col['db'];
@@ -97,7 +102,7 @@ ini_set('max_execution_time', 1000);
 			}
 
 
-			//add propery primary key to node table
+			//add property primary key to node table
 			$sql_pk = $sqlsrv->prepare("
 				SELECT OBJECT_NAME(OBJECT_ID) AS pk,
 				SCHEMA_NAME(schema_id) AS sch,
@@ -105,6 +110,7 @@ ini_set('max_execution_time', 1000);
 				FROM sys.objects 
 				WHERE type_desc = 'PRIMARY_KEY_CONSTRAINT'");
 			$sql_pk->execute();
+
 			while ($row=$sql_pk->fetch(PDO::FETCH_ASSOC)) {
 				$pk = $row['pk'];
 				$tbl = $row['tbl'];
@@ -112,7 +118,7 @@ ini_set('max_execution_time', 1000);
 				$neo->run('MATCH (a:Table { name: {table} }) SET a += {prop}', ['table' => $tbl, 'prop' => ['PK' => $pk ]]);
 			}
 			
-/* ------------------------ add SP and Function -----------------------------*/
+			//add SP and Function
 			$sql_sp = $sqlsrv->prepare("
 				SELECT @@SERVERNAME as srv, SPECIFIC_CATALOG as db, SPECIFIC_SCHEMA as sch, SPECIFIC_NAME as sp_name, ROUTINE_TYPE, ROUTINE_BODY, ROUTINE_DEFINITION as sql, SQL_DATA_ACCESS, CREATED, LAST_ALTERED
 					FROM information_schema.routines
@@ -145,17 +151,11 @@ ini_set('max_execution_time', 1000);
 					$stack->push('MATCH (a:Schema {surname: {sch} }), (b:SP {surname: {name} }) MERGE (a)-[:SP]->(b)',['sch'=>$schname,'name'=>$surname]);
 				}
 				
-
 				$neo->runStack($stack);
-
-				// print_r($row);
-
 			}
 
-/* ------------------------ end of add SP and Function -----------------------------*/
-
 			//Get FK Relationship from System Catalog
-			$sqlx = $sqlsrv->prepare('
+			$sql_fk = $sqlsrv->prepare('
 				SELECT
 				@@SERVERNAME as srv,DB_NAME(DB_ID()) as db,  
 					obj.name AS fk_rel,
@@ -180,8 +180,9 @@ ini_set('max_execution_time', 1000);
 				    ON tab1.schema_id = sch1.schema_id
 				INNER JOIN sys.schemas sch2
 				    ON tab2.schema_id = sch2.schema_id');	
-			$sqlx->execute();
-			while($row=$sqlx->fetch(PDO::FETCH_ASSOC)){
+			$sql_fk->execute();
+			
+			while($row=$sql_fk->fetch(PDO::FETCH_ASSOC)){
 				$ref_col = $row['srv'].".".$row['db'].".".$row['ref_sch'].".".$row['ref_tbl'];
 				$par_col = $row['srv'].".".$row['db'].".".$row['par_sch'].".".$row['par_tbl'];
 
@@ -191,5 +192,9 @@ ini_set('max_execution_time', 1000);
 				//create relationship Server to Database
 				$neo->run('MATCH (a:Table {surname: {name1} }),(b:Table {surname: {name2} }) MERGE (a)-[:fk_rel {FK: {name3}, par_tbl: {name4}, ref_tbl: {name5} }]->(b)',['name1'=>$par_col,'name2'=>$ref_col, 'name3' => $fk, 'name4' => $par, 'name5' => $ref]);
 			}
+
+// $end = microtime(true);
+// $execution_time = $end - $start;
+// echo "Waktu eksekusi script ".$execution_time." milisecond";
 		
 	?>
