@@ -3,3 +3,4 @@ package-lock.json
 *.lock
 node_modules/
 storage/
+config/database.php
