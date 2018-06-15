@@ -210,6 +210,15 @@ foreach ($extractResult as $result) {
                         MERGE (o)-[y:HAS_RELATIONSHIPS]->(c)
                         SET y.COLUMN = 'Yes'", $objToColumnArray);
                     $stack->push("CREATE INDEX ON :Column(name, surname)");
+                    /**
+                     * Create column to user relationships.
+                     * Override object array with column array.
+                     */
+                    $objectArray = $columnArray;
+                    $query = "MERGE (u:User {name: {databaseUserName}, type: {userType}, surname: {databaseUserSurname}}) 
+                        MERGE (o:Column {name: {columnName}, surname:{columnSurname}}) 
+                        MERGE (u)-[p:HAS_RELATIONSHIPS]->(o)
+                        SET p.$permissionType = '$permissionState'";
                 }
             } else {
                 switch ($objectType) {
