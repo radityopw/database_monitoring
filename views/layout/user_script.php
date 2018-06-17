@@ -58,10 +58,6 @@
                 'Column': 'columns',
                 'Object': 'object-group',
                 'User': 'user'
-                // 'Schema': 'gear',
-                // 'Table': 'table',
-                // 'SP': 'f288',
-                // 'Function': 'f1c9'
             },
             images: {
                 'Schema': './assets/icons/schema.svg',
@@ -70,12 +66,6 @@
             minCollision: 60,
             neo4jData: <?php echo $resultNeo4jCollection->toJson(); ?>,
             nodeRadius: 20,
-            // highlight: [{
-            //     class: 'SP',
-            //     property: 'surname',
-            //     value: '<?= $sp_select; ?>',
-            // }],
-
             zoomFit: true,
         });
         <?php
