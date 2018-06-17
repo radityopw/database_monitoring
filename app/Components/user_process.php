@@ -237,9 +237,11 @@ foreach ($extractResult as $result) {
                             SET p.$permissionType = '$permissionState'";
                     break;
                     default:
+                        $objectPrefix = "{$schemaPrefix}{$objectType}.";
                         $objectArray = [
                             'objectName' => $objectType,
                             'objectType' => $objectType,
+                            'objectSurname' => rtrim($objectPrefix, ".")
                         ];
                 }
             }
