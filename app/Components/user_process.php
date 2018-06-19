@@ -43,6 +43,11 @@ $serverName = tap($sqlsrv->prepare($extractServer))
 ->fetchObject()
 ->server;
 
+/**
+ * Test to dump the servername from SQL Server
+ */
+// dd("This is the server name of SQL Server:", $serverName);
+
 $serverArray  = [
     'serverName' => $serverName
 ];
@@ -51,6 +56,12 @@ $serverArray  = [
  * Rebuild all of the graph.
  */
 $stack = tap($neo4j->stack())->push("MATCH (n) DETACH DELETE n");
+
+/**
+ * Test neo4j to delete all nodes and relationships
+ */
+// $neo4j->run('MATCH (n) DETACH DELETE n');
+// dd("All neo4j nodes and relationships has been deleted successfully.");
 
 /**
  * User and Password for user with role reader

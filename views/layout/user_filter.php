@@ -1,7 +1,7 @@
 <?php
 
 try {
-    // throw new Exception('Hello, friends!');
+    // throw new Exception('Something unexpected happen!');
     /**
      * Make Post Var become Object
      */
@@ -163,6 +163,7 @@ try {
 
         // ]
     ]);
+    // dd("This is neo4j data in JSON format: ", $resultNeo4jCollection->toJson());
 
     // dump('This is the result JSON: ', $resultNeo4jCollection->toJson());
 } catch (\Exception $e) {

@@ -105,7 +105,7 @@ if (!empty($_POST)) {
                                         foreach($labelsCollection as $label) {
                                     ?>
                                         <div class="form-group from-input" id="<?php echo 'from_'.$label; ?>" style="display:none">
-                                            <label for="from_node" class="bmd-label-floating">Nodes</label>
+                                            <label for="from_node" class="bmd-label-floating">Node Source Surname</label>
                                             <select name="from_node[]" class="form-control from_node">
                                                 <option value="">-- Nothing Selected --</option>
                                                 <?php
@@ -162,7 +162,7 @@ if (!empty($_POST)) {
                                             foreach($labelsCollection as $label) {
                                         ?>
                                                 <div class="form-group to-input" id="<?php echo 'to_'.$label; ?>" style="display:none">
-                                                    <label for="to_node" class="bmd-label-floating">Nodes</label>
+                                                    <label for="to_node" class="bmd-label-floating">Node Destination Surname</label>
                                                     <select name="to_node[]" class="form-control to_node">
                                                         <option value="">-- Nothing Selected --</option>
                                                         <?php

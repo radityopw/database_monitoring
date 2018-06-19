@@ -47,6 +47,7 @@ class SqlConnectionMapper
         $this->connection = createSQLServerConnection($dbConfig['host'], $dbConfig['port'], $dbConfig['username'], $dbConfig['password'], $db);
         $this->query = $queryConfig['sqlserver']['extract_user'];
         $this->queryResult();
+        // dump("This is the extraction result of user mapping:", $this->result);
         $this->database = $db;
     }
 
