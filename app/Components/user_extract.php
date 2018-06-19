@@ -2,6 +2,7 @@
 
 namespace Dependency\Components;
 
+// $startExtract = microtime(true);
 use Dependency\Database\SqlConnectionMapper;
 
 // $sqlsrv = createSQLServerConnection();
@@ -17,4 +18,7 @@ $resultColl = collect("resits")->mapInto(SqlConnectionMapper::class);
 // $resultColl = collect("AdventureWorks2016_EXT")->mapInto(SqlConnectionMapper::class);
 // dd("This is the result of mapping query result to result object:", $resultColl);
 
+
+// $endExtract = microtime(true);
+// dd("The execution time for extraction:", $endExtract-$startExtract);
 return $resultColl;

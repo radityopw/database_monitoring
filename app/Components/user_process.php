@@ -2,6 +2,7 @@
 
 namespace Dependency\Components;
 
+// $startProcess = microtime(true);
 /**
  * Get all vendor and required components.
  */
@@ -13,7 +14,15 @@ require_once __DIR__.'/../hihi.php';
  */
 $databaseConfig = require config_path('database.php');
 $queryConfig = require config_path('query.php');
+/**
+ * Start microtime of extraction process
+ */
+// $startExtract = microtime(true);
 $extractResult = require __DIR__.'/user_extract.php';
+// $endExtract = microtime(true);
+/**
+ * End microtime of extraction process
+ */
 // dd($extractResult);
 
 /**
@@ -266,4 +275,6 @@ foreach ($extractResult as $result) {
     }
 }
 $neo4j->runStack($stack);
+// $endProcess = microtime(true);
+// dump("The execution time for processing:", $endProcess-$startProcess-($endExtract-$startExtract));
 dd("SUCCEDED");
