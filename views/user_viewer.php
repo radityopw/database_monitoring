@@ -140,7 +140,7 @@ if (!empty($_POST)) {
                                                     }
                                                 ?>
                                                 </select>
-                                                <span class="bmd-help">Please select a relationship!</span>
+                                                <span class="bmd-help">Please select the relationships!</span>
                                             </div>
                                             <div class="form-group">
                                                 <label for="to_node_type" class="bmd-label-floating">Node Destination Type</label>
@@ -183,12 +183,29 @@ if (!empty($_POST)) {
                                                 }
                                             ?>
                                                 <div class="form-group">
-                                                    <label for="hop_count" class="bmd-label-floating">Hop Count</label>
+                                                    <label for="hop_count" class="bmd-label-floating">Radius</label>
                                                     <input type="number" name="hop_count" min="1" max="2" step="1" value="1" />
-                                                    <span class="bmd-help">Please select a node type!</span>
+                                                    <span class="bmd-help">Specify the radius!</span>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="submit" class="btn btn-primary">Generate</button>
                                 </form>
+                                <p>Legends</p>
+                                <ul class="fa-ul">
+                                    <li>
+                                        <i class="fa-li fa fa-server"></i>Server</li>
+                                    <li>
+                                        <i class="fa-li fa fa-database"></i>Database</li>
+                                    <li>
+                                        <i class="fa-li fa fa-columns"></i>Column</li>
+                                    <li>
+                                        <i class="fa-li fa fa-object-group"></i>Object</li>
+                                    <li>
+                                        <i class="fa-li fa fa-user"></i>User</li>
+                                    <li>
+                                        <img class="fa-li fa height-16" src="./assets/icons/schema.svg">Schema</li>
+                                    <li>
+                                        <img class="fa-li fa height-16" src="./assets/icons/role.svg">Role</li>
+                                </ul>
                             </div>
                             <!-- <div id="cypher-form" style="display:none" class="form-block">
                                 <div class="navbar bg-primary text-center display-block">

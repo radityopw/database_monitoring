@@ -42,5 +42,9 @@
         #neo4jd3 {
             height: 100%;
         }
+
+        .height-16 {
+            height: 16px;
+        }
     </style>
 </head>
