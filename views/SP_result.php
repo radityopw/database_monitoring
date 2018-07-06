@@ -10,8 +10,9 @@
 
     $neo4jConfig = $databaseConfig['connections']['neo4j']['sp'];
     $neo = createNeo4jConnection($neo4jConfig['username'], $neo4jConfig['password'], $neo4jConfig['host'], $neo4jConfig['port']);
+    // dump($neo);
 
-    $stack = $neo->stack();
+    // $stack = $neo->stack();
 
     if (isset($_POST['btn-gen'])) {
         $hops = $_POST['hops'];
@@ -21,79 +22,81 @@
             if ($sp_select == 'All') {
             switch ($show) {
                 case 'All':
-                    $resnode = $stack->push('MATCH (n) RETURN n.name as name,n.surname as surname,n.server as server, n.database as database, n.schema as schema, n.PK as PK, n.column as column ,n.created as created, n.last_altered as last_altered, id(n) as id,labels(n) as label');
+                    $resnode = $neo->run('MATCH (n) RETURN n.name as name,n.surname as surname,n.server as server, n.database as database, n.schema as schema, n.PK as PK, n.column as column ,n.created as created, n.last_altered as last_altered, id(n) as id,labels(n) as label');
+                    // dump($stack);
                     $resnode2='';
-                    $resrel = $stack->push('MATCH (a)-[r]->(b) return id(r) as id,id(a) as start,id(b) as end, type(r) as type, r.FK as FK, r.From as from, r.Insert as insert, r.Join as join, r.Merge as merge, r.Truncate as truncate, r.Update as update, a.name as node_from, b.name as node_to');
+                    $resrel = $neo->run('MATCH (a)-[r]->(b) return id(r) as id,id(a) as start,id(b) as end, type(r) as type, r.FK as FK, r.From as from, r.Insert as insert, r.Join as join, r.Merge as merge, r.Truncate as truncate, r.Update as update, a.name as node_from, b.name as node_to');
                     break;
                 case 'Execute':
-                    $resnode = $stack->push('MATCH (a)-[r:Execute]->(b) RETURN DISTINCT a.name as name, a.surname as surname, a.server as server, a.database as database, a.schema as schema, a.PK as PK, a.column as column ,a.created as created, a.last_altered as last_altered, id(a) as id,labels(a) as label');
-                    $resnode2 = $stack->push('MATCH (a:SP)-[r:Execute]->(b) RETURN DISTINCT b.name as name, b.surname as surname, b.server as server, b.database as database, b.schema as schema, b.PK as PK, b.column as column ,b.created as created, b.last_altered as last_altered, id(b) as id,labels(b) as label');
-                    $resrel= $stack->push('MATCH (a:SP)-[r:Execute]->(b) RETURN id(r) as id,id(a) as start,id(b) as end, type(r) as type, r.FK as FK, r.From as from, r.Insert as insert, r.Join as join, r.Merge as merge, r.Truncate as truncate, r.Update as update, a.name as node_from, b.name as node_to');
+                    $resnode = $neo->run('MATCH (a)-[r:Execute]->(b) RETURN DISTINCT a.name as name, a.surname as surname, a.server as server, a.database as database, a.schema as schema, a.PK as PK, a.column as column ,a.created as created, a.last_altered as last_altered, id(a) as id,labels(a) as label');
+                    $resnode2 = $neo->run('MATCH (a:SP)-[r:Execute]->(b) RETURN DISTINCT b.name as name, b.surname as surname, b.server as server, b.database as database, b.schema as schema, b.PK as PK, b.column as column ,b.created as created, b.last_altered as last_altered, id(b) as id,labels(b) as label');
+                    $resrel= $neo->run('MATCH (a:SP)-[r:Execute]->(b) RETURN id(r) as id,id(a) as start,id(b) as end, type(r) as type, r.FK as FK, r.From as from, r.Insert as insert, r.Join as join, r.Merge as merge, r.Truncate as truncate, r.Update as update, a.name as node_from, b.name as node_to');
                     break;
                 case 'Use':
-                    $resnode = $stack->push('MATCH (a)-[r:Use]->(b) RETURN DISTINCT a.name as name, a.surname as surname, a.server as server, a.database as database, a.schema as schema, a.PK as PK, a.column as column ,a.created as created, a.last_altered as last_altered, id(a) as id,labels(a) as label');
-                    $resnode2 = $stack->push('MATCH (a)-[r:Use]->(b) RETURN DISTINCT b.name as name, b.surname as surname, b.server as server, b.database as database, b.schema as schema, b.PK as PK, b.column as column ,b.created as created, b.last_altered as last_altered, id(b) as id,labels(b) as label');
-                    $resrel= $stack->push('MATCH (a)-[r:Use]->(b) RETURN id(r) as id,id(a) as start,id(b) as end, type(r) as type, r.FK as FK, r.From as from, r.Insert as insert, r.Join as join, r.Merge as merge, r.Truncate as truncate, r.Update as update, a.name as node_from, b.name as node_to');
+                    $resnode = $neo->run('MATCH (a)-[r:Use]->(b) RETURN DISTINCT a.name as name, a.surname as surname, a.server as server, a.database as database, a.schema as schema, a.PK as PK, a.column as column ,a.created as created, a.last_altered as last_altered, id(a) as id,labels(a) as label');
+                    $resnode2 = $neo->run('MATCH (a)-[r:Use]->(b) RETURN DISTINCT b.name as name, b.surname as surname, b.server as server, b.database as database, b.schema as schema, b.PK as PK, b.column as column ,b.created as created, b.last_altered as last_altered, id(b) as id,labels(b) as label');
+                    $resrel= $neo->run('MATCH (a)-[r:Use]->(b) RETURN id(r) as id,id(a) as start,id(b) as end, type(r) as type, r.FK as FK, r.From as from, r.Insert as insert, r.Join as join, r.Merge as merge, r.Truncate as truncate, r.Update as update, a.name as node_from, b.name as node_to');
                     break;
                 
                 default:
-                    $resnode = $stack->push('MATCH (n) RETURN n.name as name,n.surname as surname,n.server as server, n.database as database, n.schema as schema, n.PK as PK, n.column as column ,n.created as created, n.last_altered as last_altered, id(n) as id,labels(n) as label');
-                    $resrel = $stack->push('MATCH (a)-[r]->(b) return id(r) as id,id(a) as start,id(b) as end, type(r) as type, r.FK as FK, r.From as from, r.Insert as insert, r.Join as join, r.Merge as merge, r.Truncate as truncate, r.Update as update, a.name as node_from, b.name as node_to');
+                    $resnode = $neo->run('MATCH (n) RETURN n.name as name,n.surname as surname,n.server as server, n.database as database, n.schema as schema, n.PK as PK, n.column as column ,n.created as created, n.last_altered as last_altered, id(n) as id,labels(n) as label');
+                    $resrel = $neo->run('MATCH (a)-[r]->(b) return id(r) as id,id(a) as start,id(b) as end, type(r) as type, r.FK as FK, r.From as from, r.Insert as insert, r.Join as join, r.Merge as merge, r.Truncate as truncate, r.Update as update, a.name as node_from, b.name as node_to');
                     break;
             }
             }
             if ($sp_select !== 'All') {
                 switch ($show) {
                 case 'All':
-                    $resnode = $stack->push('MATCH path = (a:SP {surname:{sp}})-[r*..'.$hops.']-(b)
+                    $resnode = $neo->run('MATCH path = (a:SP {surname:{sp}})-[r*..'.$hops.']-(b)
                         WITH startnode(LAST(r)) as x
                         RETURN DISTINCT x.name as name,x.surname as surname,x.server as server, x.database as database, x.schema as schema, x.PK as PK, x.column as column ,x.created as created, x.last_altered as last_altered, id(x) as id,labels(x) as label',['sp' => $sp_select]);
-                    $resnode2=$stack->push('MATCH path = (a:SP {surname: {sp} })-[r*..'.$hops.']-(b)
+                    $resnode2=$neo->run('MATCH path = (a:SP {surname: {sp} })-[r*..'.$hops.']-(b)
                         WITH endnode(LAST(r)) as y
                         RETURN DISTINCT y.name as name,y.surname as surname,y.server as server, y.database as database, y.schema as schema, y.PK as PK, y.column as column ,y.created as created, y.last_altered as last_altered, id(y) as id,labels(y) as label',['sp' => $sp_select]);
-                    $resrel = $stack->push('MATCH path = (a:SP {surname: {sp} })-[r*..'.$hops.']-(b)
+                    $resrel = $neo->run('MATCH path = (a:SP {surname: {sp} })-[r*..'.$hops.']-(b)
                         WITH LAST(r) as lr, startnode(LAST(r)) as x, endnode(LAST(r)) as y
                         RETURN id(lr) as id, id(x) as start,id(y) as end, type(lr) as type, lr.FK as FK, lr.From as from, lr.Insert as insert, lr.Join as join, lr.Merge as merge, lr.Truncate as truncate, lr.Update as update, x.name as node_from, y.name as node_to',['sp' => $sp_select]);
                     break;
                 case 'Execute':
-                    $resnode = $stack->push('MATCH path = (a:SP {surname:{sp}})-[r:Execute*..'.$hops.']-(b)
+                    $resnode = $neo->run('MATCH path = (a:SP {surname:{sp}})-[r:Execute*..'.$hops.']-(b)
                         WITH startnode(LAST(r)) as x
                         RETURN DISTINCT x.name as name,x.surname as surname,x.server as server, x.database as database, x.schema as schema, x.PK as PK, x.column as column ,x.created as created, x.last_altered as last_altered, id(x) as id,labels(x) as label',['sp' => $sp_select]);
-                    $resnode2=$stack->push('MATCH path = (a:SP {surname: {sp} })-[r:Execute*..'.$hops.']-(b)
+                    $resnode2=$neo->run('MATCH path = (a:SP {surname: {sp} })-[r:Execute*..'.$hops.']-(b)
                         WITH endnode(LAST(r)) as y
                         RETURN DISTINCT y.name as name,y.surname as surname,y.server as server, y.database as database, y.schema as schema, y.PK as PK, y.column as column ,y.created as created, y.last_altered as last_altered, id(y) as id,labels(y) as label',['sp' => $sp_select]);
-                    $resrel = $stack->push('MATCH path = (a:SP {surname: {sp} })-[r:Execute*..'.$hops.']-(b)
+                    $resrel = $neo->run('MATCH path = (a:SP {surname: {sp} })-[r:Execute*..'.$hops.']-(b)
                         WITH LAST(r) as lr, startnode(LAST(r)) as x, endnode(LAST(r)) as y
                         RETURN id(lr) as id, id(x) as start,id(y) as end, type(lr) as type, lr.FK as FK, lr.From as from, lr.Insert as insert, lr.Join as join, lr.Merge as merge, lr.Truncate as truncate, lr.Update as update, x.name as node_from, y.name as node_to',['sp' => $sp_select]);
                     break;
                 case 'Use':
-                    $resnode = $stack->push('MATCH path = (a:SP {surname:{sp}})-[r:Use*..'.$hops.']-(b)
+                    $resnode = $neo->run('MATCH path = (a:SP {surname:{sp}})-[r:Use*..'.$hops.']-(b)
                         WITH startnode(LAST(r)) as x
                         RETURN DISTINCT x.name as name,x.surname as surname,x.server as server, x.database as database, x.schema as schema, x.PK as PK, x.column as column ,x.created as created, x.last_altered as last_altered, id(x) as id,labels(x) as label',['sp' => $sp_select]);
-                    $resnode2=$stack->push('MATCH path = (a:SP {surname: {sp} })-[r:Use*..'.$hops.']-(b)
+                    $resnode2=$neo->run('MATCH path = (a:SP {surname: {sp} })-[r:Use*..'.$hops.']-(b)
                         WITH endnode(LAST(r)) as y
                         RETURN DISTINCT y.name as name,y.surname as surname,y.server as server, y.database as database, y.schema as schema, y.PK as PK, y.column as column ,y.created as created, y.last_altered as last_altered, id(y) as id,labels(y) as label',['sp' => $sp_select]);
-                    $resrel = $stack->push('MATCH path = (a:SP {surname: {sp} })-[r:Use*..'.$hops.']-(b)
+                    $resrel = $neo->run('MATCH path = (a:SP {surname: {sp} })-[r:Use*..'.$hops.']-(b)
                         WITH LAST(r)  as lr, startnode(LAST(r)) as x, endnode(LAST(r)) as y
                         RETURN id(lr) as id, id(x) as start,id(y) as end, type(lr) as type, lr.FK as FK, lr.From as from, lr.Insert as insert, lr.Join as join, lr.Merge as merge, lr.Truncate as truncate, lr.Update as update, x.name as node_from, y.name as node_to',['sp' => $sp_select]);
                     break;
                 
                 default:
-                    $resnode = $stack->push('MATCH path = (a:SP {surname:{sp}})-[r*..'.$hops.']-(b)
+                    $resnode = $neo->run('MATCH path = (a:SP {surname:{sp}})-[r*..'.$hops.']-(b)
                         WITH startnode(LAST(r)) as x
                         RETURN DISTINCT x.name as name,x.surname as surname,x.server as server, x.database as database, x.schema as schema, x.PK as PK, x.column as column ,x.created as created, x.last_altered as last_altered, id(x) as id,labels(x) as label',['sp' => $sp_select]);
-                    $resnode2=$stack->push('MATCH path = (a:SP {surname: {sp} })-[r*..'.$hops.']-(b)
+                    $resnode2=$neo->run('MATCH path = (a:SP {surname: {sp} })-[r*..'.$hops.']-(b)
                         WITH endnode(LAST(r)) as y
                         RETURN DISTINCT y.name as name,y.surname as surname,y.server as server, y.database as database, y.schema as schema, y.PK as PK, y.column as column ,y.created as created, y.last_altered as last_altered, id(y) as id,labels(y) as label',['sp' => $sp_select]);
-                    $resrel = $stack->push('MATCH path = (a:SP {surname: {sp} })-[r*..'.$hops.']-(b)
+                    $resrel = $neo->run('MATCH path = (a:SP {surname: {sp} })-[r*..'.$hops.']-(b)
                         WITH LAST(r) as lr, startnode(LAST(r)) as x, endnode(LAST(r)) as y
                         RETURN id(lr) as id, id(x) as start,id(y) as end, type(lr) as type, lr.FK as FK, lr.From as from, lr.Insert as insert, lr.Join as join, lr.Merge as merge, lr.Truncate as truncate, lr.Update as update, x.name as node_from, y.name as node_to',['sp' => $sp_select]);
                     break;
                 }
                 
             }
-            $neo->runStack($stack);
+            
         }
+        // $neo->runStack($stack);
 
         foreach ($resnode->getRecords() as $record) {
                 $property = array(
@@ -187,8 +190,6 @@
     <link rel="stylesheet" href="assets/css/material-kit.css?v=2.0.3">
     <script type="text/javascript" src='assets/js/d3.min.js'></script>
 	<script type="text/javascript" src='assets/js/neo4jd3.js'></script>
-
-
     <style>
         body,
         html,
