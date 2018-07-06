@@ -25,7 +25,7 @@ try {
     /**
      * Start the query
      */
-    $query = "MATCH (n)-[x:HAS_RELATIONSHIPS*..$hop]->(y) ";
+    $query = "MATCH (n)-[x:HAS_RELATIONSHIPS*..$hop]-(y) ";
     /**
      * Check if Node Source Type is chosen
      */
