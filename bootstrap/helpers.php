@@ -4,6 +4,7 @@ use GraphAware\Neo4j\Client\ClientBuilder;
 use Illuminate\Support\HigherOrderTapProxy;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Debug\Dumper;
+use Illuminate\Support\Arr;
 
 if (! function_exists('createSQLServerConnection')) {
     /**

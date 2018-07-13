@@ -4,17 +4,32 @@ namespace Dependency\Components;
 
 // $startExtract = microtime(true);
 use Dependency\Database\SqlConnectionMapper;
+use PDO;
 
-// $sqlsrv = createSQLServerConnection();
+/**
+ * Init SQL Server Connection
+ */
+$databaseConfig = require config_path('database.php');
+$sqlSrvConfig = $databaseConfig['connections']['sqlsrv'];
+$sqlsrv = createSqlServerConnection($sqlSrvConfig['host'], $sqlSrvConfig['port'], $sqlSrvConfig['username'], $sqlSrvConfig['password']);
 
-// $query = config('query.sqlserver.extract_database');
-// dd($query);
+/**
+ * Query to extract database list from SQL Server
+ */
+$queryConfig = require config_path('query.php');
+$query = $queryConfig['sqlserver']['extract_database'];
 
-// $result = tap($sqlsrv->prepare($query))->execute()->fetchAll(PDO::FETCH_OBJ);
-// dd($result);
-// $resultColl = collect($result)->pluck('name')->mapInto(SqlConnectionMapper::class);
+/**
+ * Mapping the query result to SqlConnectionMapper Class
+ */
+$result = tap($sqlsrv->prepare($query))->execute()->fetchAll(PDO::FETCH_OBJ);
+$resultColl = collect($result)->pluck('name')->mapInto(SqlConnectionMapper::class);
+// dd($resultColl);
 
-$resultColl = collect("resits")->mapInto(SqlConnectionMapper::class);
+/**
+ * Testing code for presentation in final project
+ */
+// $resultColl = collect("resits")->mapInto(SqlConnectionMapper::class);
 // $resultColl = collect("AdventureWorks2016_EXT")->mapInto(SqlConnectionMapper::class);
 // dd("This is the result of mapping query result to result object:", $resultColl);
 
