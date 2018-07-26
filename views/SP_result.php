@@ -10,9 +10,6 @@
 
     $neo4jConfig = $databaseConfig['connections']['neo4j']['sp'];
     $neo = createNeo4jConnection($neo4jConfig['username'], $neo4jConfig['password'], $neo4jConfig['host'], $neo4jConfig['port']);
-    // dump($neo);
-
-    // $stack = $neo->stack();
 
     if (isset($_POST['btn-gen'])) {
         $hops = $_POST['hops'];
@@ -23,7 +20,6 @@
             switch ($show) {
                 case 'All':
                     $resnode = $neo->run('MATCH (n) RETURN n.name as name,n.surname as surname,n.server as server, n.database as database, n.schema as schema, n.PK as PK, n.column as column ,n.created as created, n.last_altered as last_altered, id(n) as id,labels(n) as label');
-                    // dump($stack);
                     $resnode2='';
                     $resrel = $neo->run('MATCH (a)-[r]->(b) return id(r) as id,id(a) as start,id(b) as end, type(r) as type, r.FK as FK, r.From as from, r.Insert as insert, r.Join as join, r.Merge as merge, r.Truncate as truncate, r.Update as update, a.name as node_from, b.name as node_to');
                     break;
@@ -96,7 +92,6 @@
             }
             
         }
-        // $neo->runStack($stack);
 
         foreach ($resnode->getRecords() as $record) {
                 $property = array(
@@ -188,6 +183,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/neo4jd3.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/material-kit.css?v=2.0.3">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <script type="text/javascript" src='assets/js/d3.min.js'></script>
 	<script type="text/javascript" src='assets/js/neo4jd3.js'></script>
     <style>
@@ -252,19 +248,32 @@
                 <option value="2" <?php if (isset($hops) && $hops == '2') {
                     echo 'selected';
                 } ?>>2</option>
-                <option value="3" <?php if (isset($hops) && $hops == '3') {
-                    echo 'selected';
-                } ?>>3</option>
             </select>
         </div><br>
         <div>
             <div>
             <button type='submit' class='btn btn-primary btn-round pull-right' name='btn-gen' id="btn-gen">GENERATE</button>
             </div>
+            <div>
+                
+            </div>
         </div>
+        
         </form>
+        <br><br>
+        Legends
+            <ul class="fa-ul">
+                <li><i class="fa-li fa fa-server"></i> Server</li>
+                <li><i class="fa-li fa fa-database"></i> Database</li>
+                <li><i class="fa-li fa fa-gear"></i> Schema</li>
+                <li><i class="fa-li fa fa-table"></i> Table</li>
+                <li><i class="fa-li fab fa-product-hunt"></i> Stored Procedure</li>
+                <li><i class="fa-li fa fa-file-code"></i> Function</li>
+            </ul>
+       
     </div>
 
+    
     <div class="col-md-9">
         <div id='neo4jd3'></div>
     </div>
