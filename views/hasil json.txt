@@ -1,0 +1,4943 @@
+{
+  "results": [
+    {
+      "data": [
+        {
+          "graph": {
+            "nodes": [
+              {
+                "id": 496,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_temp_dosen",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.tran_temp_dosen",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "column": "best_term books conferences email gelar_akademik_belakang gelar_akademik_depan id id_node journals kode_fakultas kode_jurusan kode_pegawai kualifikasi_ahli nama_dosen nama_fakultas_en nama_jurusan_en nip paten research skor_spmi thesis ",
+                  "PK": "deleted.PK_Dosen"
+                }
+              },
+              {
+                "id": 497,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "mapping_fakultas_jurusan",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.mapping_fakultas_jurusan",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "fakultas_id_itsdw fakultas_id_resits fakultas_id_silacak fakultas_id_simpel jurusan_id_itsdw jurusan_id_resits jurusan_id_silacak jurusan_id_simpel "
+                }
+              },
+              {
+                "id": 498,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_publikasi_dosen_tetap",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tran_publikasi_dosen_tetap",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "abstraksi bulan created_at deleted_at flag judul kata_kunci keterangan kode_kegiatan_publikasi kode_media_publikasi kode_pegawai kode_publikasi no_doi pengarang published_in tahun type_jurnal updated_at url abstraksi bulan created_at deleted_at duplicate id_bkd id_duplicate judul jumlah_pembiayaan kata_kunci keterangan kode kode_jenis_pembiayaan kode_jenis_peneliti kode_kegiatan_publikasi kode_log_audit kode_media_publikasi kode_pegawai kode_pelaksanaan_penelitian kode_periode_pelaporan kode_publikasi kode_status_validasi lokasi pengarang rank_value similaritas status_clean status_sinkron tahun tanggal_mulai tanggal_selesai total_waktu updated_at url ",
+                  "PK": "PK__tran_pub__25A87493BB536BB6"
+                }
+              },
+              {
+                "id": 499,
+                "labels": [
+                  "Schema"
+                ],
+                "properties": {
+                  "name": "pre",
+                  "surname": "WINDOWS-1K4UUD7.resits.pre",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits"
+                }
+              },
+              {
+                "id": 500,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "mapping_publikasi",
+                  "surname": "WINDOWS-1K4UUD7.resits.pre.mapping_publikasi",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "pre",
+                  "column": "bulan_penelitian id id_lama_penelitian_itsdw jenis_penelitian_id judul_penelitian kode_publikasi_resits penelitian_id_simpel pub_id_silacak tahun_penelitian ",
+                  "PK": "PK_mapping_publikasi"
+                }
+              },
+              {
+                "id": 501,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "old.tran_bobot_kata_indeks",
+                  "surname": "WINDOWS-1K4UUD7.resits.pre.old.tran_bobot_kata_indeks",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "pre",
+                  "column": "df idf_norm kata "
+                }
+              },
+              {
+                "id": 502,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_bobot_stopwords",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tran_bobot_stopwords",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "kata "
+                }
+              },
+              {
+                "id": 503,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "mapping_penelitian_dosen",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.mapping_penelitian_dosen",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "column": "id_dosen id_penelitian "
+                }
+              },
+              {
+                "id": 504,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "mapping_publikasi_itsdw",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.mapping_publikasi_itsdw",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "column": "id_lama_penelitian_itsdw kode_publikasi_resits "
+                }
+              },
+              {
+                "id": 505,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "mapping_publikasi_simpel",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.mapping_publikasi_simpel",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "column": "kode_publikasi_resits penelitian_id_simpel "
+                }
+              },
+              {
+                "id": 506,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tref_user_admin",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tref_user_admin",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "id password username "
+                }
+              },
+              {
+                "id": 507,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "mapping_publikasi_silacak",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.mapping_publikasi_silacak",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "column": "kode_publikasi_resits pub_id_silacak "
+                }
+              },
+              {
+                "id": 508,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "master_flag",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.master_flag",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "kode_flag sumber_data "
+                }
+              },
+              {
+                "id": 509,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tmst_publikasi",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tmst_publikasi",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "abstrak bulan created_at deleted_at flag id judul kata_kunci keterangan_pub kode_dosen kode_kegiatan_publikasi kode_media_publikasi tahun updated_at url abstrak bulan created_at deleted_at flag id judul kata_kunci keterangan_pub kode_dosen kode_kegiatan_publikasi kode_media_publikasi tahun updated_at url ",
+                  "PK": "PK_tmst_publikasi"
+                }
+              },
+              {
+                "id": 510,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tmst_jurusan",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.tmst_jurusan",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "column": "created_at deleted_at kode kode_dosen_kepala kode_fakultas kode_log_audit kode_perguruan_tinggi kode_periode_pelaporan kode_status_validasi nama_indonesia nama_inggris updated_at "
+                }
+              },
+              {
+                "id": 511,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_publikasi_dosen_tetap",
+                  "surname": "WINDOWS-1K4UUD7.resits.pre.tran_publikasi_dosen_tetap",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "pre",
+                  "column": "abstraksi bulan created_at deleted_at flag judul kata_kunci keterangan kode_kegiatan_publikasi kode_media_publikasi kode_pegawai kode_publikasi no_doi pengarang published_in tahun type_jurnal updated_at url abstraksi bulan created_at deleted_at duplicate id_bkd id_duplicate judul jumlah_pembiayaan kata_kunci keterangan kode kode_jenis_pembiayaan kode_jenis_peneliti kode_kegiatan_publikasi kode_log_audit kode_media_publikasi kode_pegawai kode_pelaksanaan_penelitian kode_periode_pelaporan kode_publikasi kode_status_validasi lokasi pengarang rank_value similaritas status_clean status_sinkron tahun tanggal_mulai tanggal_selesai total_waktu updated_at url ",
+                  "PK": "PK__tran_pub__25A87493BB536BB6"
+                }
+              },
+              {
+                "id": 512,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "old.tran_anggota_penelitian_dosen",
+                  "surname": "WINDOWS-1K4UUD7.resits.pre.old.tran_anggota_penelitian_dosen",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "pre",
+                  "column": "created_at deleted_at id_bkd jenis_peneliti kode kode_log_audit kode_pegawai kode_periode_pelaporan kode_publikasi kode_publikasi_dosen_tetap status_ketua updated_at urutan ",
+                  "PK": "PK__tran_ang__25A87493E378938D"
+                }
+              },
+              {
+                "id": 513,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_bobot_kata_indeks",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tran_bobot_kata_indeks",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "df idf_norm kata "
+                }
+              },
+              {
+                "id": 514,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "old.tmst_pegawai",
+                  "surname": "WINDOWS-1K4UUD7.resits.pre.old.tmst_pegawai",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "pre",
+                  "column": "alamat created_at deleted_at email gelar_akademik_belakang gelar_akademik_depan handphone is_dosen kode kode_fakultas kode_ikatan_kerja_pegawai kode_jabatan_fungsional kode_jabatan_struktural kode_jenis_dosen kode_jenis_kelamin kode_jenis_pegawai kode_jenjang_pendidikan kode_jurusan kode_kota kode_log_audit kode_pangkat_pns kode_perguruan_tinggi kode_periode_pelaporan kode_pos kode_program_studi kode_provinsi kode_satuan_kerja kode_status_aktivitas_pegawai kode_status_validasi nama nidn nip_baru nip_lama nomor_ktp nomor_sertifikasi tanggal_berhenti tanggal_keluar_sertifikasi tanggal_lahir tanggal_masuk telepon tempat_lahir updated_at ",
+                  "PK": "PK__tmst_peg__25A874935A30504A"
+                }
+              },
+              {
+                "id": 515,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_temp_publikasi_distinct",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tran_temp_publikasi_distinct",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "id judul tahun tipe ",
+                  "PK": "PK_tran_temp_publikasi_distinct"
+                }
+              },
+              {
+                "id": 516,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tmst_pegawai_baru",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.tmst_pegawai_baru",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "column": "alamat created_at deleted_at email flag gelar_akademik_belakang gelar_akademik_depan handphone is_dosen kode kode_fakultas kode_ikatan_kerja_pegawai kode_jabatan_fungsional kode_jabatan_struktural kode_jenis_dosen kode_jenis_kelamin kode_jenis_pegawai kode_jenjang_pendidikan kode_jurusan kode_kota kode_log_audit kode_pangkat_pns kode_perguruan_tinggi kode_periode_pelaporan kode_pos kode_program_studi kode_provinsi kode_satuan_kerja kode_status_aktivitas_pegawai kode_status_validasi nama nidn nip_baru nip_lama nomor_ktp nomor_sertifikasi riset_topik tanggal_berhenti tanggal_keluar_sertifikasi tanggal_lahir tanggal_masuk telepon tempat_lahir updated_at "
+                }
+              },
+              {
+                "id": 517,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_skripsi",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.tran_skripsi",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "column": "abstraksi abstraksi_en abstraksi_in created_at deleted_at judul_skripsi judul_skripsi_en kata_kunci kode kode_dosen_pembimbing1 kode_dosen_pembimbing2 kode_dosen_pembimbing3 kode_log_audit kode_mahasiswa kode_periode_pelaporan updated_at ",
+                  "PK": "PK__tran_skr__25A87493F31912D7"
+                }
+              },
+              {
+                "id": 518,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_temp_publikasi_mapping",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tran_temp_publikasi_mapping",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "id_tran_temp_publikasi kode_publikasi ",
+                  "PK": "PK_tran_temp_publikasi_mapping"
+                }
+              },
+              {
+                "id": 519,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_wisudawan",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.tran_wisudawan",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "column": "created_at deleted_at ipk_akhir jenis_kelamin kode kode_log_audit kode_mahasiswa lama_studi nip_pembimbing1 nip_pembimbing2 predikat tefl_keluar tggl_wisuda updated_at wisuda ",
+                  "PK": "PK__tran_wis__25A874938FD0FA81"
+                }
+              },
+              {
+                "id": 520,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "mapping_dosen_laboratorium",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.mapping_dosen_laboratorium",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "created_at deleted_at kode kode_dosen kode_laboratorium kode_log_audit kode_periode_pelaporan periode_aktif status_ketua updated_at ",
+                  "PK": "PK_mapping_dosen_laboratorium"
+                }
+              },
+              {
+                "id": 521,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "mapping_dosen",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.mapping_dosen",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "dosen_id_itsdw id kode_pegawai_resits nip_dosen pegawai_id_silacak peneliti_id_simpel ",
+                  "PK": "PK_mapping_dosen"
+                }
+              },
+              {
+                "id": 522,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_bidang_ahli",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tran_bidang_ahli",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "created_at deleted_at kode kode_bidang_ahli kode_log_audit kode_pegawai kode_periode_pelaporan updated_at ",
+                  "PK": "PK__tran_bid__25A874935B6F0781"
+                }
+              },
+              {
+                "id": 523,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_ppm_dosen",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tran_ppm_dosen",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "bulan created_at deleted_at judul kata_kunci kode kode_jenis_peneliti kode_log_audit kode_pegawai kode_periode_pelaporan kode_status_validasi lokasi tahun total_waktu updated_at "
+                }
+              },
+              {
+                "id": 524,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tmst_laboratorium",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.tmst_laboratorium",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "column": "created_at deleted_at email_lab fax_lab jumlah_aktifitas kode kode_fakultas kode_jurusan kode_lab_simpel kode_log_audit kode_perguruan_tinggi kode_periode_pelaporan kode_program_studi kode_status_validasi nama_indonesia nama_inggris telp_lab updated_at website_lab "
+                }
+              },
+              {
+                "id": 525,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tref_media_publikasi",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tref_media_publikasi",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "created_at deleted_at deskripsi kode kode_log_audit updated_at ",
+                  "PK": "PK__tref_med__25A874937E881AC9"
+                }
+              },
+              {
+                "id": 526,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tmst_mahasiswa",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.tmst_mahasiswa",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "column": "alamat alamat_surabaya batas_studi created_at deleted_at ipk_akhir jenis_kelamin keterangan_keluar kewarganegaraan kode kode_agama kode_biaya_studi kode_jalur_masuk kode_jenjang_pendidikan kode_kota kode_log_audit kode_mhs_asal kode_perguruan_tinggi kode_perguruan_tinggi_asal kode_periode_pelaporan kode_pos kode_program_studi kode_program_studi_asal kode_provinsi kode_provinsi_asal_pendidikan kode_status_mhs nama nama_ayah nama_ibu nip_dosen_wali nomor_seri_ijazah nomor_sk_yudisium nomor_telepon_mhs nomor_telpon_ortu pekerjaan_ayah pekerjaan_ibu photo predikat_kelulusan sks_akhir sks_lulus sks_tempuh status_awal_mhs tahun_keluar tanggal_lahir tanggal_lulus tanggal_masuk tanggal_sk_yudisium tempat_lahir toefl_keluar toefl_masuk updated_at ",
+                  "PK": "PK__tmst_mah__25A874936635D039"
+                }
+              },
+              {
+                "id": 527,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_anggota_laboratorium",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tran_anggota_laboratorium",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "created_at deleted_at kode kode_laboratorium kode_log_audit kode_pegawai kode_periode_pelaporan periode_aktif status_ketua updated_at ",
+                  "PK": "PK__tran_ang__25A87493F49DAE04"
+                }
+              },
+              {
+                "id": 528,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tref_bidang_ahli",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tref_bidang_ahli",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "bidang_ahli created_at deleted_at id_bahasa kode updated_at ",
+                  "PK": "PK__tref_bid__25A87493114B62BF"
+                }
+              },
+              {
+                "id": 529,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_temp_publikasi",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tran_temp_publikasi",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "gelar_akademik_belakang gelar_akademik_depan judul_penelitian kode_fakultas kode_jurusan kode_pegawai kode_publikasi nama_dosen nama_jurusan_en nip pengarang periode_penelitian tipe "
+                }
+              },
+              {
+                "id": 530,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "sysdiagrams",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.sysdiagrams",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "definition diagram_id name principal_id version ",
+                  "PK": "PK__sysdiagr__C2B05B615E2D441C"
+                }
+              },
+              {
+                "id": 531,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "mapping_publikasi_dosen",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.mapping_publikasi_dosen",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "created_at deleted_at kode kode_pegawai updated_at urutan ",
+                  "PK": "PK__mapping___25A87493BA2BD9DD"
+                }
+              },
+              {
+                "id": 532,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_kategori_publikasi_ilmiah",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.tran_kategori_publikasi_ilmiah",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "column": "created_at deleted_at kode kode_bidang kode_kegiatan_publikasi kode_pegawai updated_at ",
+                  "PK": "PK__tran_kat__25A87493B115EE1C"
+                }
+              },
+              {
+                "id": 533,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tmst_bidang_penelitian",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.tmst_bidang_penelitian",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "column": "kode kode_fakultas kode_jurusan nama_bidang_penelitian ",
+                  "PK": "PK__tmst_bid__25A87493E8C27A2C"
+                }
+              },
+              {
+                "id": 534,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "mapping_dosen_tags",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.mapping_dosen_tags",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "bidang_ahli created_at deleted_at id kode_bidang_ahli kode_dosen updated_at "
+                }
+              },
+              {
+                "id": 535,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "old.mapping_temp_dosen",
+                  "surname": "WINDOWS-1K4UUD7.resits.pre.old.mapping_temp_dosen",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "pre",
+                  "column": "best_term books conferences email gelar_akademik_belakang gelar_akademik_depan id id_node journals kode_fakultas kode_jurusan kode_pegawai kualifikasi_ahli nama_dosen nama_fakultas_en nama_jurusan_en nip paten research skor_spmi thesis "
+                }
+              },
+              {
+                "id": 536,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tmst_bidang_pengajaran",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.tmst_bidang_pengajaran",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "column": "kode kode_fakultas nama_bidang_pengajaran ",
+                  "PK": "PK__tmst_bid__25A87493F122A733"
+                }
+              },
+              {
+                "id": 537,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_material_link",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tran_material_link",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "kode kode_fakultas kode_jurusan kode_pegawai link_material ",
+                  "PK": "PK__tran_mat__25A874939B30D46C"
+                }
+              },
+              {
+                "id": 555,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tmst_pegawai",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tmst_pegawai",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "alamat created_at deleted_at email flag gelar_akademik_belakang gelar_akademik_depan handphone is_dosen kode kode_fakultas kode_ikatan_kerja_pegawai kode_jabatan_fungsional kode_jabatan_struktural kode_jenis_dosen kode_jenis_kelamin kode_jenis_pegawai kode_jenjang_pendidikan kode_jurusan kode_kota kode_log_audit kode_pangkat_pns kode_perguruan_tinggi kode_periode_pelaporan kode_pos kode_program_studi kode_provinsi kode_satuan_kerja kode_status_aktivitas_pegawai kode_status_validasi nama nidn nip_baru nip_lama nomor_ktp nomor_sertifikasi riset_topik tanggal_berhenti tanggal_keluar_sertifikasi tanggal_lahir tanggal_masuk telepon tempat_lahir updated_at "
+                }
+              },
+              {
+                "id": 556,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tmst_publikasi",
+                  "surname": "WINDOWS-1K4UUD7.resits.pre.tmst_publikasi",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "pre",
+                  "column": "abstrak bulan created_at deleted_at flag id judul kata_kunci keterangan_pub kode_dosen kode_kegiatan_publikasi kode_media_publikasi tahun updated_at url abstrak bulan created_at deleted_at flag id judul kata_kunci keterangan_pub kode_dosen kode_kegiatan_publikasi kode_media_publikasi tahun updated_at url ",
+                  "PK": "PK_tmst_publikasi"
+                }
+              },
+              {
+                "id": 557,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tref_profil_dosen_hidden",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tref_profil_dosen_hidden",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "item kode_pegawai "
+                }
+              },
+              {
+                "id": 558,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_anggota_penelitian_dosen",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tran_anggota_penelitian_dosen",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "created_at deleted_at id_bkd jenis_peneliti kode kode_log_audit kode_pegawai kode_periode_pelaporan kode_publikasi kode_publikasi_dosen_tetap status_ketua updated_at urutan ",
+                  "PK": "PK__tran_ang__25A8749374133279"
+                }
+              },
+              {
+                "id": 559,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_publikasi",
+                  "surname": "WINDOWS-1K4UUD7.resits.pre.tran_publikasi",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "pre",
+                  "column": "abstrak judul kata_kunci keterangan_pub kode_kegiatan_publikasi kode_media_publikasi kode_pegawai kode_publikasi tahun ",
+                  "PK": "PK_Pubthes"
+                }
+              },
+              {
+                "id": 560,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "mapping_publikasi_itsdw_baru",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.mapping_publikasi_itsdw_baru",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "id_item_itsdw id_resits "
+                }
+              },
+              {
+                "id": 561,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tmst_tags",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tmst_tags",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "bidang_ahli created_at deleted_at flag id id_bahasa kode_dosen nip updated_at ",
+                  "PK": "PK_tmst_tags"
+                }
+              },
+              {
+                "id": 562,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_publikasi_dosen_tetap_mapping",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tran_publikasi_dosen_tetap_mapping",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "id_tran_publikasi_dosen_tetap kode_publikasi ",
+                  "PK": "PK_tran_publikasi_dosen_tetap_mapping"
+                }
+              },
+              {
+                "id": 563,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tmst_fakultas_baru",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tmst_fakultas_baru",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "created_at deleted_at flag kode kode_dosen_kepala kode_log_audit kode_perguruan_tinggi kode_status_validasi nama_indonesia nama_inggris singkatan tanggal_akhir_efektif tanggal_mulai_efektif updated_at "
+                }
+              },
+              {
+                "id": 564,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tmst_jurusan_baru",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tmst_jurusan_baru",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "created_at deleted_at flag kode kode_dosen_kepala kode_fakultas kode_log_audit kode_perguruan_tinggi kode_periode_pelaporan kode_status_validasi nama_indonesia nama_inggris updated_at "
+                }
+              },
+              {
+                "id": 565,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tmst_laboratorium_baru",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tmst_laboratorium_baru",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "created_at deleted_at email_lab fax_lab flag jumlah_aktifitas kode kode_fakultas kode_jurusan kode_log_audit kode_perguruan_tinggi kode_periode_pelaporan kode_program_studi kode_status_validasi nama_indonesia nama_inggris telp_lab updated_at website_lab "
+                }
+              },
+              {
+                "id": 566,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_publikasi_dosen_tetap_distinct",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tran_publikasi_dosen_tetap_distinct",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "id judul tahun tipe ",
+                  "PK": "PK_tran_publikasi_dosen_tetap_distinct"
+                }
+              },
+              {
+                "id": 567,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_afiliasi",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tran_afiliasi",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "id jml kode_pegawai1 kode_pegawai2 ",
+                  "PK": "PK_tran_afiliasi"
+                }
+              },
+              {
+                "id": 568,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "mapping_laboratorium",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.mapping_laboratorium",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "kode_fakultas_resits kode_fakultas_simpel kode_jurusan_resits kode_jurusan_simpel kode_lab_resits kode_lab_simpel "
+                }
+              },
+              {
+                "id": 569,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "insert_ppm_penelitian",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.insert_ppm_penelitian",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2018-05-30 12:01:52.797",
+                  "last altered": "2018-06-02 12:10:58.510"
+                }
+              },
+              {
+                "id": 570,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "generate_jumlah_scopus",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.generate_jumlah_scopus",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2018-06-05 14:43:32.657",
+                  "last altered": "2018-06-06 10:22:21.110"
+                }
+              },
+              {
+                "id": 571,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "fakultas_insert_simpel",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.fakultas_insert_simpel",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "created": "2017-09-07 14:02:08.543",
+                  "last altered": "2017-12-28 16:32:58.343"
+                }
+              },
+              {
+                "id": 572,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "fakultas_insert_silacak",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.fakultas_insert_silacak",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "created": "2017-09-07 14:02:19.110",
+                  "last altered": "2017-12-28 16:32:51.517"
+                }
+              },
+              {
+                "id": 573,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "insert_publikasi_itsdw_jurnal",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.insert_publikasi_itsdw_jurnal",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-12-22 12:45:26.927",
+                  "last altered": "2018-04-02 09:47:46.593"
+                }
+              },
+              {
+                "id": 574,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "mapping_fakultas_jurusan_recent_old",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.mapping_fakultas_jurusan_recent_old",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "created": "2017-05-18 14:54:25.480",
+                  "last altered": "2017-12-28 16:33:22.347"
+                }
+              },
+              {
+                "id": 575,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "mapping_dosen_recent",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.mapping_dosen_recent",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-05-18 16:08:33.317",
+                  "last altered": "2018-05-28 14:17:19.750"
+                }
+              },
+              {
+                "id": 576,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "insert_publikasi_itsdw_buku",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.insert_publikasi_itsdw_buku",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2018-02-20 13:19:22.570",
+                  "last altered": "2018-02-22 07:10:35.610"
+                }
+              },
+              {
+                "id": 577,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "insert_jurusan_itsdw",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.insert_jurusan_itsdw",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-09-14 13:58:18.170",
+                  "last altered": "2018-06-04 10:06:16.710"
+                }
+              },
+              {
+                "id": 578,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "jurusan_insert_silacak",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.jurusan_insert_silacak",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "created": "2017-09-14 13:58:35.713",
+                  "last altered": "2017-12-28 16:33:04.693"
+                }
+              },
+              {
+                "id": 579,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "jurusan_insert_simpel",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.jurusan_insert_simpel",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "created": "2017-09-14 13:58:45.807",
+                  "last altered": "2017-12-28 16:33:10.690"
+                }
+              },
+              {
+                "id": 580,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "mapping_publikasi_recent",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.mapping_publikasi_recent",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-05-24 16:01:29.273",
+                  "last altered": "2017-09-27 16:34:35.303"
+                }
+              },
+              {
+                "id": 581,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "insert_publikasi_itsdw_jurnal_gs",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.insert_publikasi_itsdw_jurnal_gs",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2018-03-29 11:19:12.313",
+                  "last altered": "2018-03-29 11:19:12.313"
+                }
+              },
+              {
+                "id": 582,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "insert_publikasi_itsdw_seminar_gs",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.insert_publikasi_itsdw_seminar_gs",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2018-03-29 11:27:23.817",
+                  "last altered": "2018-03-29 11:27:23.817"
+                }
+              },
+              {
+                "id": 583,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "mapping_penelitian_dosen_recent",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.mapping_penelitian_dosen_recent",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "created": "2017-05-24 17:05:28.547",
+                  "last altered": "2017-12-28 16:33:28.353"
+                }
+              },
+              {
+                "id": 584,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "insert_laboratorium_simpel",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.insert_laboratorium_simpel",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-10-02 16:16:01.370",
+                  "last altered": "2017-12-28 16:34:31.817"
+                }
+              },
+              {
+                "id": 585,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "mapping_publikasi_itsdw_recent",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.mapping_publikasi_itsdw_recent",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "created": "2017-06-07 15:53:47.067",
+                  "last altered": "2017-12-28 16:33:35.323"
+                }
+              },
+              {
+                "id": 586,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "insert_publikasi_itsdw_seminar",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.insert_publikasi_itsdw_seminar",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-12-23 18:10:32.597",
+                  "last altered": "2018-04-02 09:48:42.657"
+                }
+              },
+              {
+                "id": 587,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "mapping_publikasi_simpel_recent",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.mapping_publikasi_simpel_recent",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "created": "2017-06-08 17:14:23.083",
+                  "last altered": "2017-12-28 16:50:29.827"
+                }
+              },
+              {
+                "id": 588,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "insert_pegawai_dosen",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.insert_pegawai_dosen",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-10-04 13:38:20.217",
+                  "last altered": "2018-01-03 15:44:32.603"
+                }
+              },
+              {
+                "id": 589,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "mapping_publikasi_silacak_recent",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.mapping_publikasi_silacak_recent",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "created": "2017-06-08 17:19:14.020",
+                  "last altered": "2017-12-28 16:33:41.547"
+                }
+              },
+              {
+                "id": 590,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "pegawai_insert_tendik",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.pegawai_insert_tendik",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "created": "2017-10-07 12:58:39.190",
+                  "last altered": "2017-12-28 16:33:47.900"
+                }
+              },
+              {
+                "id": 591,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "insert_publikasi_itsdw_paten",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.insert_publikasi_itsdw_paten",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-12-24 07:30:34.293",
+                  "last altered": "2018-02-27 07:23:43.893"
+                }
+              },
+              {
+                "id": 592,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "mapping_fakultas_jurusan_recent",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.mapping_fakultas_jurusan_recent",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-10-07 20:26:38.467",
+                  "last altered": "2018-05-30 11:24:03.163"
+                }
+              },
+              {
+                "id": 593,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "insert_publikasi_itsdw_jurnal_scopus",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.insert_publikasi_itsdw_jurnal_scopus",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2018-04-02 08:53:26.730",
+                  "last altered": "2018-04-02 08:53:26.730"
+                }
+              },
+              {
+                "id": 594,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "insert_publikasi_itsdw_penelitian",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.insert_publikasi_itsdw_penelitian",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-12-24 10:54:56.820",
+                  "last altered": "2018-01-03 15:37:49.623"
+                }
+              },
+              {
+                "id": 595,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "insert_publikasi_itsdw_seminar_scopus",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.insert_publikasi_itsdw_seminar_scopus",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2018-04-02 08:55:44.590",
+                  "last altered": "2018-04-02 08:55:44.590"
+                }
+              },
+              {
+                "id": 596,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "insert_publikasi_itsdw_buku_old",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.insert_publikasi_itsdw_buku_old",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-12-24 11:19:56.747",
+                  "last altered": "2018-02-22 07:05:44.447"
+                }
+              },
+              {
+                "id": 597,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "insert_ppm_pegawai_dosen",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.insert_ppm_pegawai_dosen",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2018-04-05 12:37:57.997",
+                  "last altered": "2018-05-29 13:36:25.977"
+                }
+              },
+              {
+                "id": 598,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "publikasi_insert_recent",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.publikasi_insert_recent",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "created": "2017-06-19 17:00:04.817",
+                  "last altered": "2018-01-03 16:08:27.827"
+                }
+              },
+              {
+                "id": 599,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "insert_ppm_buku",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.insert_ppm_buku",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2018-04-12 20:26:51.137",
+                  "last altered": "2018-04-12 20:26:51.137"
+                }
+              },
+              {
+                "id": 600,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "mapping_penelitian_dosen_recent_new",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.mapping_penelitian_dosen_recent_new",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "created": "2017-06-21 15:38:30.623",
+                  "last altered": "2017-12-28 16:46:25.097"
+                }
+              },
+              {
+                "id": 601,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "insert_tags_simpeg",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.insert_tags_simpeg",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-10-10 14:32:45.640",
+                  "last altered": "2017-12-28 16:35:56.193"
+                }
+              },
+              {
+                "id": 602,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "publikasi_insert_recent_silacak",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.publikasi_insert_recent_silacak",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "created": "2017-06-22 10:56:58.863",
+                  "last altered": "2017-12-28 16:33:52.657"
+                }
+              },
+              {
+                "id": 603,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "sp_upgraddiagrams",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.sp_upgraddiagrams",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2016-06-23 10:10:03.380",
+                  "last altered": "2016-06-23 10:10:03.380"
+                }
+              },
+              {
+                "id": 604,
+                "labels": [
+                  "Function"
+                ],
+                "properties": {
+                  "name": "ProperCase",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.ProperCase",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-02-13 14:31:55.413",
+                  "last altered": "2017-02-13 14:31:55.413"
+                }
+              },
+              {
+                "id": 605,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "mapping_dosen_tags_recent",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.mapping_dosen_tags_recent",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-10-10 15:45:59.230",
+                  "last altered": "2017-10-10 16:17:40.633"
+                }
+              },
+              {
+                "id": 606,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "sp_helpdiagrams",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.sp_helpdiagrams",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2016-06-23 10:10:03.400",
+                  "last altered": "2016-06-23 10:10:03.400"
+                }
+              },
+              {
+                "id": 607,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "sp_helpdiagramdefinition",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.sp_helpdiagramdefinition",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2016-06-23 10:10:03.410",
+                  "last altered": "2016-06-23 10:10:03.410"
+                }
+              },
+              {
+                "id": 608,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "publikasi_insert_itsdw",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.publikasi_insert_itsdw",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "created": "2017-10-11 13:59:51.460",
+                  "last altered": "2018-01-03 16:08:22.100"
+                }
+              },
+              {
+                "id": 609,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "sp_creatediagram",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.sp_creatediagram",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2016-06-23 10:10:03.417",
+                  "last altered": "2016-06-23 10:10:03.417"
+                }
+              },
+              {
+                "id": 610,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "master_run",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.master_run",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-12-29 14:06:43.710",
+                  "last altered": "2018-06-02 12:00:24.147"
+                }
+              },
+              {
+                "id": 611,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "sp_renamediagram",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.sp_renamediagram",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2016-06-23 10:10:03.420",
+                  "last altered": "2016-06-23 10:10:03.420"
+                }
+              },
+              {
+                "id": 612,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "publikasi_insert_recent_simpel",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.publikasi_insert_recent_simpel",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "created": "2017-06-23 14:11:57.577",
+                  "last altered": "2017-12-28 16:33:57.710"
+                }
+              },
+              {
+                "id": 613,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "sp_alterdiagram",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.sp_alterdiagram",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2016-06-23 10:10:03.420",
+                  "last altered": "2016-06-23 10:10:03.420"
+                }
+              },
+              {
+                "id": 614,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "sp_dropdiagram",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.sp_dropdiagram",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2016-06-23 10:10:03.420",
+                  "last altered": "2016-06-23 10:10:03.420"
+                }
+              },
+              {
+                "id": 632,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "publikasi_insert_recent_resits",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.publikasi_insert_recent_resits",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "created": "2017-06-23 15:30:28.557",
+                  "last altered": "2018-01-03 16:08:31.743"
+                }
+              },
+              {
+                "id": 633,
+                "labels": [
+                  "Function"
+                ],
+                "properties": {
+                  "name": "fn_diagramobjects",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.fn_diagramobjects",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2016-06-23 10:10:03.423",
+                  "last altered": "2016-06-23 10:10:03.423"
+                }
+              },
+              {
+                "id": 634,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "generate_mapping_temp_dosen",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.generate_mapping_temp_dosen",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-12-29 18:31:40.017",
+                  "last altered": "2018-06-05 14:42:55.100"
+                }
+              },
+              {
+                "id": 635,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "mapping_publikasi_itsdw_recent",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.mapping_publikasi_itsdw_recent",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-10-12 11:48:29.827",
+                  "last altered": "2018-05-28 16:17:19.527"
+                }
+              },
+              {
+                "id": 650,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "tran_temp_publikasi_recent",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tran_temp_publikasi_recent",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-12-29 18:38:10.910",
+                  "last altered": "2018-05-18 09:51:32.410"
+                }
+              },
+              {
+                "id": 656,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "generate_mapping_publikasi_dosen",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.generate_mapping_publikasi_dosen",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-12-29 18:43:51.003",
+                  "last altered": "2018-01-03 13:48:33.270"
+                }
+              },
+              {
+                "id": 657,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "insert_laboratorium_ppm",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.insert_laboratorium_ppm",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2018-05-06 10:34:06.733",
+                  "last altered": "2018-05-28 15:40:39.787"
+                }
+              },
+              {
+                "id": 658,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "insert_fakultas_itsdw",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.insert_fakultas_itsdw",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-07-21 09:29:32.233",
+                  "last altered": "2018-06-04 10:06:21.153"
+                }
+              },
+              {
+                "id": 679,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "mapping_dosen_laboratorium_recent",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.mapping_dosen_laboratorium_recent",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "created": "2017-08-01 09:45:14.463",
+                  "last altered": "2017-12-28 16:33:16.787"
+                }
+              },
+              {
+                "id": 680,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "distinct_publikasi_dosen_tetap",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.distinct_publikasi_dosen_tetap",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2018-05-17 10:58:50.040",
+                  "last altered": "2018-05-24 13:17:22.610"
+                }
+              },
+              {
+                "id": 681,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "mapping_dosen_laboratorium_recent",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.mapping_dosen_laboratorium_recent",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-12-14 13:40:04.557",
+                  "last altered": "2018-01-04 13:53:53.793"
+                }
+              },
+              {
+                "id": 682,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "mapping_laboratorium_recent",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.mapping_laboratorium_recent",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-12-20 09:53:54.020",
+                  "last altered": "2017-12-20 11:42:00.390"
+                }
+              },
+              {
+                "id": 683,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "update_laboratorium_fakjur_itsdw",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.update_laboratorium_fakjur_itsdw",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-12-20 10:47:09.087",
+                  "last altered": "2018-01-04 14:25:35.517"
+                }
+              },
+              {
+                "id": 684,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "insert_ppm_pengabdian_masyarakat",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.insert_ppm_pengabdian_masyarakat",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2018-05-28 11:20:22.880",
+                  "last altered": "2018-05-28 11:26:53.407"
+                }
+              },
+              {
+                "id": 685,
+                "labels": [
+                  "SP"
+                ],
+                "properties": {
+                  "name": "danger.truncate_all_tables",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.danger.truncate_all_tables",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "created": "2017-12-20 16:58:32.690",
+                  "last altered": "2018-06-02 11:56:42.233"
+                }
+              },
+              {
+                "id": 748,
+                "labels": [
+                  "Server"
+                ],
+                "properties": {
+                  "name": "AKADEMIK"
+                }
+              },
+              {
+                "id": 749,
+                "labels": [
+                  "Server"
+                ],
+                "properties": {
+                  "name": "AKADEMIK-1"
+                }
+              },
+              {
+                "id": 750,
+                "labels": [
+                  "Server"
+                ],
+                "properties": {
+                  "name": "AKADEMIK-2"
+                }
+              },
+              {
+                "id": 751,
+                "labels": [
+                  "Server"
+                ],
+                "properties": {
+                  "name": "AKADEMIK-3"
+                }
+              },
+              {
+                "id": 752,
+                "labels": [
+                  "Server"
+                ],
+                "properties": {
+                  "name": "INTEGRA"
+                }
+              },
+              {
+                "id": 753,
+                "labels": [
+                  "Server"
+                ],
+                "properties": {
+                  "name": "REPORTING_AKADEMIK"
+                }
+              },
+              {
+                "id": 754,
+                "labels": [
+                  "Server"
+                ],
+                "properties": {
+                  "name": "SILACAK"
+                }
+              },
+              {
+                "id": 755,
+                "labels": [
+                  "Server"
+                ],
+                "properties": {
+                  "name": "SIMPEG"
+                }
+              },
+              {
+                "id": 756,
+                "labels": [
+                  "Server"
+                ],
+                "properties": {
+                  "name": "SIMPEL"
+                }
+              },
+              {
+                "id": 757,
+                "labels": [
+                  "Server"
+                ],
+                "properties": {
+                  "name": "SIPMABA"
+                }
+              },
+              {
+                "id": 758,
+                "labels": [
+                  "Server"
+                ],
+                "properties": {
+                  "name": "SKEM"
+                }
+              },
+              {
+                "id": 759,
+                "labels": [
+                  "Server"
+                ],
+                "properties": {
+                  "name": "SPMI"
+                }
+              },
+              {
+                "id": 760,
+                "labels": [
+                  "Server"
+                ],
+                "properties": {
+                  "name": "TRACER"
+                }
+              },
+              {
+                "id": 761,
+                "labels": [
+                  "Server"
+                ],
+                "properties": {
+                  "name": "WINDOWS-1K4UUD7"
+                }
+              },
+              {
+                "id": 762,
+                "labels": [
+                  "Database"
+                ],
+                "properties": {
+                  "name": "resits",
+                  "surname": "WINDOWS-1K4UUD7.resits",
+                  "server": "WINDOWS-1K4UUD7"
+                }
+              },
+              {
+                "id": 780,
+                "labels": [
+                  "Schema"
+                ],
+                "properties": {
+                  "name": "dbo",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits"
+                }
+              },
+              {
+                "id": 781,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "mapping_temp_dosen",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.mapping_temp_dosen",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "best_term books conferences email gelar_akademik_belakang gelar_akademik_depan id id_node journals kode_fakultas kode_jurusan kode_pegawai kualifikasi_ahli nama_dosen nama_fakultas_en nama_jurusan_en nip paten research skor_spmi thesis "
+                }
+              },
+              {
+                "id": 782,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "jumlah_scopus",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.jumlah_scopus",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "id_jum jumlah Jurnal_scopus kode nama nip Seminar_scopus ",
+                  "PK": "PK__jumlah_s__D3676124B10E406D"
+                }
+              },
+              {
+                "id": 783,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_json_node",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tran_json_node",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "id_node kode_pegawai "
+                }
+              },
+              {
+                "id": 784,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_bobot_dosen_peneliti",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tran_bobot_dosen_peneliti",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "bobot_peneliti bobot_topik final kode_pegawai1 kode_pegawai2 "
+                }
+              },
+              {
+                "id": 785,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_bobot_kata_dokumen",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tran_bobot_kata_dokumen",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "kata kode_pegawai tf tf_idf_norm tf_norm "
+                }
+              },
+              {
+                "id": 786,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_bobot_vektor",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tran_bobot_vektor",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "kata kode_fakultas kode_jurusan kode_pegawai tf_idf_norm "
+                }
+              },
+              {
+                "id": 787,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tran_publikasi_dosen_jurnal",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.tran_publikasi_dosen_jurnal",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "abstraksi bulan created_at deleted_at flag judul kata_kunci keterangan kode_kegiatan_publikasi kode_media_publikasi kode_pegawai kode_publikasi pengarang tahun updated_at url ",
+                  "PK": "PK__tran_pub__13"
+                }
+              },
+              {
+                "id": 788,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "log_update",
+                  "surname": "WINDOWS-1K4UUD7.resits.dbo.log_update",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "dbo",
+                  "column": "action last_update phase rows step tabel "
+                }
+              },
+              {
+                "id": 789,
+                "labels": [
+                  "Schema"
+                ],
+                "properties": {
+                  "name": "deleted",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits"
+                }
+              },
+              {
+                "id": 790,
+                "labels": [
+                  "Table"
+                ],
+                "properties": {
+                  "name": "tmst_mapping",
+                  "surname": "WINDOWS-1K4UUD7.resits.deleted.tmst_mapping",
+                  "server": "WINDOWS-1K4UUD7",
+                  "database": "resits",
+                  "schema": "deleted",
+                  "column": "dosen_id fakultas_id jurusan_id nama_fakultas nama_fakultas_inggris nama_jurusan nama_jurusan_inggris prodi_id "
+                }
+              }
+            ],
+            "relationships": [
+              {
+                "id": 1351,
+                "type": "Tbl",
+                "startNode": 499,
+                "endNode": 559,
+                "properties": {
+                  "node_from": "pre",
+                  "node_to": "tran_publikasi"
+                }
+              },
+              {
+                "id": 1348,
+                "type": "Tbl",
+                "startNode": 499,
+                "endNode": 556,
+                "properties": {
+                  "node_from": "pre",
+                  "node_to": "tmst_publikasi"
+                }
+              },
+              {
+                "id": 1344,
+                "type": "Tbl",
+                "startNode": 499,
+                "endNode": 535,
+                "properties": {
+                  "node_from": "pre",
+                  "node_to": "old.mapping_temp_dosen"
+                }
+              },
+              {
+                "id": 1307,
+                "type": "Tbl",
+                "startNode": 499,
+                "endNode": 514,
+                "properties": {
+                  "node_from": "pre",
+                  "node_to": "old.tmst_pegawai"
+                }
+              },
+              {
+                "id": 1291,
+                "type": "Tbl",
+                "startNode": 499,
+                "endNode": 512,
+                "properties": {
+                  "node_from": "pre",
+                  "node_to": "old.tran_anggota_penelitian_dosen"
+                }
+              },
+              {
+                "id": 1290,
+                "type": "Tbl",
+                "startNode": 499,
+                "endNode": 511,
+                "properties": {
+                  "node_from": "pre",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 1272,
+                "type": "Tbl",
+                "startNode": 499,
+                "endNode": 501,
+                "properties": {
+                  "node_from": "pre",
+                  "node_to": "old.tran_bobot_kata_indeks"
+                }
+              },
+              {
+                "id": 1270,
+                "type": "Tbl",
+                "startNode": 499,
+                "endNode": 500,
+                "properties": {
+                  "node_from": "pre",
+                  "node_to": "mapping_publikasi"
+                }
+              },
+              {
+                "id": 4180,
+                "type": "Use",
+                "startNode": 569,
+                "endNode": 498,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "Yes",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "Yes",
+                  "node_from": "insert_ppm_penelitian",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 4182,
+                "type": "Use",
+                "startNode": 570,
+                "endNode": 782,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "generate_jumlah_scopus",
+                  "node_to": "jumlah_scopus"
+                }
+              },
+              {
+                "id": 4181,
+                "type": "Use",
+                "startNode": 570,
+                "endNode": 555,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "generate_jumlah_scopus",
+                  "node_to": "tmst_pegawai"
+                }
+              },
+              {
+                "id": 4183,
+                "type": "Use",
+                "startNode": 571,
+                "endNode": 563,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "Yes",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "fakultas_insert_simpel",
+                  "node_to": "tmst_fakultas_baru"
+                }
+              },
+              {
+                "id": 4187,
+                "type": "Use",
+                "startNode": 572,
+                "endNode": 563,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "Yes",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "fakultas_insert_silacak",
+                  "node_to": "tmst_fakultas_baru"
+                }
+              },
+              {
+                "id": 4188,
+                "type": "Use",
+                "startNode": 573,
+                "endNode": 498,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "Yes",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "Yes",
+                  "node_from": "insert_publikasi_itsdw_jurnal",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 4190,
+                "type": "Use",
+                "startNode": 575,
+                "endNode": 521,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "Yes",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "mapping_dosen_recent",
+                  "node_to": "mapping_dosen"
+                }
+              },
+              {
+                "id": 4189,
+                "type": "Use",
+                "startNode": 575,
+                "endNode": 555,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "Yes",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "mapping_dosen_recent",
+                  "node_to": "tmst_pegawai"
+                }
+              },
+              {
+                "id": 4191,
+                "type": "Use",
+                "startNode": 576,
+                "endNode": 498,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "Yes",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "Yes",
+                  "node_from": "insert_publikasi_itsdw_buku",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 4192,
+                "type": "Use",
+                "startNode": 577,
+                "endNode": 564,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "Yes",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "insert_jurusan_itsdw",
+                  "node_to": "tmst_jurusan_baru"
+                }
+              },
+              {
+                "id": 4193,
+                "type": "Use",
+                "startNode": 579,
+                "endNode": 564,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "Yes",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "jurusan_insert_simpel",
+                  "node_to": "tmst_jurusan_baru"
+                }
+              },
+              {
+                "id": 1440,
+                "type": "Use",
+                "startNode": 581,
+                "endNode": 498,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "Yes",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "Yes",
+                  "node_from": "insert_publikasi_itsdw_jurnal_gs",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 1441,
+                "type": "Use",
+                "startNode": 582,
+                "endNode": 498,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "Yes",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "Yes",
+                  "node_from": "insert_publikasi_itsdw_seminar_gs",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 1442,
+                "type": "Use",
+                "startNode": 583,
+                "endNode": 521,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "Yes",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "mapping_penelitian_dosen_recent",
+                  "node_to": "mapping_dosen"
+                }
+              },
+              {
+                "id": 1443,
+                "type": "Use",
+                "startNode": 585,
+                "endNode": 498,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "mapping_publikasi_itsdw_recent",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 1444,
+                "type": "Use",
+                "startNode": 586,
+                "endNode": 498,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "Yes",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "Yes",
+                  "node_from": "insert_publikasi_itsdw_seminar",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 1467,
+                "type": "Use",
+                "startNode": 587,
+                "endNode": 498,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "mapping_publikasi_simpel_recent",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 1468,
+                "type": "Use",
+                "startNode": 588,
+                "endNode": 555,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "Yes",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "insert_pegawai_dosen",
+                  "node_to": "tmst_pegawai"
+                }
+              },
+              {
+                "id": 1469,
+                "type": "Use",
+                "startNode": 589,
+                "endNode": 498,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "mapping_publikasi_silacak_recent",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 1470,
+                "type": "Use",
+                "startNode": 591,
+                "endNode": 498,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "Yes",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "Yes",
+                  "node_from": "insert_publikasi_itsdw_paten",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 1473,
+                "type": "Use",
+                "startNode": 592,
+                "endNode": 497,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "Yes",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "mapping_fakultas_jurusan_recent",
+                  "node_to": "mapping_fakultas_jurusan"
+                }
+              },
+              {
+                "id": 1472,
+                "type": "Use",
+                "startNode": 592,
+                "endNode": 564,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "Yes",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "mapping_fakultas_jurusan_recent",
+                  "node_to": "tmst_jurusan_baru"
+                }
+              },
+              {
+                "id": 1471,
+                "type": "Use",
+                "startNode": 592,
+                "endNode": 563,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "Yes",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "mapping_fakultas_jurusan_recent",
+                  "node_to": "tmst_fakultas_baru"
+                }
+              },
+              {
+                "id": 1474,
+                "type": "Use",
+                "startNode": 593,
+                "endNode": 498,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "Yes",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "Yes",
+                  "node_from": "insert_publikasi_itsdw_jurnal_scopus",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 4175,
+                "type": "Use",
+                "startNode": 594,
+                "endNode": 498,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "Yes",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "Yes",
+                  "node_from": "insert_publikasi_itsdw_penelitian",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 4176,
+                "type": "Use",
+                "startNode": 595,
+                "endNode": 498,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "Yes",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "Yes",
+                  "node_from": "insert_publikasi_itsdw_seminar_scopus",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 4177,
+                "type": "Use",
+                "startNode": 597,
+                "endNode": 555,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "Yes",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "insert_ppm_pegawai_dosen",
+                  "node_to": "tmst_pegawai"
+                }
+              },
+              {
+                "id": 4178,
+                "type": "Use",
+                "startNode": 598,
+                "endNode": 498,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "Yes",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "publikasi_insert_recent",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 4179,
+                "type": "Use",
+                "startNode": 599,
+                "endNode": 498,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "Yes",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "insert_ppm_buku",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 4195,
+                "type": "Use",
+                "startNode": 600,
+                "endNode": 521,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "Yes",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "mapping_penelitian_dosen_recent_new",
+                  "node_to": "mapping_dosen"
+                }
+              },
+              {
+                "id": 4194,
+                "type": "Use",
+                "startNode": 600,
+                "endNode": 558,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "mapping_penelitian_dosen_recent_new",
+                  "node_to": "tran_anggota_penelitian_dosen"
+                }
+              },
+              {
+                "id": 4196,
+                "type": "Use",
+                "startNode": 602,
+                "endNode": 498,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "Yes",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "publikasi_insert_recent_silacak",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 4197,
+                "type": "Use",
+                "startNode": 603,
+                "endNode": 530,
+                "properties": {
+                  "From": "No",
+                  "Insert": "Yes",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "sp_upgraddiagrams",
+                  "node_to": "sysdiagrams"
+                }
+              },
+              {
+                "id": 4199,
+                "type": "Use",
+                "startNode": 605,
+                "endNode": 534,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "Yes",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "mapping_dosen_tags_recent",
+                  "node_to": "mapping_dosen_tags"
+                }
+              },
+              {
+                "id": 4198,
+                "type": "Use",
+                "startNode": 605,
+                "endNode": 561,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "mapping_dosen_tags_recent",
+                  "node_to": "tmst_tags"
+                }
+              },
+              {
+                "id": 4200,
+                "type": "Use",
+                "startNode": 606,
+                "endNode": 530,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "sp_helpdiagrams",
+                  "node_to": "sysdiagrams"
+                }
+              },
+              {
+                "id": 4201,
+                "type": "Use",
+                "startNode": 607,
+                "endNode": 530,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "sp_helpdiagramdefinition",
+                  "node_to": "sysdiagrams"
+                }
+              },
+              {
+                "id": 4202,
+                "type": "Use",
+                "startNode": 608,
+                "endNode": 509,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "Yes",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "publikasi_insert_itsdw",
+                  "node_to": "tmst_publikasi"
+                }
+              },
+              {
+                "id": 4203,
+                "type": "Use",
+                "startNode": 609,
+                "endNode": 530,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "Yes",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "sp_creatediagram",
+                  "node_to": "sysdiagrams"
+                }
+              },
+              {
+                "id": 4221,
+                "type": "Execute",
+                "startNode": 610,
+                "endNode": 575,
+                "properties": {
+                  "node_from": "master_run",
+                  "node_to": "mapping_dosen_recent"
+                }
+              },
+              {
+                "id": 4220,
+                "type": "Execute",
+                "startNode": 610,
+                "endNode": 683,
+                "properties": {
+                  "node_from": "master_run",
+                  "node_to": "update_laboratorium_fakjur_itsdw"
+                }
+              },
+              {
+                "id": 4219,
+                "type": "Execute",
+                "startNode": 610,
+                "endNode": 656,
+                "properties": {
+                  "node_from": "master_run",
+                  "node_to": "generate_mapping_publikasi_dosen"
+                }
+              },
+              {
+                "id": 4218,
+                "type": "Execute",
+                "startNode": 610,
+                "endNode": 634,
+                "properties": {
+                  "node_from": "master_run",
+                  "node_to": "generate_mapping_temp_dosen"
+                }
+              },
+              {
+                "id": 4217,
+                "type": "Execute",
+                "startNode": 610,
+                "endNode": 650,
+                "properties": {
+                  "node_from": "master_run",
+                  "node_to": "tran_temp_publikasi_recent"
+                }
+              },
+              {
+                "id": 4216,
+                "type": "Execute",
+                "startNode": 610,
+                "endNode": 680,
+                "properties": {
+                  "node_from": "master_run",
+                  "node_to": "distinct_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 4215,
+                "type": "Execute",
+                "startNode": 610,
+                "endNode": 595,
+                "properties": {
+                  "node_from": "master_run",
+                  "node_to": "insert_publikasi_itsdw_seminar_scopus"
+                }
+              },
+              {
+                "id": 4214,
+                "type": "Execute",
+                "startNode": 610,
+                "endNode": 582,
+                "properties": {
+                  "node_from": "master_run",
+                  "node_to": "insert_publikasi_itsdw_seminar_gs"
+                }
+              },
+              {
+                "id": 4213,
+                "type": "Execute",
+                "startNode": 610,
+                "endNode": 684,
+                "properties": {
+                  "node_from": "master_run",
+                  "node_to": "insert_ppm_pengabdian_masyarakat"
+                }
+              },
+              {
+                "id": 4212,
+                "type": "Execute",
+                "startNode": 610,
+                "endNode": 591,
+                "properties": {
+                  "node_from": "master_run",
+                  "node_to": "insert_publikasi_itsdw_paten"
+                }
+              },
+              {
+                "id": 4211,
+                "type": "Execute",
+                "startNode": 610,
+                "endNode": 593,
+                "properties": {
+                  "node_from": "master_run",
+                  "node_to": "insert_publikasi_itsdw_jurnal_scopus"
+                }
+              },
+              {
+                "id": 4210,
+                "type": "Execute",
+                "startNode": 610,
+                "endNode": 581,
+                "properties": {
+                  "node_from": "master_run",
+                  "node_to": "insert_publikasi_itsdw_jurnal_gs"
+                }
+              },
+              {
+                "id": 4209,
+                "type": "Execute",
+                "startNode": 610,
+                "endNode": 569,
+                "properties": {
+                  "node_from": "master_run",
+                  "node_to": "insert_ppm_penelitian"
+                }
+              },
+              {
+                "id": 4208,
+                "type": "Execute",
+                "startNode": 610,
+                "endNode": 599,
+                "properties": {
+                  "node_from": "master_run",
+                  "node_to": "insert_ppm_buku"
+                }
+              },
+              {
+                "id": 4207,
+                "type": "Execute",
+                "startNode": 610,
+                "endNode": 657,
+                "properties": {
+                  "node_from": "master_run",
+                  "node_to": "insert_laboratorium_ppm"
+                }
+              },
+              {
+                "id": 4206,
+                "type": "Execute",
+                "startNode": 610,
+                "endNode": 597,
+                "properties": {
+                  "node_from": "master_run",
+                  "node_to": "insert_ppm_pegawai_dosen"
+                }
+              },
+              {
+                "id": 4205,
+                "type": "Execute",
+                "startNode": 610,
+                "endNode": 577,
+                "properties": {
+                  "node_from": "master_run",
+                  "node_to": "insert_jurusan_itsdw"
+                }
+              },
+              {
+                "id": 4204,
+                "type": "Execute",
+                "startNode": 610,
+                "endNode": 658,
+                "properties": {
+                  "node_from": "master_run",
+                  "node_to": "insert_fakultas_itsdw"
+                }
+              },
+              {
+                "id": 4222,
+                "type": "Use",
+                "startNode": 611,
+                "endNode": 530,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "Yes",
+                  "node_from": "sp_renamediagram",
+                  "node_to": "sysdiagrams"
+                }
+              },
+              {
+                "id": 4223,
+                "type": "Use",
+                "startNode": 612,
+                "endNode": 498,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "Yes",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "publikasi_insert_recent_simpel",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 4224,
+                "type": "Use",
+                "startNode": 613,
+                "endNode": 530,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "Yes",
+                  "node_from": "sp_alterdiagram",
+                  "node_to": "sysdiagrams"
+                }
+              },
+              {
+                "id": 4225,
+                "type": "Use",
+                "startNode": 614,
+                "endNode": 530,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "sp_dropdiagram",
+                  "node_to": "sysdiagrams"
+                }
+              },
+              {
+                "id": 4226,
+                "type": "Use",
+                "startNode": 632,
+                "endNode": 498,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "Yes",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "publikasi_insert_recent_resits",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 4232,
+                "type": "Use",
+                "startNode": 634,
+                "endNode": 781,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "generate_mapping_temp_dosen",
+                  "node_to": "mapping_temp_dosen"
+                }
+              },
+              {
+                "id": 4231,
+                "type": "Use",
+                "startNode": 634,
+                "endNode": 563,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "Yes",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "generate_mapping_temp_dosen",
+                  "node_to": "tmst_fakultas_baru"
+                }
+              },
+              {
+                "id": 4230,
+                "type": "Use",
+                "startNode": 634,
+                "endNode": 564,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "Yes",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "generate_mapping_temp_dosen",
+                  "node_to": "tmst_jurusan_baru"
+                }
+              },
+              {
+                "id": 4229,
+                "type": "Use",
+                "startNode": 634,
+                "endNode": 555,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "generate_mapping_temp_dosen",
+                  "node_to": "tmst_pegawai"
+                }
+              },
+              {
+                "id": 4228,
+                "type": "Use",
+                "startNode": 634,
+                "endNode": 531,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "generate_mapping_temp_dosen",
+                  "node_to": "mapping_publikasi_dosen"
+                }
+              },
+              {
+                "id": 4227,
+                "type": "Use",
+                "startNode": 634,
+                "endNode": 498,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "generate_mapping_temp_dosen",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 4234,
+                "type": "Use",
+                "startNode": 635,
+                "endNode": 560,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "Yes",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "mapping_publikasi_itsdw_recent",
+                  "node_to": "mapping_publikasi_itsdw_baru"
+                }
+              },
+              {
+                "id": 4233,
+                "type": "Use",
+                "startNode": 635,
+                "endNode": 509,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "mapping_publikasi_itsdw_recent",
+                  "node_to": "tmst_publikasi"
+                }
+              },
+              {
+                "id": 4240,
+                "type": "Use",
+                "startNode": 650,
+                "endNode": 518,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "tran_temp_publikasi_recent",
+                  "node_to": "tran_temp_publikasi_mapping"
+                }
+              },
+              {
+                "id": 4239,
+                "type": "Use",
+                "startNode": 650,
+                "endNode": 515,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "tran_temp_publikasi_recent",
+                  "node_to": "tran_temp_publikasi_distinct"
+                }
+              },
+              {
+                "id": 4238,
+                "type": "Use",
+                "startNode": 650,
+                "endNode": 529,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "Yes",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "tran_temp_publikasi_recent",
+                  "node_to": "tran_temp_publikasi"
+                }
+              },
+              {
+                "id": 4237,
+                "type": "Use",
+                "startNode": 650,
+                "endNode": 564,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "Yes",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "tran_temp_publikasi_recent",
+                  "node_to": "tmst_jurusan_baru"
+                }
+              },
+              {
+                "id": 4236,
+                "type": "Use",
+                "startNode": 650,
+                "endNode": 555,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "Yes",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "tran_temp_publikasi_recent",
+                  "node_to": "tmst_pegawai"
+                }
+              },
+              {
+                "id": 4235,
+                "type": "Use",
+                "startNode": 650,
+                "endNode": 498,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "No",
+                  "Join": "Yes",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "tran_temp_publikasi_recent",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 4243,
+                "type": "Use",
+                "startNode": 656,
+                "endNode": 531,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "generate_mapping_publikasi_dosen",
+                  "node_to": "mapping_publikasi_dosen"
+                }
+              },
+              {
+                "id": 4242,
+                "type": "Use",
+                "startNode": 656,
+                "endNode": 498,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "Yes",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "generate_mapping_publikasi_dosen",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 4241,
+                "type": "Use",
+                "startNode": 656,
+                "endNode": 555,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "generate_mapping_publikasi_dosen",
+                  "node_to": "tmst_pegawai"
+                }
+              },
+              {
+                "id": 4244,
+                "type": "Use",
+                "startNode": 657,
+                "endNode": 565,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "Yes",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "insert_laboratorium_ppm",
+                  "node_to": "tmst_laboratorium_baru"
+                }
+              },
+              {
+                "id": 4245,
+                "type": "Use",
+                "startNode": 658,
+                "endNode": 563,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "Yes",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "insert_fakultas_itsdw",
+                  "node_to": "tmst_fakultas_baru"
+                }
+              },
+              {
+                "id": 4246,
+                "type": "Use",
+                "startNode": 679,
+                "endNode": 520,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "Yes",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "mapping_dosen_laboratorium_recent",
+                  "node_to": "mapping_dosen_laboratorium"
+                }
+              },
+              {
+                "id": 4250,
+                "type": "Use",
+                "startNode": 680,
+                "endNode": 567,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "distinct_publikasi_dosen_tetap",
+                  "node_to": "tran_afiliasi"
+                }
+              },
+              {
+                "id": 4249,
+                "type": "Use",
+                "startNode": 680,
+                "endNode": 562,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "distinct_publikasi_dosen_tetap",
+                  "node_to": "tran_publikasi_dosen_tetap_mapping"
+                }
+              },
+              {
+                "id": 4248,
+                "type": "Use",
+                "startNode": 680,
+                "endNode": 566,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "distinct_publikasi_dosen_tetap",
+                  "node_to": "tran_publikasi_dosen_tetap_distinct"
+                }
+              },
+              {
+                "id": 4247,
+                "type": "Use",
+                "startNode": 680,
+                "endNode": 498,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "Yes",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "distinct_publikasi_dosen_tetap",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 4252,
+                "type": "Use",
+                "startNode": 681,
+                "endNode": 520,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "Yes",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "mapping_dosen_laboratorium_recent",
+                  "node_to": "mapping_dosen_laboratorium"
+                }
+              },
+              {
+                "id": 4251,
+                "type": "Use",
+                "startNode": 681,
+                "endNode": 555,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "mapping_dosen_laboratorium_recent",
+                  "node_to": "tmst_pegawai"
+                }
+              },
+              {
+                "id": 4254,
+                "type": "Use",
+                "startNode": 682,
+                "endNode": 568,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "Yes",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "mapping_laboratorium_recent",
+                  "node_to": "mapping_laboratorium"
+                }
+              },
+              {
+                "id": 4253,
+                "type": "Use",
+                "startNode": 682,
+                "endNode": 565,
+                "properties": {
+                  "From": "Yes",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "mapping_laboratorium_recent",
+                  "node_to": "tmst_laboratorium_baru"
+                }
+              },
+              {
+                "id": 4256,
+                "type": "Use",
+                "startNode": 683,
+                "endNode": 781,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "Yes",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "update_laboratorium_fakjur_itsdw",
+                  "node_to": "mapping_temp_dosen"
+                }
+              },
+              {
+                "id": 4255,
+                "type": "Use",
+                "startNode": 683,
+                "endNode": 520,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "Yes",
+                  "Merge": "No",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "update_laboratorium_fakjur_itsdw",
+                  "node_to": "mapping_dosen_laboratorium"
+                }
+              },
+              {
+                "id": 4257,
+                "type": "Use",
+                "startNode": 684,
+                "endNode": 523,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "Yes",
+                  "Truncate": "No",
+                  "Update": "No",
+                  "node_from": "insert_ppm_pengabdian_masyarakat",
+                  "node_to": "tran_ppm_dosen"
+                }
+              },
+              {
+                "id": 4272,
+                "type": "Use",
+                "startNode": 685,
+                "endNode": 498,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "danger.truncate_all_tables",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 4271,
+                "type": "Use",
+                "startNode": 685,
+                "endNode": 529,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "danger.truncate_all_tables",
+                  "node_to": "tran_temp_publikasi"
+                }
+              },
+              {
+                "id": 4270,
+                "type": "Use",
+                "startNode": 685,
+                "endNode": 523,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "danger.truncate_all_tables",
+                  "node_to": "tran_ppm_dosen"
+                }
+              },
+              {
+                "id": 4269,
+                "type": "Use",
+                "startNode": 685,
+                "endNode": 555,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "danger.truncate_all_tables",
+                  "node_to": "tmst_pegawai"
+                }
+              },
+              {
+                "id": 4268,
+                "type": "Use",
+                "startNode": 685,
+                "endNode": 565,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "danger.truncate_all_tables",
+                  "node_to": "tmst_laboratorium_baru"
+                }
+              },
+              {
+                "id": 4267,
+                "type": "Use",
+                "startNode": 685,
+                "endNode": 564,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "danger.truncate_all_tables",
+                  "node_to": "tmst_jurusan_baru"
+                }
+              },
+              {
+                "id": 4266,
+                "type": "Use",
+                "startNode": 685,
+                "endNode": 563,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "danger.truncate_all_tables",
+                  "node_to": "tmst_fakultas_baru"
+                }
+              },
+              {
+                "id": 4265,
+                "type": "Use",
+                "startNode": 685,
+                "endNode": 781,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "danger.truncate_all_tables",
+                  "node_to": "mapping_temp_dosen"
+                }
+              },
+              {
+                "id": 4264,
+                "type": "Use",
+                "startNode": 685,
+                "endNode": 560,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "danger.truncate_all_tables",
+                  "node_to": "mapping_publikasi_itsdw_baru"
+                }
+              },
+              {
+                "id": 4263,
+                "type": "Use",
+                "startNode": 685,
+                "endNode": 531,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "danger.truncate_all_tables",
+                  "node_to": "mapping_publikasi_dosen"
+                }
+              },
+              {
+                "id": 4262,
+                "type": "Use",
+                "startNode": 685,
+                "endNode": 568,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "danger.truncate_all_tables",
+                  "node_to": "mapping_laboratorium"
+                }
+              },
+              {
+                "id": 4261,
+                "type": "Use",
+                "startNode": 685,
+                "endNode": 497,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "danger.truncate_all_tables",
+                  "node_to": "mapping_fakultas_jurusan"
+                }
+              },
+              {
+                "id": 4260,
+                "type": "Use",
+                "startNode": 685,
+                "endNode": 534,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "danger.truncate_all_tables",
+                  "node_to": "mapping_dosen_tags"
+                }
+              },
+              {
+                "id": 4259,
+                "type": "Use",
+                "startNode": 685,
+                "endNode": 520,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "danger.truncate_all_tables",
+                  "node_to": "mapping_dosen_laboratorium"
+                }
+              },
+              {
+                "id": 4258,
+                "type": "Use",
+                "startNode": 685,
+                "endNode": 521,
+                "properties": {
+                  "From": "No",
+                  "Insert": "No",
+                  "Join": "No",
+                  "Merge": "No",
+                  "Truncate": "Yes",
+                  "Update": "No",
+                  "node_from": "danger.truncate_all_tables",
+                  "node_to": "mapping_dosen"
+                }
+              },
+              {
+                "id": 4293,
+                "type": "Db",
+                "startNode": 761,
+                "endNode": 762,
+                "properties": {
+                  "node_from": "WINDOWS-1K4UUD7",
+                  "node_to": "resits"
+                }
+              },
+              {
+                "id": 1271,
+                "type": "Sch",
+                "startNode": 762,
+                "endNode": 499,
+                "properties": {
+                  "node_from": "resits",
+                  "node_to": "pre"
+                }
+              },
+              {
+                "id": 4302,
+                "type": "Sch",
+                "startNode": 762,
+                "endNode": 789,
+                "properties": {
+                  "node_from": "resits",
+                  "node_to": "deleted"
+                }
+              },
+              {
+                "id": 4292,
+                "type": "Sch",
+                "startNode": 762,
+                "endNode": 780,
+                "properties": {
+                  "node_from": "resits",
+                  "node_to": "dbo"
+                }
+              },
+              {
+                "id": 4291,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 781,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "mapping_temp_dosen"
+                }
+              },
+              {
+                "id": 4294,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 782,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "jumlah_scopus"
+                }
+              },
+              {
+                "id": 4295,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 783,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tran_json_node"
+                }
+              },
+              {
+                "id": 4296,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 784,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tran_bobot_dosen_peneliti"
+                }
+              },
+              {
+                "id": 4297,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 785,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tran_bobot_kata_dokumen"
+                }
+              },
+              {
+                "id": 4298,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 786,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tran_bobot_vektor"
+                }
+              },
+              {
+                "id": 4299,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 787,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tran_publikasi_dosen_jurnal"
+                }
+              },
+              {
+                "id": 4300,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 788,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "log_update"
+                }
+              },
+              {
+                "id": 1268,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 497,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "mapping_fakultas_jurusan"
+                }
+              },
+              {
+                "id": 1269,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 498,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tran_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 1273,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 502,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tran_bobot_stopwords"
+                }
+              },
+              {
+                "id": 1277,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 506,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tref_user_admin"
+                }
+              },
+              {
+                "id": 1287,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 508,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "master_flag"
+                }
+              },
+              {
+                "id": 1288,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 509,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tmst_publikasi"
+                }
+              },
+              {
+                "id": 1292,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 513,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tran_bobot_kata_indeks"
+                }
+              },
+              {
+                "id": 1308,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 515,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tran_temp_publikasi_distinct"
+                }
+              },
+              {
+                "id": 1327,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 518,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tran_temp_publikasi_mapping"
+                }
+              },
+              {
+                "id": 1329,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 520,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "mapping_dosen_laboratorium"
+                }
+              },
+              {
+                "id": 1330,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 521,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "mapping_dosen"
+                }
+              },
+              {
+                "id": 1331,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 522,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tran_bidang_ahli"
+                }
+              },
+              {
+                "id": 1332,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 523,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tran_ppm_dosen"
+                }
+              },
+              {
+                "id": 1334,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 525,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tref_media_publikasi"
+                }
+              },
+              {
+                "id": 1336,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 527,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tran_anggota_laboratorium"
+                }
+              },
+              {
+                "id": 1337,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 528,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tref_bidang_ahli"
+                }
+              },
+              {
+                "id": 1338,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 529,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tran_temp_publikasi"
+                }
+              },
+              {
+                "id": 1339,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 530,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "sysdiagrams"
+                }
+              },
+              {
+                "id": 1340,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 531,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "mapping_publikasi_dosen"
+                }
+              },
+              {
+                "id": 1343,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 534,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "mapping_dosen_tags"
+                }
+              },
+              {
+                "id": 1346,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 537,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tran_material_link"
+                }
+              },
+              {
+                "id": 1347,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 555,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tmst_pegawai"
+                }
+              },
+              {
+                "id": 1349,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 557,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tref_profil_dosen_hidden"
+                }
+              },
+              {
+                "id": 1350,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 558,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tran_anggota_penelitian_dosen"
+                }
+              },
+              {
+                "id": 1352,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 560,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "mapping_publikasi_itsdw_baru"
+                }
+              },
+              {
+                "id": 1353,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 561,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tmst_tags"
+                }
+              },
+              {
+                "id": 1354,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 562,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tran_publikasi_dosen_tetap_mapping"
+                }
+              },
+              {
+                "id": 1355,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 563,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tmst_fakultas_baru"
+                }
+              },
+              {
+                "id": 1356,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 564,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tmst_jurusan_baru"
+                }
+              },
+              {
+                "id": 1357,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 565,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tmst_laboratorium_baru"
+                }
+              },
+              {
+                "id": 1358,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 566,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tran_publikasi_dosen_tetap_distinct"
+                }
+              },
+              {
+                "id": 1359,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 567,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tran_afiliasi"
+                }
+              },
+              {
+                "id": 1360,
+                "type": "Tbl",
+                "startNode": 780,
+                "endNode": 568,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "mapping_laboratorium"
+                }
+              },
+              {
+                "id": 1434,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 685,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "danger.truncate_all_tables"
+                }
+              },
+              {
+                "id": 1433,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 684,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "insert_ppm_pengabdian_masyarakat"
+                }
+              },
+              {
+                "id": 1432,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 683,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "update_laboratorium_fakjur_itsdw"
+                }
+              },
+              {
+                "id": 1431,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 682,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "mapping_laboratorium_recent"
+                }
+              },
+              {
+                "id": 1430,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 681,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "mapping_dosen_laboratorium_recent"
+                }
+              },
+              {
+                "id": 1429,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 680,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "distinct_publikasi_dosen_tetap"
+                }
+              },
+              {
+                "id": 1427,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 658,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "insert_fakultas_itsdw"
+                }
+              },
+              {
+                "id": 1426,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 657,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "insert_laboratorium_ppm"
+                }
+              },
+              {
+                "id": 1425,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 656,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "generate_mapping_publikasi_dosen"
+                }
+              },
+              {
+                "id": 1424,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 650,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "tran_temp_publikasi_recent"
+                }
+              },
+              {
+                "id": 1423,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 635,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "mapping_publikasi_itsdw_recent"
+                }
+              },
+              {
+                "id": 1422,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 634,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "generate_mapping_temp_dosen"
+                }
+              },
+              {
+                "id": 1419,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 614,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "sp_dropdiagram"
+                }
+              },
+              {
+                "id": 1418,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 613,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "sp_alterdiagram"
+                }
+              },
+              {
+                "id": 1416,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 611,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "sp_renamediagram"
+                }
+              },
+              {
+                "id": 1415,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 610,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "master_run"
+                }
+              },
+              {
+                "id": 1414,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 609,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "sp_creatediagram"
+                }
+              },
+              {
+                "id": 1412,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 607,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "sp_helpdiagramdefinition"
+                }
+              },
+              {
+                "id": 1411,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 606,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "sp_helpdiagrams"
+                }
+              },
+              {
+                "id": 1410,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 605,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "mapping_dosen_tags_recent"
+                }
+              },
+              {
+                "id": 1408,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 603,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "sp_upgraddiagrams"
+                }
+              },
+              {
+                "id": 1406,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 601,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "insert_tags_simpeg"
+                }
+              },
+              {
+                "id": 1404,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 599,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "insert_ppm_buku"
+                }
+              },
+              {
+                "id": 1402,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 597,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "insert_ppm_pegawai_dosen"
+                }
+              },
+              {
+                "id": 1401,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 596,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "insert_publikasi_itsdw_buku_old"
+                }
+              },
+              {
+                "id": 1400,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 595,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "insert_publikasi_itsdw_seminar_scopus"
+                }
+              },
+              {
+                "id": 1399,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 594,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "insert_publikasi_itsdw_penelitian"
+                }
+              },
+              {
+                "id": 1398,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 593,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "insert_publikasi_itsdw_jurnal_scopus"
+                }
+              },
+              {
+                "id": 1397,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 592,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "mapping_fakultas_jurusan_recent"
+                }
+              },
+              {
+                "id": 1396,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 591,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "insert_publikasi_itsdw_paten"
+                }
+              },
+              {
+                "id": 1393,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 588,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "insert_pegawai_dosen"
+                }
+              },
+              {
+                "id": 1391,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 586,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "insert_publikasi_itsdw_seminar"
+                }
+              },
+              {
+                "id": 1389,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 584,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "insert_laboratorium_simpel"
+                }
+              },
+              {
+                "id": 1387,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 582,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "insert_publikasi_itsdw_seminar_gs"
+                }
+              },
+              {
+                "id": 1361,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 569,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "insert_ppm_penelitian"
+                }
+              },
+              {
+                "id": 1362,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 570,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "generate_jumlah_scopus"
+                }
+              },
+              {
+                "id": 1365,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 573,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "insert_publikasi_itsdw_jurnal"
+                }
+              },
+              {
+                "id": 1367,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 575,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "mapping_dosen_recent"
+                }
+              },
+              {
+                "id": 1368,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 576,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "insert_publikasi_itsdw_buku"
+                }
+              },
+              {
+                "id": 1369,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 577,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "insert_jurusan_itsdw"
+                }
+              },
+              {
+                "id": 1372,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 580,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "mapping_publikasi_recent"
+                }
+              },
+              {
+                "id": 1373,
+                "type": "SP",
+                "startNode": 780,
+                "endNode": 581,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "insert_publikasi_itsdw_jurnal_gs"
+                }
+              },
+              {
+                "id": 1421,
+                "type": "Func",
+                "startNode": 780,
+                "endNode": 633,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "fn_diagramobjects"
+                }
+              },
+              {
+                "id": 1409,
+                "type": "Func",
+                "startNode": 780,
+                "endNode": 604,
+                "properties": {
+                  "node_from": "dbo",
+                  "node_to": "ProperCase"
+                }
+              },
+              {
+                "id": 1428,
+                "type": "SP",
+                "startNode": 789,
+                "endNode": 679,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "mapping_dosen_laboratorium_recent"
+                }
+              },
+              {
+                "id": 1420,
+                "type": "SP",
+                "startNode": 789,
+                "endNode": 632,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "publikasi_insert_recent_resits"
+                }
+              },
+              {
+                "id": 1417,
+                "type": "SP",
+                "startNode": 789,
+                "endNode": 612,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "publikasi_insert_recent_simpel"
+                }
+              },
+              {
+                "id": 1413,
+                "type": "SP",
+                "startNode": 789,
+                "endNode": 608,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "publikasi_insert_itsdw"
+                }
+              },
+              {
+                "id": 1407,
+                "type": "SP",
+                "startNode": 789,
+                "endNode": 602,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "publikasi_insert_recent_silacak"
+                }
+              },
+              {
+                "id": 1405,
+                "type": "SP",
+                "startNode": 789,
+                "endNode": 600,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "mapping_penelitian_dosen_recent_new"
+                }
+              },
+              {
+                "id": 1403,
+                "type": "SP",
+                "startNode": 789,
+                "endNode": 598,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "publikasi_insert_recent"
+                }
+              },
+              {
+                "id": 1395,
+                "type": "SP",
+                "startNode": 789,
+                "endNode": 590,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "pegawai_insert_tendik"
+                }
+              },
+              {
+                "id": 1394,
+                "type": "SP",
+                "startNode": 789,
+                "endNode": 589,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "mapping_publikasi_silacak_recent"
+                }
+              },
+              {
+                "id": 1392,
+                "type": "SP",
+                "startNode": 789,
+                "endNode": 587,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "mapping_publikasi_simpel_recent"
+                }
+              },
+              {
+                "id": 1390,
+                "type": "SP",
+                "startNode": 789,
+                "endNode": 585,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "mapping_publikasi_itsdw_recent"
+                }
+              },
+              {
+                "id": 1388,
+                "type": "SP",
+                "startNode": 789,
+                "endNode": 583,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "mapping_penelitian_dosen_recent"
+                }
+              },
+              {
+                "id": 1371,
+                "type": "SP",
+                "startNode": 789,
+                "endNode": 579,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "jurusan_insert_simpel"
+                }
+              },
+              {
+                "id": 1370,
+                "type": "SP",
+                "startNode": 789,
+                "endNode": 578,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "jurusan_insert_silacak"
+                }
+              },
+              {
+                "id": 1366,
+                "type": "SP",
+                "startNode": 789,
+                "endNode": 574,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "mapping_fakultas_jurusan_recent_old"
+                }
+              },
+              {
+                "id": 1364,
+                "type": "SP",
+                "startNode": 789,
+                "endNode": 572,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "fakultas_insert_silacak"
+                }
+              },
+              {
+                "id": 1363,
+                "type": "SP",
+                "startNode": 789,
+                "endNode": 571,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "fakultas_insert_simpel"
+                }
+              },
+              {
+                "id": 1345,
+                "type": "Tbl",
+                "startNode": 789,
+                "endNode": 536,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "tmst_bidang_pengajaran"
+                }
+              },
+              {
+                "id": 1342,
+                "type": "Tbl",
+                "startNode": 789,
+                "endNode": 533,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "tmst_bidang_penelitian"
+                }
+              },
+              {
+                "id": 1341,
+                "type": "Tbl",
+                "startNode": 789,
+                "endNode": 532,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "tran_kategori_publikasi_ilmiah"
+                }
+              },
+              {
+                "id": 1335,
+                "type": "Tbl",
+                "startNode": 789,
+                "endNode": 526,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "tmst_mahasiswa"
+                }
+              },
+              {
+                "id": 1333,
+                "type": "Tbl",
+                "startNode": 789,
+                "endNode": 524,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "tmst_laboratorium"
+                }
+              },
+              {
+                "id": 1328,
+                "type": "Tbl",
+                "startNode": 789,
+                "endNode": 519,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "tran_wisudawan"
+                }
+              },
+              {
+                "id": 1312,
+                "type": "Tbl",
+                "startNode": 789,
+                "endNode": 517,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "tran_skripsi"
+                }
+              },
+              {
+                "id": 1309,
+                "type": "Tbl",
+                "startNode": 789,
+                "endNode": 516,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "tmst_pegawai_baru"
+                }
+              },
+              {
+                "id": 1289,
+                "type": "Tbl",
+                "startNode": 789,
+                "endNode": 510,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "tmst_jurusan"
+                }
+              },
+              {
+                "id": 1278,
+                "type": "Tbl",
+                "startNode": 789,
+                "endNode": 507,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "mapping_publikasi_silacak"
+                }
+              },
+              {
+                "id": 1276,
+                "type": "Tbl",
+                "startNode": 789,
+                "endNode": 505,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "mapping_publikasi_simpel"
+                }
+              },
+              {
+                "id": 1275,
+                "type": "Tbl",
+                "startNode": 789,
+                "endNode": 504,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "mapping_publikasi_itsdw"
+                }
+              },
+              {
+                "id": 1274,
+                "type": "Tbl",
+                "startNode": 789,
+                "endNode": 503,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "mapping_penelitian_dosen"
+                }
+              },
+              {
+                "id": 1267,
+                "type": "Tbl",
+                "startNode": 789,
+                "endNode": 496,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "tran_temp_dosen"
+                }
+              },
+              {
+                "id": 4301,
+                "type": "Tbl",
+                "startNode": 789,
+                "endNode": 790,
+                "properties": {
+                  "node_from": "deleted",
+                  "node_to": "tmst_mapping"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
