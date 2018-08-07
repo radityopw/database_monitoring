@@ -16,20 +16,34 @@ services:
     #         - "mssql_example:/mnt/example"
     #         - "/d:/mnt/data"
 
-    neo4jserver:
-        image: neo4j:enterprise
+    neo4jserveruser:
+        image: neo4j:latest
         environment:
             -   NEO4J_AUTH=neo4j/neo4jits2018    
             -   NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
         #     -   SA_PASSWORD=fairy@test13 
         ports:
-            - "7474:7474"
-            - "7473:7473"
-            - "7687:7687"
+            - "1474:7474"
+            - "1687:7687"
         networks:
             - hello
         volumes: 
-            - "neo4j_data:/data"
+            - "neo4j_user_data:/data"
+            # - "neo4jserver_logs:/logs"
+
+    neo4jserversp:
+        image: neo4j:latest
+        environment:
+            -   NEO4J_AUTH=neo4j/neo4jits2018    
+            -   NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+        #     -   SA_PASSWORD=fairy@test13 
+        ports:
+            - "2474:7474"
+            - "2687:7687"
+        networks:
+            - hello
+        volumes: 
+            - "neo4j_sp_data:/data"
             # - "neo4jserver_logs:/logs"
 
     # phpfpmserver:
@@ -85,11 +99,13 @@ services:
 networks:
     hello:
 volumes:
-    mssql_data:
+    # mssql_data:
+    #     external: true
+    # mssql_example:
+    #     external: true
+    neo4j_user_data:
         external: true
-    mssql_example:
-        external: true
-    neo4j_data:
+    neo4j_sp_data:
         external: true
     # neo4jserver_logs:
         # driver_opts:
