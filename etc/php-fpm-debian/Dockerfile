@@ -1,12 +1,10 @@
-FROM php:7.2-cli-stretch
+FROM php:7.2-fpm-stretch
 
-# Installing apt-utils
-RUN  apt-get update ;\
+RUN apt-get update ; \
     apt-get install -y --no-install-recommends \
     apt-utils
 
-# Installing https
-RUN apt-get update ; \
+RUN apt-get update; \
     apt-get install -y --no-install-recommends \
     systemd \
     apt-transport-https \
@@ -100,24 +98,8 @@ RUN docker-php-ext-install \
     pecl install pdo_sqlsrv ;\
     docker-php-ext-enable pdo_sqlsrv
 
-# Installing recommends
-RUN apt-get install -y --no-install-recommends \
-    cron \
-    supervisor 
-
 # Uninstalling not important and removing caches
 RUN apt-get clean ;\
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ;\
-    apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false
-
-# Copying custom cron
-COPY dependency-tool.txt /config/
-
-# Adding user crontab
-RUN crontab /config/dependency-tool.txt
-
-# Copying supervisord config
-COPY supervisord.conf /etc/supervisord.conf
-
-# Adding crontab first and start supervisord
-CMD  /usr/bin/crontab /config/dependency-tool.txt ; /usr/bin/supervisord -n -c /etc/supervisord.conf
+    apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false ;\
+    usermod -u 1000 www-data
