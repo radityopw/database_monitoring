@@ -75,26 +75,26 @@ $stack = tap($neo4j->stack())->push("MATCH (n) DETACH DELETE n");
 /**
  * User and Password for user with role reader
  */
-$user = $neo4jAllConfig['username_read'];
-$password = $neo4jAllConfig['password_read'];
+// $user = $neo4jAllConfig['username_read'];
+// $password = $neo4jAllConfig['password_read'];
 /**
  * Create user with role Reader.
  * Delete the user if user already exists.
  */
-try {
-    $neo4j->run("
-    CALL dbms.security.deleteUser('$user')
-    CALL dbms.security.createUser('$user', '$password', false) 
-    CALL dbms.security.addRoleToUser('reader', '$user')
-    MATCH (n)
-    RETURN n");
-} catch (\Exception $e) {
-    $neo4j->run("
-    CALL dbms.security.createUser('$user', '$password', false) 
-    CALL dbms.security.addRoleToUser('reader', '$user')
-    MATCH (n)
-    RETURN n");
-}
+// try {
+//     $neo4j->run("
+//     CALL dbms.security.deleteUser('$user')
+//     CALL dbms.security.createUser('$user', '$password', false) 
+//     CALL dbms.security.addRoleToUser('reader', '$user')
+//     MATCH (n)
+//     RETURN n");
+// } catch (\Exception $e) {
+//     $neo4j->run("
+//     CALL dbms.security.createUser('$user', '$password', false) 
+//     CALL dbms.security.addRoleToUser('reader', '$user')
+//     MATCH (n)
+//     RETURN n");
+// }
 /**
  * Create a new node server with index on name and surname
  */
