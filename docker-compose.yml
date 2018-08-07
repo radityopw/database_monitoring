@@ -19,7 +19,7 @@ services:
     neo4jserver:
         image: neo4j:enterprise
         environment:
-            -   NEO4J_AUTH=neo4j/neo4j123    
+            -   NEO4J_AUTH=neo4j/neo4jits2018    
             -   NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
         #     -   SA_PASSWORD=fairy@test13 
         ports:
