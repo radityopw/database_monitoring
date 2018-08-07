@@ -2,19 +2,19 @@ version: '3'
 
 services:
 
-    mssqlserver:
-        image: microsoft/mssql-server-linux:latest
-        environment:
-            -   ACCEPT_EULA=Y    
-            -   SA_PASSWORD=fairy@test13 
-        ports:
-            - "1433:1433"
-        networks:
-            - hello
-        volumes: 
-            - "mssql_data:/var/opt/mssql"
-            - "mssql_example:/mnt/example"
-            - "/d:/mnt/data"
+    # mssqlserver:
+    #     image: microsoft/mssql-server-linux:latest
+    #     environment:
+    #         -   ACCEPT_EULA=Y    
+    #         -   SA_PASSWORD=fairy@test13 
+    #     ports:
+    #         - "1433:1433"
+    #     networks:
+    #         - hello
+    #     volumes: 
+    #         - "mssql_data:/var/opt/mssql"
+    #         - "mssql_example:/mnt/example"
+    #         - "/d:/mnt/data"
 
     neo4jserver:
         image: neo4j:enterprise
