@@ -46,6 +46,14 @@ services:
             - "neo4j_sp_data:/data"
             # - "neo4jserver_logs:/logs"
 
+    supervisorserver:
+        image: shadow/supervisord-cron-debian:tugas-akhir
+        volumes:
+            - "./etc/supervisor-config:/etc/supervisord.d"
+            - "./etc/supervisord-cron-debian/dependency-tool.txt:/config/dependency-tool.txt"
+            - "./:/var/www/html"
+        networks:
+            - hello
     # phpfpmserver:
     #     image: shadow/php-fpm-ubuntu:tugas-akhir
     #     deploy:
