@@ -5,7 +5,7 @@
     <?php
     require_once __DIR__.'/../app/hihi.php';
     // require_once __DIR__.'\hihi.php'; 
-    require_once __DIR__.'\SP_vis.php'; 
+    require_once __DIR__.'/SP_vis.php'; 
     use Dependency\Components\SP_vis;
 
     $databaseConfig = require config_path('database.php');
@@ -230,8 +230,8 @@
                         $opt = $value['sp_name'];
                         $val = $value['srv'].".".$value['db'].".".$value['sch'].".".$value['sp_name'];  
                 ?>
-                            <option value="<?= $val; ?>" <?php if (isset($sp_select) && $sp_select==$ val) { echo 'selected'; } ?>>
-                                <?= $opt; ?>
+                            <option value="<?php echo $val; ?>" <?php if (isset($sp_select) && $sp_select==$val) { echo 'selected'; } ?>>
+                                <?php echo $opt; ?>
                             </option>
                             <?php 
                     }
