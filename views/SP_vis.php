@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'\hihi.php'; 
+// require_once __DIR__.'\hihi.php'; 
 
 $databaseConfig = require config_path('database.php');
 

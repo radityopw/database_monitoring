@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <?php
-    require_once __DIR__.'\hihi.php';
+    require_once __DIR__.'/../app/hihi.php';
+    // require_once __DIR__.'\hihi.php'; 
     require_once __DIR__.'\SP_vis.php'; 
     use Dependency\Components\SP_vis;
 
@@ -179,132 +181,130 @@
         
     }
 ?>
-	<title>Dependency Tool</title>
-	<link rel="stylesheet" type="text/css" href="assets/css/neo4jd3.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/material-kit.css?v=2.0.3">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <script type="text/javascript" src='assets/js/d3.min.js'></script>
-	<script type="text/javascript" src='assets/js/neo4jd3.js'></script>
-    <style>
-        body,
-        html,
-        .neo4jd3 {
-            height: 100%;
-            overflow: hidden;
-        }
-    </style>
-    <link rel="icon" href="assets/img/server_Iq4_icon.ico">
+        <title>Dependency Tool</title>
+        <link rel="stylesheet" type="text/css" href="assets/css/neo4jd3.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/material-kit.css?v=2.0.3">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+            crossorigin="anonymous">
+        <script type="text/javascript" src='assets/js/d3.min.js'></script>
+        <script type="text/javascript" src='assets/js/neo4jd3.js'></script>
+        <style>
+            body,
+            html,
+            .neo4jd3 {
+                height: 100%;
+                overflow: hidden;
+            }
+        </style>
+        <link rel="icon" href="assets/img/server_Iq4_icon.ico">
 </head>
-<body>
-<div class="container-fluid" style='height: 100%'>
-    <div class="row" style='height: 100%'>
-        <div class="col-md-3" style="padding-top:15px; overflow-y: scroll;">
-            <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-                <div class="container">
-                    <a class="navbar-brand" href="#">Filter</a>
-                </div>
-            </nav>
-        
-        <form method="post">
-        <div class="form-group">
-            <label>Show</label>
-            <select class="form-control" name="show" id="show">
-                <option value="All" <?php if (isset($show) && $show == 'All') {
-                    echo 'selected';
-                } ?> >All</option>
-                <option value="Execute" <?php if (isset($show) && $show == 'Execute') {
-                    echo 'selected';
-                } ?>>Execute</option>
-                <option value="Use" <?php if (isset($show) && $show == 'Use') {
-                    echo 'selected';
-                } ?>>Use</option>
 
-            </select>
-        </div><br>
-        <div class="form-group">
-            <label for="exampleFormControlSelect1">Stored Procedure</label>
-            <select class="form-control" name="sp_select">
-                <option value="All">Select Procedure (All) </option>
-                <?php 
+<body>
+    <div class="container-fluid" style='height: 100%'>
+        <div class="row" style='height: 100%'>
+            <div class="col-md-3" style="padding-top:15px; overflow-y: scroll;">
+                <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+                    <div class="container">
+                        <a class="navbar-brand" href="#">Filter</a>
+                    </div>
+                </nav>
+
+                <form method="post">
+                    <div class="form-group">
+                        <label>Show</label>
+                        <select class="form-control" name="show" id="show">
+                            <option value="All" <?php if (isset($show) && $show=='All' ) { echo 'selected'; } ?> >All</option>
+                            <option value="Execute" <?php if (isset($show) && $show=='Execute' ) { echo 'selected'; } ?>>Execute</option>
+                            <option value="Use" <?php if (isset($show) && $show=='Use' ) { echo 'selected'; } ?>>Use</option>
+
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Stored Procedure</label>
+                        <select class="form-control" name="sp_select">
+                            <option value="All">Select Procedure (All) </option>
+                            <?php 
                     foreach ($sp as $value) {
                         $opt = $value['sp_name'];
                         $val = $value['srv'].".".$value['db'].".".$value['sch'].".".$value['sp_name'];  
                 ?>
-              <option value="<?= $val; ?>" <?php if (isset($sp_select) && $sp_select == $val) {
-                    echo 'selected';
-                } ?>><?= $opt; ?></option>
-              <?php 
+                            <option value="<?= $val; ?>" <?php if (isset($sp_select) && $sp_select==$ val) { echo 'selected'; } ?>>
+                                <?= $opt; ?>
+                            </option>
+                            <?php 
                     }
               ?>
-            </select>
-        </div><br>
-        <div class="form-group">
-            <label>Radius</label>
-            <select class="form-control" name="hops" id="hops">
-                <option value="1" <?php if (isset($hops) && $hops == '1') {
-                    echo 'selected';
-                } ?> >1</option>
-                <option value="2" <?php if (isset($hops) && $hops == '2') {
-                    echo 'selected';
-                } ?>>2</option>
-            </select>
-        </div><br>
-        <div>
-            <div>
-            <button type='submit' class='btn btn-primary btn-round pull-right' name='btn-gen' id="btn-gen">GENERATE</button>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label>Radius</label>
+                        <select class="form-control" name="hops" id="hops">
+                            <option value="1" <?php if (isset($hops) && $hops=='1' ) { echo 'selected'; } ?> >1</option>
+                            <option value="2" <?php if (isset($hops) && $hops=='2' ) { echo 'selected'; } ?>>2</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <div>
+                            <button type='submit' class='btn btn-primary btn-round pull-right' name='btn-gen' id="btn-gen">GENERATE</button>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+
+                </form>
+                <br>
+                <br> Legends
+                <ul class="fa-ul">
+                    <li>
+                        <i class="fa-li fa fa-server"></i> Server</li>
+                    <li>
+                        <i class="fa-li fa fa-database"></i> Database</li>
+                    <li>
+                        <i class="fa-li fa fa-gear"></i> Schema</li>
+                    <li>
+                        <i class="fa-li fa fa-table"></i> Table</li>
+                    <li>
+                        <i class="fa-li fab fa-product-hunt"></i> Stored Procedure</li>
+                    <li>
+                        <i class="fa-li fa fa-file-code"></i> Function</li>
+                </ul>
+
             </div>
-            <div>
-                
+
+
+            <div class="col-md-9">
+                <div id='neo4jd3'></div>
             </div>
-        </div>
-        
-        </form>
-        <br><br>
-        Legends
-            <ul class="fa-ul">
-                <li><i class="fa-li fa fa-server"></i> Server</li>
-                <li><i class="fa-li fa fa-database"></i> Database</li>
-                <li><i class="fa-li fa fa-gear"></i> Schema</li>
-                <li><i class="fa-li fa fa-table"></i> Table</li>
-                <li><i class="fa-li fab fa-product-hunt"></i> Stored Procedure</li>
-                <li><i class="fa-li fa fa-file-code"></i> Function</li>
-            </ul>
-       
-    </div>
 
-    
-    <div class="col-md-9">
-        <div id='neo4jd3'></div>
-    </div>
+            <script type="text/javascript">
+                var neo4jd3 = new Neo4jd3('#neo4jd3', {
+                    icons: {
+                        'Server': 'server',
+                        'Database': 'database',
+                        'Schema': 'gear',
+                        'Table': 'table',
+                        'Column': 'columns',
+                        'SP': 'f288',
+                        'Function': 'f1c9'
+                    },
+                    minCollision: 60,
+                    neo4jData: <?= $result; ?>,
+                    nodeRadius: 20,
+                    highlight: [{
+                        class: 'SP',
+                        property: 'surname',
+                        value: '<?= $sp_select; ?>',
+                    }],
 
-	<script type="text/javascript">
-	var neo4jd3 = new Neo4jd3('#neo4jd3', {
-    icons: {
-        'Server': 'server',
-        'Database': 'database',
-        'Schema': 'gear',
-        'Table': 'table',
-        'Column': 'columns',
-        'SP' : 'f288',
-        'Function' : 'f1c9'
-    },
-    minCollision: 60,
-    neo4jData: <?= $result; ?> ,
-    nodeRadius: 20,
-    highlight: 
-    [
-        {
-            class: 'SP', 
-            property: 'surname',
-            value: '<?= $sp_select; ?>',
-        }
-    ],
+                    zoomFit: true,
 
-    zoomFit: true,
-    
-    });
-    
-	</script>
+                });
+            </script>
 </body>
+
 </html>
