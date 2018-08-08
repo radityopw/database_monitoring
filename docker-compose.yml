@@ -63,7 +63,6 @@ services:
         networks:
             - hello
         ports:
-            - "9500:9500"
             - "9000:9000"
         # extra_hosts:
             # - "host.machine:192.168.100.13"

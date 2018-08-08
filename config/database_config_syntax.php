@@ -8,8 +8,8 @@ return [
             'database' =>   '',
             'username' => '',
             'password' => '',
-            'charset' => '',
-            'prefix' => '', 
+            'charset' => 'utf-8',//Default
+            'prefix' => 'sqlsrv', //Default
         ],
         'neo4j' => [
             'sp' => [

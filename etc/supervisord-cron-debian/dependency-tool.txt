@@ -3,4 +3,4 @@
 @reboot /usr/local/bin/php -f /var/www/html/app/Components/SP_syscat.php > /tmp/sp-syscat-php.log; /usr/local/bin/php -f /var/www/html/app/Components/SP_parsing.php > /tmp/sp-parsing-php.log
 * */3 * * * /usr/local/bin/php -f /var/www/html/app/Components/user_process.php > /tmp/user-php.log
 * */3 * * * /usr/local/bin/php -f /var/www/html/app/Components/SP_syscat.php > /tmp/sp-syscat-php.log; /usr/local/bin/php -f /var/www/html/app/Components/SP_parsing.php > /tmp/sp-parsing-php.log
-* * * * * echo "FUCKING WORLD" > /tmp/test.log
+* * * * * echo "HELLO WORLD" > /tmp/test.log
