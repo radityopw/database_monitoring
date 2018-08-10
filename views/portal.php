@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="./assets/icons/portal-icon-72.png">
-    <link rel="icon" type="image/png" href="./assets/icons/portal-icon-96.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/icons/portal-icon-72.png">
+    <link rel="icon" type="image/png" href="assets/icons/portal-icon-96.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
         Dependency Tool

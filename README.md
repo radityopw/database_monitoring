@@ -270,21 +270,26 @@ After installing nginx, we change the default route for nginx with the configura
 server {
         listen 80;
         listen [::]:80;
+
         #server_name localhost;
+
         charset utf-8;
+
         error_log  /var/log/nginx/error.log;
-        access_log /var/log/nginx/access.log;
-        #access_log /var/log/nginx/scripts.log scripts;
-        #root /home/user/apps/gitlab.com/dependency-tool;
+        access_log /var/log/nginx/scripts.log scripts;
+
+        #root /var/www/html/github.com/database_monitoring;
+
         #location / {
         #       autoindex on;
         #}
+
         location /dependency-tool {
-                alias /home/user/apps/gitlab.com/dependency-tool/views;
+                alias /var/www/html/github.com/database_monitoring/views;
+                try_files $uri =404;
                 location ~ \.php$ {
                     rewrite ^/.+/(.+\.php)$ /$1 break;
-                    #try_files $uri =404;
-                    fastcgi_split_path_info ^(.+\.php)(\/.+)$;
+                    fastcgi_split_path_info ^/.+/(.+\.php)(\/.+)$;
                     fastcgi_pass 127.0.0.1:9000;
                     fastcgi_index index.php;
                     include fastcgi_params;
